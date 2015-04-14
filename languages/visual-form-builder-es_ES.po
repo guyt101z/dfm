@@ -791,28 +791,28 @@ msgstr "Seleccionar todo"
 msgid "Download Export File"
 msgstr "Descargar archivo de exportación"
 
-#: includes/email.php:11
+#: includes/dfm-email.php:11
 #@ dynamic-form-maker
 msgid "Security check: hidden spam field should be blank."
 msgstr "Comprobación de seguridad: campo oculto spam debe estar en blanco."
 
-#: includes/email.php:13
+#: includes/dfm-email.php:13
 #@ dynamic-form-maker
 msgid "Security check: failed secret question. Please try again!"
 msgstr "Comprobación de seguridad: falló la pregunta secreta. Por favor vuelva a intentarlo!"
 
-#: includes/email.php:21
+#: includes/dfm-email.php:21
 #@ dynamic-form-maker
 msgid "Security check: looks like you are a SPAM bot. If you think this is an error, please email the site owner."
 msgstr "Comprobación de seguridad: parece que eres un bot de SPAM. Si usted piensa que esto es un error, envíe un correo electrónico al propietario del sitio."
 
-#: includes/email.php:111
+#: includes/dfm-email.php:111
 #, php-format
 #@ dynamic-form-maker
 msgid "File size exceeds %dMB. Most email providers will reject emails with attachments larger than %dMB. Please decrease the file size and try again."
 msgstr "Tamaño del archivo excede %dMB. Mayoría de los proveedores de correo electrónico rechazará correos electrónicos con archivos adjuntos más grandes que %dMB. Por favor, disminuir el tamaño del archivo y vuelva a intentarlo."
 
-#: includes/email.php:262
+#: includes/dfm-email.php:262
 #@ dynamic-form-maker
 msgid "Your responses look too much like spam and could not be sent at this time."
 msgstr "Sus respuestas mirar demasiado como spam y no podrían ser enviados en este tiempo."

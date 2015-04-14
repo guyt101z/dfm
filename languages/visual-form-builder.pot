@@ -371,23 +371,23 @@ msgstr ""
 msgid "Download Export File"
 msgstr ""
 
-#: includes/email.php:11
+#: includes/dfm-email.php:11
 msgid "Security check: hidden spam field should be blank."
 msgstr ""
 
-#: includes/email.php:13
+#: includes/dfm-email.php:13
 msgid "Security check: failed secret question. Please try again!"
 msgstr ""
 
-#: includes/email.php:21
+#: includes/dfm-email.php:21
 msgid "Security check: looks like you are a SPAM bot. If you think this is an error, please email the site owner."
 msgstr ""
 
-#: includes/email.php:111
+#: includes/dfm-email.php:111
 msgid "File size exceeds %dMB. Most email providers will reject emails with attachments larger than %dMB. Please decrease the file size and try again."
 msgstr ""
 
-#: includes/email.php:262
+#: includes/dfm-email.php:262
 msgid "Your responses look too much like spam and could not be sent at this time."
 msgstr ""
 

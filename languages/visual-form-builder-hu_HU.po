@@ -617,28 +617,28 @@ msgstr "Jelölje ki az összes"
 msgid "Download Export File"
 msgstr "Export fájl letöltése"
 
-#: includes/email.php:11
+#: includes/dfm-email.php:11
 #@ dynamic-form-maker
 msgid "Security check: hidden spam field should be blank."
 msgstr "Biztonsági ellenőrzés: rejtett spam mezőnek üresnek kell lennie."
 
-#: includes/email.php:13
+#: includes/dfm-email.php:13
 #@ dynamic-form-maker
 msgid "Security check: failed secret question. Please try again!"
 msgstr "Biztonsági ellenőrzés: sikertelen a titkos kérdést. Legyen szíves megpróbál újra!"
 
-#: includes/email.php:21
+#: includes/dfm-email.php:21
 #@ dynamic-form-maker
 msgid "Security check: looks like you are a SPAM bot. If you think this is an error, please email the site owner."
 msgstr "Biztonsági ellenőrzés: úgy néz ki, mint te egy SPAM bot. Ha úgy gondolja, ez egy hiba, legyen szíves elektronikus levél a tulajdonos."
 
-#: includes/email.php:111
+#: includes/dfm-email.php:111
 #, php-format
 #@ dynamic-form-maker
 msgid "File size exceeds %dMB. Most email providers will reject emails with attachments larger than %dMB. Please decrease the file size and try again."
 msgstr "Fájl mérete meghaladja a %d MB. A legtöbb e-mail szolgáltató visszautasítja az e-mailek mellékletekkel %d MB-nál nagyobb. Csökkenti a fájl méretét, és próbálja újra."
 
-#: includes/email.php:262
+#: includes/dfm-email.php:262
 #@ dynamic-form-maker
 msgid "Your responses look too much like spam and could not be sent at this time."
 msgstr "A válasz úgy néz ki túl sok, mint a spam, és ebben az időben nem küldhető."

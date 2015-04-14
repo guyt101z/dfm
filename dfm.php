@@ -749,7 +749,7 @@ class Dynamic_form_maker_Builder{
 
 		$dfm_settings = get_option( 'dfm-settings' );
 
-		wp_register_style( 'dfm-jqueryui-css', apply_filters( 'dfm-date-picker-css', plugins_url( '/css/smoothness/jquery-ui-1.10.3.min.css', __FILE__ ) ), array(), '20131203' );
+		wp_register_style( 'dfm-jqueryui-css', apply_filters( 'dfm-date-picker-css', plugins_url( '/css/jqueryUi/jquery-ui-1.10.3.min.css', __FILE__ ) ), array(), '20131203' );
 		wp_register_style( 'dynamic-form-maker-css', apply_filters( 'dynamic-form-maker-css', plugins_url( "/css/dynamic-form-maker$this->load_dev_files.css", __FILE__ ) ), array(), '20140412' );
 
 		// Settings - Always load CSS
@@ -1835,7 +1835,7 @@ class Dynamic_form_maker_Builder{
 	 * @uses wp_mail() E-mails a message
 	 */
 	public function email() {
-		require( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/email.php' );
+		require( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/dfm-email.php' );
 	}
 
 	/**
