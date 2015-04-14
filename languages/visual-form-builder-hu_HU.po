@@ -1,0 +1,1077 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Dynamic Form Maker v2.7.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-06 13:57-0600\n"
+"PO-Revision-Date: 2013-04-10 14:15:55+0000\n"
+"Last-Translator: glocs <inkabb.nem@gmail.kom>\n"
+"Language-Team: glocs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: /Applications/MAMP/htdocs/wp3/wp-content/plugins/dynamic-form-maker\n"
+"X-Textdomain-Support: yes"
+
+#: includes/class-entries-detail.php:42
+#@ dynamic-form-maker
+msgid "Details"
+msgstr "Részletek"
+
+#: includes/class-entries-detail.php:48
+#@ dynamic-form-maker
+msgid "Form Title"
+msgstr "Űrlap cím"
+
+#: includes/class-entries-detail.php:51
+#: includes/class-entries-list.php:94
+#: includes/class-export.php:18
+#@ dynamic-form-maker
+msgid "Date Submitted"
+msgstr "Elkészítés dátuma"
+
+#: includes/class-entries-detail.php:54
+#: includes/class-entries-list.php:93
+#: includes/class-export.php:19
+#@ dynamic-form-maker
+msgid "IP Address"
+msgstr "IP cím"
+
+#: includes/class-entries-detail.php:57
+#: includes/class-entries-list.php:89
+#@ dynamic-form-maker
+msgid "Email Subject"
+msgstr "Email tárgy"
+
+#: includes/class-entries-detail.php:60
+#: includes/class-entries-list.php:90
+#: includes/class-export.php:21
+#@ dynamic-form-maker
+msgid "Sender Name"
+msgstr "Küldő Név"
+
+#: includes/class-entries-detail.php:63
+#: includes/class-entries-list.php:91
+#: includes/class-export.php:22
+#@ dynamic-form-maker
+msgid "Sender Email"
+msgstr "Küldő Email"
+
+#: includes/class-entries-detail.php:66
+#: includes/class-entries-list.php:92
+#: includes/class-export.php:23
+#@ dynamic-form-maker
+msgid "Emailed To"
+msgstr "Címzett"
+
+#: includes/class-entries-detail.php:37
+#: includes/class-entries-detail.php:91
+#@ dynamic-form-maker
+msgid "Entry"
+msgstr "Bejegyzés"
+
+#: includes/class-entries-list.php:88
+#: includes/class-export.php:104
+#@ dynamic-form-maker
+msgid "Form"
+msgstr "Űrlap"
+
+#: includes/class-entries-list.php:176
+#: dfm.php:1235
+#@ dynamic-form-maker
+msgid "Delete"
+msgstr "Törlés"
+
+#: includes/class-export.php:17
+#@ dynamic-form-maker
+msgid "Entries ID"
+msgstr "Bejegyzés ID"
+
+#: includes/class-entries-list.php:218
+#@ dynamic-form-maker
+msgid "View all forms"
+msgstr "Minden űrlap"
+
+#: includes/class-entries-list.php:225
+#@ dynamic-form-maker
+msgid "Filter"
+msgstr "Szűrő"
+
+#: dfm.php:196
+#@ dynamic-form-maker
+msgid "Settings"
+msgstr "Beállítások"
+
+#: dfm.php:1717
+#: dfm.php:1719
+#: dfm.php:1743
+#@ dynamic-form-maker
+msgid "Dynamic Form Maker"
+msgstr "Dynamic Form Maker"
+
+#: includes/class-export.php:88
+#@ dynamic-form-maker
+msgid "Forms"
+msgstr "Űrlapok"
+
+#: includes/class-export.php:91
+#: dfm.php:1721
+#: dfm.php:1745
+#@ dynamic-form-maker
+msgid "Entries"
+msgstr "Bejegyzések"
+
+#: dfm.php:434
+#@ dynamic-form-maker
+msgid "Form Items"
+msgstr "Űrlap mezők"
+
+#: dfm.php:446
+#@ dynamic-form-maker
+msgid "Click"
+msgstr "Kattintás"
+
+#: dfm.php:446
+#@ dynamic-form-maker
+msgid "to Add a Field"
+msgstr "mező hozzáadása"
+
+#: includes/admin-form-creator.php:61
+#@ dynamic-form-maker
+msgid "Form Name"
+msgstr "Űrlap neve"
+
+#: includes/admin-form-creator.php:124
+#@ dynamic-form-maker
+msgid "The forms you build here will send information to one or more email addresses when submitted by a user on your site.  Use the fields below to customize the details of that email."
+msgstr "Az elkészített űrlap információt küld egy, vagy több email címre, ha a felhasználó elküldte. Használd az alábbi mezőket az email testre szabásához."
+
+#: includes/admin-form-creator.php:129
+#: includes/admin-form-creator.php:318
+#: includes/admin-new-form.php:40
+#@ dynamic-form-maker
+msgid "E-mail Subject"
+msgstr "E-mail tárgy"
+
+#: includes/admin-form-creator.php:208
+#@ dynamic-form-maker
+msgid "E-mail(s) To"
+msgstr "E-mail(ek) címzettje"
+
+#: includes/admin-form-creator.php:228
+#@ dynamic-form-maker
+msgid "After someone submits a form, you can control what is displayed. By default, it's a message but you can send them to another WordPress Page or a custom URL."
+msgstr "Az űrlap elküldése után megjelenő rész. Alapból egy üzenet, de akár egy WordPress oldalra, vagy URL-re is küldheted."
+
+#: includes/admin-form-creator.php:231
+#@ dynamic-form-maker
+msgid "Text"
+msgstr "Szöveg"
+
+#: includes/admin-form-creator.php:235
+#@ dynamic-form-maker
+msgid "Page"
+msgstr "Oldal"
+
+#: includes/admin-form-creator.php:239
+#@ dynamic-form-maker
+msgid "Redirect"
+msgstr "Átirányítás"
+
+#: includes/admin-form-creator.php:248
+#@ dynamic-form-maker
+msgid "Your form was successfully submitted. Thank you for contacting us."
+msgstr "Az űrlap sikeresen elküldve. Köszönjük a megkeresést!"
+
+#: includes/admin-form-creator.php:258
+#@ dynamic-form-maker
+msgid "Select a Page"
+msgstr "Válassz oldalt"
+
+#: includes/admin-form-creator.php:274
+#@ dynamic-form-maker
+msgid "Send Confirmation Email to User"
+msgstr "Megerősítő email küldése a felhasználónak"
+
+#: includes/class-export.php:20
+#@ dynamic-form-maker
+msgid "Subject"
+msgstr "Tárgy"
+
+#: includes/admin-form-creator.php:326
+#@ dynamic-form-maker
+msgid "Message"
+msgstr "Üzenet"
+
+#: includes/admin-form-creator.php:334
+#@ dynamic-form-maker
+msgid "Include a Copy of the User's Entry"
+msgstr "A felhasználó bejegyzésének másolása"
+
+#: includes/admin-new-form.php:57
+#@ dynamic-form-maker
+msgid "Create Form"
+msgstr "Űrlap készítése"
+
+#: includes/admin-form-creator.php:96
+#: includes/admin-form-creator.php:358
+#@ dynamic-form-maker
+msgid "Save Form"
+msgstr "Űrlap mentése"
+
+#: includes/admin-form-creator.php:94
+#@ dynamic-form-maker
+msgid "Delete Form"
+msgstr "Űrlap törlése"
+
+#: dfm.php:1352
+#@ dynamic-form-maker
+msgid "Edit Field Item"
+msgstr "Mező szerkesztése"
+
+#: dfm.php:1380
+#: dfm.php:1400
+#@ dynamic-form-maker
+msgid "Name"
+msgstr "Név"
+
+#: dfm.php:1420
+#@ dynamic-form-maker
+msgid "Description"
+msgstr "Magyarázat"
+
+#: dfm.php:1511
+#@ dynamic-form-maker
+msgid "12 Hour Format"
+msgstr "12 órás formátum"
+
+#: dfm.php:1512
+#@ dynamic-form-maker
+msgid "24 Hour Format"
+msgstr "24 órás formátum"
+
+#: dfm.php:1514
+#@ dynamic-form-maker
+msgid "None"
+msgstr "Üres"
+
+#: dfm.php:1515
+#@ dynamic-form-maker
+msgid "Email"
+msgstr "Email"
+
+#: dfm.php:1516
+#@ dynamic-form-maker
+msgid "URL"
+msgstr "URL"
+
+#: dfm.php:1517
+#@ dynamic-form-maker
+msgid "Date"
+msgstr "Dátum"
+
+#: dfm.php:1518
+#@ dynamic-form-maker
+msgid "Number"
+msgstr "Szám"
+
+#: dfm.php:1519
+#@ dynamic-form-maker
+msgid "Digits"
+msgstr "Számok"
+
+#: dfm.php:1520
+#@ dynamic-form-maker
+msgid "Phone"
+msgstr "Telefon"
+
+#: dfm.php:1552
+#@ dynamic-form-maker
+msgid "Required"
+msgstr "Kötelező"
+
+#: dfm.php:1556
+#@ dynamic-form-maker
+msgid "No"
+msgstr "Nem"
+
+#: dfm.php:1557
+#@ dynamic-form-maker
+msgid "Yes"
+msgstr "Igen"
+
+#: dfm.php:1566
+#@ dynamic-form-maker
+msgid "Size"
+msgstr "Méret"
+
+#: dfm.php:1571
+#@ dynamic-form-maker
+msgid "Medium"
+msgstr "Közepes"
+
+#: dfm.php:1572
+#@ dynamic-form-maker
+msgid "Large"
+msgstr "Nagy"
+
+#: dfm.php:1661
+#@ dynamic-form-maker
+msgid "Remove"
+msgstr "Törlés"
+
+#: includes/form-output.php:556
+#@ dynamic-form-maker
+msgid "Verification"
+msgstr "Ellenőrzés"
+
+#: includes/admin-form-creator.php:62
+#: includes/admin-new-form.php:17
+#@ dynamic-form-maker
+msgid "Enter form name here"
+msgstr "Adja meg az űrlap neve itt"
+
+#: includes/admin-form-creator.php:92
+#@ dynamic-form-maker
+msgid "Form Settings"
+msgstr "Képernyő-beállítások"
+
+#: includes/admin-form-creator.php:93
+#@ dynamic-form-maker
+msgid "Duplicate Form"
+msgstr "Ismétlődő űrlap"
+
+#: includes/admin-form-creator.php:106
+#@ dynamic-form-maker
+msgid "Label Alignment"
+msgstr "Címke igazítása"
+
+#: includes/admin-form-creator.php:111
+#@ dynamic-form-maker
+msgid "Top Aligned"
+msgstr "Felülre igazít"
+
+#: includes/admin-form-creator.php:112
+#@ dynamic-form-maker
+msgid "Left Aligned"
+msgstr "Balra igazított"
+
+#: includes/admin-form-creator.php:113
+#@ dynamic-form-maker
+msgid "Right Aligned"
+msgstr "Jobbra igazítva"
+
+#: includes/admin-form-creator.php:140
+#: includes/admin-new-form.php:23
+#@ dynamic-form-maker
+msgid "Your Name or Company"
+msgstr "A név vagy a vállalat"
+
+#: includes/admin-form-creator.php:148
+#@ dynamic-form-maker
+msgid "User's Name (optional)"
+msgstr "Felhasználó neve (nem kötelező)"
+
+#: includes/admin-form-creator.php:152
+#@ dynamic-form-maker
+msgid "No required text fields detected"
+msgstr "Nem szükséges szövegmezőket észlel"
+
+#: includes/admin-form-creator.php:170
+#: includes/admin-form-creator.php:289
+#: includes/admin-new-form.php:31
+#@ dynamic-form-maker
+msgid "Reply-To E-mail"
+msgstr "Reply To E-mail"
+
+#: includes/admin-form-creator.php:178
+#@ dynamic-form-maker
+msgid "User's E-mail (optional)"
+msgstr "Felhasználó E-mail (nem kötelező)"
+
+#: includes/admin-form-creator.php:182
+#: includes/admin-form-creator.php:302
+#@ dynamic-form-maker
+msgid "No required email fields detected"
+msgstr "Nincs szükség e-mail mezőket észlelt"
+
+#: includes/admin-form-creator.php:271
+#@ dynamic-form-maker
+msgid "When a user submits their entry, you can send a customizable notification email."
+msgstr "Ha a felhasználó elküld való belépés, testreszabható értesítést e-mailben is küldhet."
+
+#: includes/admin-form-creator.php:280
+#@ dynamic-form-maker
+msgid "Sender Name or Company"
+msgstr "A feladó neve vagy vállalkozás"
+
+#: includes/admin-form-creator.php:298
+#: includes/admin-new-form.php:48
+#@ dynamic-form-maker
+msgid "E-mail To"
+msgstr "E-mailben"
+
+#: includes/admin-form-creator.php:346
+#@ dynamic-form-maker
+msgid "Warning &mdash; Missing Fieldset"
+msgstr "Figyelmeztetés &mdash; hiányzik a Fieldset"
+
+#: includes/admin-form-creator.php:346
+#@ dynamic-form-maker
+msgid "Your form may not function or display correctly. Please be sure to add or move a Fieldset to the beginning of your form."
+msgstr "Az űrlap nem működik, vagy jelenik meg helyesen. Kérjük győződjön meg róla, hogy helyezzen Fieldset, az űrlap az elején."
+
+#: includes/admin-new-form.php:7
+#@ dynamic-form-maker
+msgid "You do not have sufficient permissions to create a new form."
+msgstr "Nincs új űrlap létrehozásához szükséges engedélyekkel."
+
+#: includes/admin-new-form.php:9
+#@ dynamic-form-maker
+msgid "Create a form"
+msgstr "Űrlap létrehozása"
+
+#: includes/admin-new-form.php:15
+#@ dynamic-form-maker
+msgid "Name the form"
+msgstr "Az űrlap neve"
+
+#: includes/admin-new-form.php:18
+#@ dynamic-form-maker
+msgid "Required. This name is used for admin purposes."
+msgstr "Szükséges. Ez a név használatos admin célokra."
+
+#: includes/admin-new-form.php:26
+#@ dynamic-form-maker
+msgid "Required. This is who your emails will come from."
+msgstr "Szükséges. Ez az, aki az e-maileket fog származni."
+
+#: includes/admin-new-form.php:34
+#@ dynamic-form-maker
+msgid "Required. Replies to your email will go here."
+msgstr "Szükséges. Válaszok az e-mail megy itt."
+
+#: includes/admin-new-form.php:35
+#@ dynamic-form-maker
+msgid "Tip: for best results, use an email that exists on this domain."
+msgstr "Tipp: a legjobb eredmény elérése érdekében használjon egy e-mailt, hogy létezik ezen a területen."
+
+#: includes/admin-new-form.php:43
+#: includes/admin-new-form.php:51
+#@ dynamic-form-maker
+msgid "Optional (for now) - you can change this later"
+msgstr "Választható (egyelőre) - meg tudod változtatni ezt később"
+
+#: includes/class-entries-list.php:252
+#@ default
+msgid "Show all dates"
+msgstr ""
+
+#: includes/class-entries-list.php:264
+#: includes/class-export.php:527
+#, php-format
+#@ default
+msgid "%1$s %2$d"
+msgstr ""
+
+#: includes/class-entries-list.php:421
+#, php-format
+#@ default
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] ""
+
+#: includes/class-entries-list.php:442
+#@ default
+msgid "Go to the first page"
+msgstr ""
+
+#: includes/class-entries-list.php:450
+#@ default
+msgid "Go to the previous page"
+msgstr ""
+
+#: includes/class-entries-list.php:459
+#@ default
+msgid "Current page"
+msgstr ""
+
+#: includes/class-entries-list.php:465
+#, php-format
+#@ default
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr ""
+
+#: includes/class-entries-list.php:469
+#@ default
+msgid "Go to the next page"
+msgstr ""
+
+#: includes/class-entries-list.php:477
+#@ default
+msgid "Go to the last page"
+msgstr ""
+
+#: includes/class-export.php:65
+#: includes/class-export.php:391
+#@ dynamic-form-maker
+msgid "No entries to pull field names from."
+msgstr "Húzza a mező nevét a tételek."
+
+#: includes/class-export.php:81
+#@ dynamic-form-maker
+msgid "Backup and save some or all of your Dynamic Form Maker data."
+msgstr "Hát és megment néhány vagy az összes vizuális Form Builder adatait."
+
+#: includes/class-export.php:82
+#@ dynamic-form-maker
+msgid "Once you have saved the file, you will be able to import Dynamic Form Maker Pro data from this site into another site."
+msgstr "Miután mentette a fájlt, lesz ez az oldal vizuális Form Builder Pro adatok importálása egy másik helyszínen."
+
+#: includes/class-export.php:83
+#@ dynamic-form-maker
+msgid "Choose what to export"
+msgstr "Válassza ki az exportálandó"
+
+#: includes/class-export.php:85
+#@ dynamic-form-maker
+msgid "All data"
+msgstr "Minden adat"
+
+#: includes/class-export.php:86
+#@ dynamic-form-maker
+msgid "This will contain all of your forms, fields, entries, and email design settings."
+msgstr "Ez tartalmazza az összes a mezők, bejegyzések, és e-mail design beállításait."
+
+#: includes/class-export.php:86
+#: includes/class-export.php:89
+#@ dynamic-form-maker
+msgid "Only available in Dynamic Form Maker Pro"
+msgstr "Egyetlen elérhető-ban vizuális Form Builder Pro"
+
+#: includes/class-export.php:89
+#@ dynamic-form-maker
+msgid "This will contain all of your forms, fields, and email design settings"
+msgstr "Ez tartalmazza az összes az űrlapokat, a mezők és a e-mail design beállítások"
+
+#: includes/class-export.php:94
+#@ dynamic-form-maker
+msgid "This will export entries in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import entries on another site, please use the All data option above."
+msgstr "Ez egy .csv, .txt vagy .xls tételeket exportálja, és nem használható az importálás.  Ha szeretné importálni a bejegyzéseket, a másik oldalon, kérjük, használja az összes beállítást fenti."
+
+#: includes/class-export.php:96
+#@ dynamic-form-maker
+msgid "Format"
+msgstr "Formátum"
+
+#: includes/class-export.php:98
+#@ dynamic-form-maker
+msgid "Comma Separated (.csv)"
+msgstr "Vesszővel elválasztott (.csv)"
+
+#: includes/class-export.php:99
+#@ dynamic-form-maker
+msgid "Tab Delimited (.txt) - Pro only"
+msgstr "Tab Delimited (.txt) - Pro"
+
+#: includes/class-export.php:100
+#@ dynamic-form-maker
+msgid "Excel (.xls) - Pro only"
+msgstr "Excel (.xls) - Pro csak"
+
+#: includes/class-export.php:114
+#@ dynamic-form-maker
+msgid "Date Range"
+msgstr "Dátumtartomány"
+
+#: includes/class-export.php:129
+#@ dynamic-form-maker
+msgid "Page to Export"
+msgstr "Oldal-hoz Export"
+
+#: includes/class-export.php:137
+#@ dynamic-form-maker
+msgid "A large number of entries have been detected for this form. Only 1000 entries can be exported at a time."
+msgstr "Nagyszámú bejegyzés az űrlap észlelt. Csak 1000 bejegyzések exportálhatók egy időben."
+
+#: includes/class-export.php:144
+#@ dynamic-form-maker
+msgid "Fields"
+msgstr "Mezők"
+
+#: includes/class-export.php:146
+#@ dynamic-form-maker
+msgid "Select All"
+msgstr "Jelölje ki az összes"
+
+#: includes/class-export.php:159
+#@ dynamic-form-maker
+msgid "Download Export File"
+msgstr "Export fájl letöltése"
+
+#: includes/email.php:11
+#@ dynamic-form-maker
+msgid "Security check: hidden spam field should be blank."
+msgstr "Biztonsági ellenőrzés: rejtett spam mezőnek üresnek kell lennie."
+
+#: includes/email.php:13
+#@ dynamic-form-maker
+msgid "Security check: failed secret question. Please try again!"
+msgstr "Biztonsági ellenőrzés: sikertelen a titkos kérdést. Legyen szíves megpróbál újra!"
+
+#: includes/email.php:21
+#@ dynamic-form-maker
+msgid "Security check: looks like you are a SPAM bot. If you think this is an error, please email the site owner."
+msgstr "Biztonsági ellenőrzés: úgy néz ki, mint te egy SPAM bot. Ha úgy gondolja, ez egy hiba, legyen szíves elektronikus levél a tulajdonos."
+
+#: includes/email.php:111
+#, php-format
+#@ dynamic-form-maker
+msgid "File size exceeds %dMB. Most email providers will reject emails with attachments larger than %dMB. Please decrease the file size and try again."
+msgstr "Fájl mérete meghaladja a %d MB. A legtöbb e-mail szolgáltató visszautasítja az e-mailek mellékletekkel %d MB-nál nagyobb. Csökkenti a fájl méretét, és próbálja újra."
+
+#: includes/email.php:262
+#@ dynamic-form-maker
+msgid "Your responses look too much like spam and could not be sent at this time."
+msgstr "A válasz úgy néz ki túl sok, mint a spam, és ebben az időben nem küldhető."
+
+#: includes/form-output.php:155
+#, php-format
+#@ dynamic-form-maker
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. Verification not required."
+msgstr "Mocsaras-ban mint <a href=\\\"%1$s\\\">%2$ s</a>. Nem szükséges ellenőrzés."
+
+#: includes/form-output.php:326
+#@ dynamic-form-maker
+msgid "Address"
+msgstr "Cím"
+
+#: includes/form-output.php:330
+#@ dynamic-form-maker
+msgid "Address Line 2"
+msgstr "Lakcim második sor"
+
+#: includes/form-output.php:334
+#@ dynamic-form-maker
+msgid "City"
+msgstr "Város"
+
+#: includes/form-output.php:338
+#@ dynamic-form-maker
+msgid "State / Province / Region"
+msgstr "Állam / tartomány / régió"
+
+#: includes/form-output.php:342
+#@ dynamic-form-maker
+msgid "Postal / Zip Code"
+msgstr "Postai / irányítószám"
+
+#: includes/form-output.php:346
+#@ dynamic-form-maker
+msgid "Country"
+msgstr "Ország"
+
+#: includes/form-output.php:558
+#@ dynamic-form-maker
+msgid "Please enter any two digits with <strong>no</strong> spaces (Example: 12)"
+msgstr "Adjon meg bármilyen két számjegy, szóköz <strong>nélkül</strong> (példa: 12)"
+
+#: includes/form-output.php:571
+#@ dynamic-form-maker
+msgid "This box is for spam protection - <strong>please leave it blank</strong>"
+msgstr "Ez a rovat a spam védelem - <strong>kérlek, hagyd üresen</strong>"
+
+#: dfm.php:217
+#@ dynamic-form-maker
+msgid "Recent Dynamic Form Maker Entries"
+msgstr "A legújabb vizuális formában Builder bejegyzések"
+
+#: dfm.php:240
+#@ dynamic-form-maker
+msgid "You currently do not have any forms."
+msgstr "Jelenleg nincs semmilyen formában."
+
+#: dfm.php:242
+#@ dynamic-form-maker
+msgid "Get started!"
+msgstr "A kezdéshez!"
+
+#: dfm.php:292
+#@ dynamic-form-maker
+msgid "Number of entries to show:"
+msgstr "Szám-ból címszavakat-hoz mutat:"
+
+#: dfm.php:395
+#@ dynamic-form-maker
+msgid "Entries per page"
+msgstr "Bejegyzések oldalanként"
+
+#: dfm.php:435
+#@ dynamic-form-maker
+msgid "Display Forms"
+msgstr "Megjelenítési formák"
+
+#: dfm.php:448
+#@ dynamic-form-maker
+msgid "Standard"
+msgstr "Standard"
+
+#: dfm.php:489
+#@ dynamic-form-maker
+msgid "Add forms to your Posts or Pages by locating the icon shown below in the area above your post/page editor."
+msgstr "Hozzáadása űrlapok a póznák vagy oldalak mellett helymegállapítás a ikon látható az alábbi a terület fölött a post/oldal szerkesztő."
+
+#: dfm.php:492
+#@ dynamic-form-maker
+msgid "You may also manually insert the shortcode into a post/page."
+msgstr "A hiány is kézzel kell a post/oldal lehet behelyezni."
+
+#: dfm.php:493
+#@ dynamic-form-maker
+msgid "Shortcode"
+msgstr "Hiány"
+
+#: dfm.php:1233
+#@ dynamic-form-maker
+msgid "Edit Form"
+msgstr "Űrlapjának módosítása"
+
+#: dfm.php:1258
+#@ dynamic-form-maker
+msgid "New Features of Dynamic Form Maker Pro"
+msgstr "Új funkciók a vizuális formában Builder Pro"
+
+#: dfm.php:1260
+#@ dynamic-form-maker
+msgid "Now with Add-Ons"
+msgstr "Most-val összead-ons"
+
+#: dfm.php:1261
+#@ dynamic-form-maker
+msgid "Akismet Support"
+msgstr "Akismet-támogatás"
+
+#: dfm.php:1262
+#@ dynamic-form-maker
+msgid "Optional SPAM Verification"
+msgstr "Választható SPAM ellenőrzés"
+
+#: dfm.php:1263
+#@ dynamic-form-maker
+msgid "Nested Drag and Drop"
+msgstr "Beágyazott Drag and Drop"
+
+#: dfm.php:1264
+#@ dynamic-form-maker
+msgid "Conditional Logic"
+msgstr "Feltételes logikát"
+
+#: dfm.php:1265
+#@ dynamic-form-maker
+msgid "10+ new Form Fields"
+msgstr "10 + új forma megfog"
+
+#: dfm.php:1266
+#@ dynamic-form-maker
+msgid "Complete Entries Management"
+msgstr "Teljes tételek kezelése"
+
+#: dfm.php:1267
+#@ dynamic-form-maker
+msgid "Import/Export"
+msgstr "Import/Export"
+
+#: dfm.php:1268
+#@ dynamic-form-maker
+msgid "Quality HTML Email Template"
+msgstr "Minőségi HTML elektronikus levél mintadeszka"
+
+#: dfm.php:1269
+#@ dynamic-form-maker
+msgid "Plain Text Email Option"
+msgstr "Egyszerű szöveges E-mail beállítás"
+
+#: dfm.php:1270
+#@ dynamic-form-maker
+msgid "Email Designer"
+msgstr "E-mail tervező"
+
+#: dfm.php:1271
+#@ dynamic-form-maker
+msgid "Analytics"
+msgstr "Analytics"
+
+#: dfm.php:1272
+#@ dynamic-form-maker
+msgid "Data &amp; Form Migration"
+msgstr "Adatok &amp; űrlap migráció"
+
+#: dfm.php:1273
+#@ dynamic-form-maker
+msgid "Scheduling"
+msgstr "Ütemezés"
+
+#: dfm.php:1274
+#@ dynamic-form-maker
+msgid "Limit Form Entries"
+msgstr "Limit űrlapbejegyzéseket"
+
+#: dfm.php:1275
+#@ dynamic-form-maker
+msgid "Simple PayPal Integration"
+msgstr "Egyszerű PayPal integráció"
+
+#: dfm.php:1276
+#@ dynamic-form-maker
+msgid "Form Paging"
+msgstr "Űrlap lapozás"
+
+#: dfm.php:1277
+#@ dynamic-form-maker
+msgid "Live Preview"
+msgstr "Élő előnézet"
+
+#: dfm.php:1278
+#@ dynamic-form-maker
+msgid "Custom Capabilities"
+msgstr "Egyéni képességek"
+
+#: dfm.php:1279
+#@ dynamic-form-maker
+msgid "No License Key"
+msgstr "Nem engedély kulcs"
+
+#: dfm.php:1280
+#@ dynamic-form-maker
+msgid "Automatic Updates"
+msgstr "Automatikus frissítések"
+
+#: dfm.php:1283
+#@ dynamic-form-maker
+msgid "Learn more about some of these features"
+msgstr "Tudjon meg többet a következő funkciók némelyikének"
+
+#: dfm.php:1284
+#@ dynamic-form-maker
+msgid "Buy Now"
+msgstr "Vásárlás"
+
+#: dfm.php:1284
+#@ dynamic-form-maker
+msgid "Only $10"
+msgstr "Csak $10-t"
+
+#: dfm.php:1287
+#@ dynamic-form-maker
+msgid "Help Promote Dynamic Form Maker"
+msgstr "Segíteni a vizuális Form Builder"
+
+#: dfm.php:1289
+#@ dynamic-form-maker
+msgid "Follow me on Twitter"
+msgstr "Follow me on Twitter"
+
+#: dfm.php:1290
+#@ dynamic-form-maker
+msgid "Rate Dynamic Form Maker on WordPress.org"
+msgstr "Arány vizuális Form Builder a WordPress.org"
+
+#: dfm.php:1369
+#: dfm.php:1410
+#: dfm.php:1649
+#@ dynamic-form-maker
+msgid "CSS Classes"
+msgstr "CSS osztályok"
+
+#: dfm.php:1388
+#@ dynamic-form-maker
+msgid "Description (HTML tags allowed)"
+msgstr "Leírás (HTML tags engedélyezett)"
+
+#: dfm.php:1432
+#@ dynamic-form-maker
+msgid "Options"
+msgstr "Beállítások"
+
+#: dfm.php:1489
+#@ dynamic-form-maker
+msgid "Accepted File Extensions"
+msgstr "Elfogadott fájlkiterjesztések"
+
+#: dfm.php:1504
+#@ dynamic-form-maker
+msgid "Validation"
+msgstr "Érvényesítés"
+
+#: dfm.php:1570
+#@ dynamic-form-maker
+msgid "Small"
+msgstr "Kis"
+
+#: dfm.php:1581
+#@ dynamic-form-maker
+msgid "Options Layout"
+msgstr "Elrendezés beállítások"
+
+#: dfm.php:1585
+#@ dynamic-form-maker
+msgid "One Column"
+msgstr "Egy oszlop"
+
+#: dfm.php:1586
+#@ dynamic-form-maker
+msgid "Two Columns"
+msgstr "Két oszlop"
+
+#: dfm.php:1587
+#@ dynamic-form-maker
+msgid "Three Columns"
+msgstr "Három oszlop"
+
+#: dfm.php:1588
+#@ dynamic-form-maker
+msgid "Auto Width"
+msgstr "Kocsi szélessége"
+
+#: dfm.php:1597
+#@ dynamic-form-maker
+msgid "Field Layout"
+msgstr "Elrendezése"
+
+#: dfm.php:1602
+#@ dynamic-form-maker
+msgid "Default"
+msgstr "Alapértelmezett"
+
+#: dfm.php:1604
+#@ dynamic-form-maker
+msgid "Left Half"
+msgstr "Bal fele"
+
+#: dfm.php:1605
+#@ dynamic-form-maker
+msgid "Right Half"
+msgstr "Jobb fele"
+
+#: dfm.php:1608
+#@ dynamic-form-maker
+msgid "Left Third"
+msgstr "Bal oldali külső"
+
+#: dfm.php:1609
+#@ dynamic-form-maker
+msgid "Middle Third"
+msgstr "Középső"
+
+#: dfm.php:1610
+#@ dynamic-form-maker
+msgid "Right Third"
+msgstr "Jobb harmadik"
+
+#: dfm.php:1613
+#@ dynamic-form-maker
+msgid "Left Two Thirds"
+msgstr "Bal kétharmada"
+
+#: dfm.php:1614
+#@ dynamic-form-maker
+msgid "Right Two Thirds"
+msgstr "Jobb kétharmada"
+
+#: dfm.php:1623
+#@ dynamic-form-maker
+msgid "Default Value"
+msgstr "Alapértelmezett érték"
+
+#: dfm.php:1633
+#@ dynamic-form-maker
+msgid "Default Country"
+msgstr "Alapértelmezett országnév"
+
+#: dfm.php:1693
+#@ dynamic-form-maker
+msgid "The form has been successfully created."
+msgstr "Az űrlap sikeresen létrehozva."
+
+#: dfm.php:1696
+#, php-format
+#@ dynamic-form-maker
+msgid "The %s form has been updated."
+msgstr "A %s űrlap frissítve lett."
+
+#: dfm.php:1699
+#@ dynamic-form-maker
+msgid "The form has been successfully deleted."
+msgstr "Az űrlap sikeresen törölve."
+
+#: dfm.php:1702
+#@ dynamic-form-maker
+msgid "The form has been successfully duplicated."
+msgstr "Az űrlap sikeresen meg lett kettőzve."
+
+#: dfm.php:1719
+#@ dynamic-form-maker
+msgid "All Forms"
+msgstr "Minden formája"
+
+#: dfm.php:1720
+#: dfm.php:1744
+#@ dynamic-form-maker
+msgid "Add New Form"
+msgstr "Új űrlap"
+
+#: dfm.php:1722
+#: dfm.php:1746
+#@ dynamic-form-maker
+msgid "Export"
+msgstr "Export"
+
+#: dfm.php:1761
+#, php-format
+#@ dynamic-form-maker
+msgid "Search results for \"%s\""
+msgstr "Keresési találatok-\\\"%s\\\""
+
+#: dfm.php:1794
+#@ dynamic-form-maker
+msgid "New Form"
+msgstr "Új formája"
+
+#: dfm.php:1883
+#@ dynamic-form-maker
+msgid "This field is required and cannot be empty."
+msgstr "Ez a mező kötelező, és nem lehet üres."
+
+#: dfm.php:1890
+#@ dynamic-form-maker
+msgid "Not a valid email address"
+msgstr "Nem egy érvényes elektronikus levél cím"
+
+#: dfm.php:1896
+#@ dynamic-form-maker
+msgid "Not a valid number"
+msgstr "Nem érvényes szám"
+
+#: dfm.php:1903
+#@ dynamic-form-maker
+msgid "Not a valid phone number. Most US/Canada and International formats accepted."
+msgstr "Érvényes telefonszámhoz. Leg--bb minket / Kanada és nemzetközi formátumok."
+
+#: dfm.php:1908
+#@ dynamic-form-maker
+msgid "Not a valid URL."
+msgstr "Nem egy érvényes URL-t."
+
+#: dfm.php:1758
+#@ dynamic-form-maker
+msgid "Add New"
+msgstr "Új"
+

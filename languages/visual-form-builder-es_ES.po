@@ -1,0 +1,1083 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Dynamic Form Maker v2.7.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-12 00:48+0100\n"
+"PO-Revision-Date: 2013-04-30 00:33:15+0000\n"
+"Last-Translator: Samuel Aguilera <correo@samuelaguilera.com>\n"
+"Language-Team: Samuel Aguilera <correo@samuelaguilera.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: Spain\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: includes/class-entries-detail.php:37
+#: includes/class-entries-detail.php:91
+#@ dynamic-form-maker
+msgid "Entry"
+msgstr "Entrada"
+
+#: includes/class-entries-detail.php:42
+#@ dynamic-form-maker
+msgid "Details"
+msgstr "Detalles"
+
+#: includes/class-entries-detail.php:48
+#@ dynamic-form-maker
+msgid "Form Title"
+msgstr "Título formulario"
+
+#: includes/class-entries-detail.php:51
+#: includes/class-entries-list.php:94
+#: includes/class-export.php:18
+#@ dynamic-form-maker
+msgid "Date Submitted"
+msgstr "Fecha envío"
+
+#: includes/class-entries-detail.php:54
+#: includes/class-entries-list.php:93
+#: includes/class-export.php:19
+#@ dynamic-form-maker
+msgid "IP Address"
+msgstr "Dirección IP"
+
+#: includes/class-entries-detail.php:57
+#: includes/class-entries-list.php:89
+#@ dynamic-form-maker
+msgid "Email Subject"
+msgstr "Asunto email"
+
+#: includes/class-entries-detail.php:60
+#: includes/class-entries-list.php:90
+#: includes/class-export.php:21
+#@ dynamic-form-maker
+msgid "Sender Name"
+msgstr "Nombre remitente"
+
+#: includes/class-entries-detail.php:63
+#: includes/class-entries-list.php:91
+#: includes/class-export.php:22
+#@ dynamic-form-maker
+msgid "Sender Email"
+msgstr "Email remitente"
+
+#: includes/class-entries-detail.php:66
+#: includes/class-entries-list.php:92
+#: includes/class-export.php:23
+#@ dynamic-form-maker
+msgid "Emailed To"
+msgstr "Enviado a"
+
+#: includes/class-entries-list.php:88
+#: includes/class-export.php:106
+#@ dynamic-form-maker
+msgid "Form"
+msgstr "Formulario"
+
+#: includes/class-entries-list.php:176
+#: dfm.php:1239
+#@ dynamic-form-maker
+msgid "Delete"
+msgstr "Borrar"
+
+#: includes/class-export.php:17
+#@ dynamic-form-maker
+msgid "Entries ID"
+msgstr "ID entradas"
+
+#: includes/class-entries-list.php:218
+#@ dynamic-form-maker
+msgid "View all forms"
+msgstr "Ver todos los formularios"
+
+#: includes/class-entries-list.php:225
+#@ dynamic-form-maker
+msgid "Filter"
+msgstr "Filtrar"
+
+#: dfm.php:185
+#@ dynamic-form-maker
+msgid "Settings"
+msgstr "Ajustes"
+
+#: dfm.php:1723
+#: dfm.php:1725
+#: dfm.php:1846
+#@ dynamic-form-maker
+msgid "Dynamic Form Maker"
+msgstr "Dynamic Form Maker"
+
+#: dfm.php:1356
+#@ dynamic-form-maker
+msgid "Edit Field Item"
+msgstr "Editar elementos del campo"
+
+#: dfm.php:1373
+#: dfm.php:1414
+#: dfm.php:1653
+#@ dynamic-form-maker
+msgid "CSS Classes"
+msgstr "Clases CSS"
+
+#: dfm.php:1384
+#: dfm.php:1404
+#@ dynamic-form-maker
+msgid "Name"
+msgstr "Nombre"
+
+#: dfm.php:1424
+#@ dynamic-form-maker
+msgid "Description"
+msgstr "Descripción"
+
+#: dfm.php:1436
+#@ dynamic-form-maker
+msgid "Options"
+msgstr "Opciones"
+
+#: dfm.php:1493
+#@ dynamic-form-maker
+msgid "Accepted File Extensions"
+msgstr "Extensiones aceptadas"
+
+#: dfm.php:1508
+#@ dynamic-form-maker
+msgid "Validation"
+msgstr "Validación"
+
+#: dfm.php:1515
+#@ dynamic-form-maker
+msgid "12 Hour Format"
+msgstr "Formato 12 horas"
+
+#: dfm.php:1516
+#@ dynamic-form-maker
+msgid "24 Hour Format"
+msgstr "Formato 24 horas"
+
+#: dfm.php:1518
+#@ dynamic-form-maker
+msgid "None"
+msgstr "Ninguno"
+
+#: dfm.php:1519
+#@ dynamic-form-maker
+msgid "Email"
+msgstr "Email"
+
+#: dfm.php:1520
+#@ dynamic-form-maker
+msgid "URL"
+msgstr "URL"
+
+#: dfm.php:1521
+#@ dynamic-form-maker
+msgid "Date"
+msgstr "Fecha"
+
+#: dfm.php:1522
+#@ dynamic-form-maker
+msgid "Number"
+msgstr "Número"
+
+#: dfm.php:1523
+#@ dynamic-form-maker
+msgid "Digits"
+msgstr "Dígitos"
+
+#: dfm.php:1524
+#@ dynamic-form-maker
+msgid "Phone"
+msgstr "Teléfono"
+
+#: dfm.php:1556
+#@ dynamic-form-maker
+msgid "Required"
+msgstr "Obligatorio"
+
+#: dfm.php:1560
+#@ dynamic-form-maker
+msgid "No"
+msgstr "No"
+
+#: dfm.php:1561
+#@ dynamic-form-maker
+msgid "Yes"
+msgstr "Sí"
+
+#: dfm.php:1570
+#@ dynamic-form-maker
+msgid "Size"
+msgstr "Tamaño"
+
+#: dfm.php:1574
+#@ dynamic-form-maker
+msgid "Small"
+msgstr "Pequeño"
+
+#: dfm.php:1575
+#@ dynamic-form-maker
+msgid "Medium"
+msgstr "Medio"
+
+#: dfm.php:1576
+#@ dynamic-form-maker
+msgid "Large"
+msgstr "Grande"
+
+#: dfm.php:1585
+#@ dynamic-form-maker
+msgid "Options Layout"
+msgstr "Formato opciones"
+
+#: dfm.php:1589
+#@ dynamic-form-maker
+msgid "One Column"
+msgstr "Una columna"
+
+#: dfm.php:1590
+#@ dynamic-form-maker
+msgid "Two Columns"
+msgstr "Dos columnas"
+
+#: dfm.php:1591
+#@ dynamic-form-maker
+msgid "Three Columns"
+msgstr "Tres columnas"
+
+#: dfm.php:1592
+#@ dynamic-form-maker
+msgid "Auto Width"
+msgstr "Ancho automático"
+
+#: dfm.php:1601
+#@ dynamic-form-maker
+msgid "Field Layout"
+msgstr "Ubicación campo"
+
+#: dfm.php:1606
+#@ dynamic-form-maker
+msgid "Default"
+msgstr "Predeterminada"
+
+#: dfm.php:1608
+#@ dynamic-form-maker
+msgid "Left Half"
+msgstr "Mitad izquierda"
+
+#: dfm.php:1609
+#@ dynamic-form-maker
+msgid "Right Half"
+msgstr "Mitad derecha"
+
+#: dfm.php:1612
+#@ dynamic-form-maker
+msgid "Left Third"
+msgstr "Un tercio izquierda"
+
+#: dfm.php:1613
+#@ dynamic-form-maker
+msgid "Middle Third"
+msgstr "Un tercio centro"
+
+#: dfm.php:1614
+#@ dynamic-form-maker
+msgid "Right Third"
+msgstr "Un tercio derecha"
+
+#: dfm.php:1617
+#@ dynamic-form-maker
+msgid "Left Two Thirds"
+msgstr "Dos tercios izquierda"
+
+#: dfm.php:1618
+#@ dynamic-form-maker
+msgid "Right Two Thirds"
+msgstr "Dos tercios derecha"
+
+#: dfm.php:1665
+#@ dynamic-form-maker
+msgid "Remove"
+msgstr "Eliminar"
+
+#: includes/class-export.php:90
+#@ dynamic-form-maker
+msgid "Forms"
+msgstr "Formularios"
+
+#: includes/class-export.php:93
+#: dfm.php:1727
+#: dfm.php:1783
+#@ dynamic-form-maker
+msgid "Entries"
+msgstr "Entradas"
+
+#: dfm.php:436
+#@ dynamic-form-maker
+msgid "Form Items"
+msgstr "Elementos del formulario"
+
+#: dfm.php:448
+#@ dynamic-form-maker
+msgid "Click"
+msgstr "Haz clic"
+
+#: dfm.php:448
+#@ dynamic-form-maker
+msgid "to Add a Field"
+msgstr "para añadir un campo"
+
+#: includes/admin-form-creator.php:63
+#@ dynamic-form-maker
+msgid "Form Name"
+msgstr "Nombre formulario"
+
+#: includes/admin-form-creator.php:95
+#@ dynamic-form-maker
+msgid "Duplicate Form"
+msgstr "Duplicar formulario"
+
+#: includes/admin-form-creator.php:126
+#@ dynamic-form-maker
+msgid "The forms you build here will send information to one or more email addresses when submitted by a user on your site.  Use the fields below to customize the details of that email."
+msgstr "Los formularios creados aquí enviarán información a una o más direcciones de email cuando un usuario de tu sitio los envíe. Usa los campos a continuación para personalizar los detalles de ese email."
+
+#: includes/admin-form-creator.php:131
+#: includes/admin-form-creator.php:320
+#: includes/admin-new-form.php:40
+#@ dynamic-form-maker
+msgid "E-mail Subject"
+msgstr "Asunto email"
+
+#: includes/admin-form-creator.php:210
+#@ dynamic-form-maker
+msgid "E-mail(s) To"
+msgstr "Se envía a"
+
+#: includes/admin-form-creator.php:230
+#@ dynamic-form-maker
+msgid "After someone submits a form, you can control what is displayed. By default, it's a message but you can send them to another WordPress Page or a custom URL."
+msgstr "Cuando alguien envía un formulario, puedes controlar qué se mostrará. De manera predeterminada es un mensaje, pero puedes enviarlos a otra página de WordPress o una URL personalizada."
+
+#: includes/admin-form-creator.php:233
+#@ dynamic-form-maker
+msgid "Text"
+msgstr "Texto"
+
+#: includes/admin-form-creator.php:237
+#@ dynamic-form-maker
+msgid "Page"
+msgstr "Página"
+
+#: includes/admin-form-creator.php:241
+#@ dynamic-form-maker
+msgid "Redirect"
+msgstr "Redireccionar"
+
+#: includes/admin-form-creator.php:250
+#@ dynamic-form-maker
+msgid "Your form was successfully submitted. Thank you for contacting us."
+msgstr "El formulario ha sido enviado correctamente. Gracias por contactar con nosotros."
+
+#: includes/admin-form-creator.php:260
+#@ dynamic-form-maker
+msgid "Select a Page"
+msgstr "Selecciona una página"
+
+#: includes/admin-form-creator.php:273
+#@ dynamic-form-maker
+msgid "When a user submits their entry, you can send a customizable notification email."
+msgstr "Cuando un usuario hace un envío, puedes enviar una notificación por email personalizable."
+
+#: includes/admin-form-creator.php:276
+#@ dynamic-form-maker
+msgid "Send Confirmation Email to User"
+msgstr "Enviar email de confirmación al usuario"
+
+#: includes/class-export.php:20
+#@ dynamic-form-maker
+msgid "Subject"
+msgstr "Asunto"
+
+#: includes/admin-form-creator.php:328
+#@ dynamic-form-maker
+msgid "Message"
+msgstr "Mensaje"
+
+#: includes/admin-form-creator.php:336
+#@ dynamic-form-maker
+msgid "Include a Copy of the User's Entry"
+msgstr "Incluir una copia del envío del usuario"
+
+#: includes/admin-new-form.php:57
+#@ dynamic-form-maker
+msgid "Create Form"
+msgstr "Crear formulario"
+
+#: includes/admin-form-creator.php:98
+#: includes/admin-form-creator.php:360
+#@ dynamic-form-maker
+msgid "Save Form"
+msgstr "Guardar formulario"
+
+#: includes/admin-form-creator.php:96
+#@ dynamic-form-maker
+msgid "Delete Form"
+msgstr "Borrar formulario"
+
+#: dfm.php:1291
+#@ dynamic-form-maker
+msgid "Help Promote Dynamic Form Maker"
+msgstr "Ayuda a promocionar Dynamic Form Maker"
+
+#: dfm.php:1293
+#@ dynamic-form-maker
+msgid "Follow me on Twitter"
+msgstr "Sígueme en Twitter"
+
+#: dfm.php:1294
+#@ dynamic-form-maker
+msgid "Rate Dynamic Form Maker on WordPress.org"
+msgstr "Califica Dynamic Form Maker en WordPress.org"
+
+#: dfm.php:1262
+#@ dynamic-form-maker
+msgid "New Features of Dynamic Form Maker Pro"
+msgstr "Nuevas características de Dynamic Form Maker Pro"
+
+#: dfm.php:1272
+#@ dynamic-form-maker
+msgid "Quality HTML Email Template"
+msgstr "Plantilla de email HTML de calidad"
+
+#: dfm.php:1274
+#@ dynamic-form-maker
+msgid "Email Designer"
+msgstr "Diseñador email"
+
+#: dfm.php:1275
+#@ dynamic-form-maker
+msgid "Analytics"
+msgstr "Estadísticas"
+
+#: dfm.php:1276
+#@ dynamic-form-maker
+msgid "Data &amp; Form Migration"
+msgstr "Migración de datos y formularios"
+
+#: dfm.php:1280
+#@ dynamic-form-maker
+msgid "Form Paging"
+msgstr "Paginación formulario"
+
+#: dfm.php:1283
+#@ dynamic-form-maker
+msgid "No License Key"
+msgstr "Sin llave de licencia"
+
+#: dfm.php:1284
+#@ dynamic-form-maker
+msgid "Automatic Updates"
+msgstr "Actualizaciones automáticas"
+
+#: dfm.php:1287
+#@ dynamic-form-maker
+msgid "Learn more about some of these features"
+msgstr "Conoce más acerca de estas características"
+
+#: dfm.php:1288
+#@ dynamic-form-maker
+msgid "Buy Now"
+msgstr "Comprar ahora"
+
+#: dfm.php:1288
+#@ dynamic-form-maker
+msgid "Only $10"
+msgstr "Sólo $10"
+
+#: includes/form-output.php:155
+#, php-format
+#@ dynamic-form-maker
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. Verification not required."
+msgstr "Conectado como <a href=\"%1$s\">%2$s</a>. Verificación no necesaria."
+
+#: includes/form-output.php:556
+#@ dynamic-form-maker
+msgid "Verification"
+msgstr "Verificación"
+
+#: includes/admin-form-creator.php:64
+#: includes/admin-new-form.php:17
+#@ dynamic-form-maker
+msgid "Enter form name here"
+msgstr "Introduzca aquí el nombre del formulario"
+
+#: includes/admin-form-creator.php:94
+#@ dynamic-form-maker
+msgid "Form Settings"
+msgstr "Configuración de la forma"
+
+#: includes/admin-form-creator.php:108
+#@ dynamic-form-maker
+msgid "Label Alignment"
+msgstr "Alineación de la etiqueta"
+
+#: includes/admin-form-creator.php:113
+#@ dynamic-form-maker
+msgid "Top Aligned"
+msgstr "Top alineado"
+
+#: includes/admin-form-creator.php:114
+#@ dynamic-form-maker
+msgid "Left Aligned"
+msgstr "Izquierda alineado"
+
+#: includes/admin-form-creator.php:115
+#@ dynamic-form-maker
+msgid "Right Aligned"
+msgstr "Derecha alineado"
+
+#: includes/admin-form-creator.php:142
+#: includes/admin-new-form.php:23
+#@ dynamic-form-maker
+msgid "Your Name or Company"
+msgstr "Su nombre o empresa"
+
+#: includes/admin-form-creator.php:150
+#@ dynamic-form-maker
+msgid "User's Name (optional)"
+msgstr "Nombre de usuario (opcional)"
+
+#: includes/admin-form-creator.php:154
+#@ dynamic-form-maker
+msgid "No required text fields detected"
+msgstr "No hay campos de texto requerido detectados"
+
+#: includes/admin-form-creator.php:172
+#: includes/admin-form-creator.php:291
+#: includes/admin-new-form.php:31
+#@ dynamic-form-maker
+msgid "Reply-To E-mail"
+msgstr "Responder a correo electrónico"
+
+#: includes/admin-form-creator.php:180
+#@ dynamic-form-maker
+msgid "User's E-mail (optional)"
+msgstr "Correo electrónico del usuario (opcional)"
+
+#: includes/admin-form-creator.php:184
+#: includes/admin-form-creator.php:304
+#@ dynamic-form-maker
+msgid "No required email fields detected"
+msgstr "No detectados los campos email requerido"
+
+#: includes/admin-form-creator.php:282
+#@ dynamic-form-maker
+msgid "Sender Name or Company"
+msgstr "Nombre del remitente o empresa"
+
+#: includes/admin-form-creator.php:300
+#: includes/admin-new-form.php:48
+#@ dynamic-form-maker
+msgid "E-mail To"
+msgstr "Enviar un email a"
+
+#: includes/admin-form-creator.php:348
+#@ dynamic-form-maker
+msgid "Warning &mdash; Missing Fieldset"
+msgstr "ADVERTENCIA &mdash; falta Fieldset"
+
+#: includes/admin-form-creator.php:348
+#@ dynamic-form-maker
+msgid "Your form may not function or display correctly. Please be sure to add or move a Fieldset to the beginning of your form."
+msgstr "Su forma no puede funcionar ni muestre correctamente. Por favor, asegúrese de agregar o mover un conjunto de campos al inicio de su formulario."
+
+#: includes/admin-new-form.php:7
+#@ dynamic-form-maker
+msgid "You do not have sufficient permissions to create a new form."
+msgstr "No tiene permisos suficientes para crear un nuevo formulario."
+
+#: includes/admin-new-form.php:9
+#@ dynamic-form-maker
+msgid "Create a form"
+msgstr "Crear un formulario"
+
+#: includes/admin-new-form.php:15
+#@ dynamic-form-maker
+msgid "Name the form"
+msgstr "Nombre de la forma"
+
+#: includes/admin-new-form.php:18
+#@ dynamic-form-maker
+msgid "Required. This name is used for admin purposes."
+msgstr "Obligatorio. Este nombre se utiliza para los propósitos de la administración."
+
+#: includes/admin-new-form.php:26
+#@ dynamic-form-maker
+msgid "Required. This is who your emails will come from."
+msgstr "Obligatorio. Se trata de que vendrá a su correo electrónico."
+
+#: includes/admin-new-form.php:34
+#@ dynamic-form-maker
+msgid "Required. Replies to your email will go here."
+msgstr "Obligatorio. Respuestas a su correo electrónico va aquí."
+
+#: includes/admin-new-form.php:35
+#@ dynamic-form-maker
+msgid "Tip: for best results, use an email that exists on this domain."
+msgstr "Consejo: para mejores resultados, use un correo electrónico que existe en este dominio."
+
+#: includes/admin-new-form.php:43
+#: includes/admin-new-form.php:51
+#@ dynamic-form-maker
+msgid "Optional (for now) - you can change this later"
+msgstr "Opcional (por ahora) - usted puede cambiar esto más adelante"
+
+#: includes/class-entries-list.php:252
+#@ default
+msgid "Show all dates"
+msgstr ""
+
+#: includes/class-entries-list.php:264
+#: includes/class-export.php:532
+#, php-format
+#@ default
+msgid "%1$s %2$d"
+msgstr ""
+
+#: includes/class-entries-list.php:421
+#, php-format
+#@ default
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-entries-list.php:442
+#@ default
+msgid "Go to the first page"
+msgstr ""
+
+#: includes/class-entries-list.php:450
+#@ default
+msgid "Go to the previous page"
+msgstr ""
+
+#: includes/class-entries-list.php:459
+#@ default
+msgid "Current page"
+msgstr ""
+
+#: includes/class-entries-list.php:465
+#, php-format
+#@ default
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr ""
+
+#: includes/class-entries-list.php:469
+#@ default
+msgid "Go to the next page"
+msgstr ""
+
+#: includes/class-entries-list.php:477
+#@ default
+msgid "Go to the last page"
+msgstr ""
+
+#: includes/class-export.php:67
+#: includes/class-export.php:393
+#@ dynamic-form-maker
+msgid "No entries to pull field names from."
+msgstr "No hay entradas para tirar nombres de campo de."
+
+#: includes/class-export.php:83
+#@ dynamic-form-maker
+msgid "Backup and save some or all of your Dynamic Form Maker data."
+msgstr "Copia de seguridad y guardar algunos o todos sus datos Dynamic Form Maker."
+
+#: includes/class-export.php:84
+#@ dynamic-form-maker
+msgid "Once you have saved the file, you will be able to import Dynamic Form Maker Pro data from this site into another site."
+msgstr "Una vez que ha guardado el archivo, podrá importar datos de forma Visual Builder Pro desde este sitio en otro sitio."
+
+#: includes/class-export.php:85
+#@ dynamic-form-maker
+msgid "Choose what to export"
+msgstr "Elegir qué exportar"
+
+#: includes/class-export.php:87
+#@ dynamic-form-maker
+msgid "All data"
+msgstr "Todos los datos"
+
+#: includes/class-export.php:88
+#@ dynamic-form-maker
+msgid "This will contain all of your forms, fields, entries, and email design settings."
+msgstr "Este contendrá todas su formas, campos, entradas y configuración de diseño de correo electrónico."
+
+#: includes/class-export.php:88
+#: includes/class-export.php:91
+#@ dynamic-form-maker
+msgid "Only available in Dynamic Form Maker Pro"
+msgstr "Sólo está disponible en forma Visual Builder Pro"
+
+#: includes/class-export.php:91
+#@ dynamic-form-maker
+msgid "This will contain all of your forms, fields, and email design settings"
+msgstr "Este contendrá todas su formas, campos y configuración de diseño de correo electrónico"
+
+#: includes/class-export.php:96
+#@ dynamic-form-maker
+msgid "This will export entries in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import entries on another site, please use the All data option above."
+msgstr "Esto exportará entradas en un .csv, .txt o .xls y no puede utilizarse con la importación.  Si usted necesita importar entradas en otro lugar, utilice la opción de datos todas arriba."
+
+#: includes/class-export.php:98
+#@ dynamic-form-maker
+msgid "Format"
+msgstr "Formato"
+
+#: includes/class-export.php:100
+#@ dynamic-form-maker
+msgid "Comma Separated (.csv)"
+msgstr "Separados por comas (.csv)"
+
+#: includes/class-export.php:101
+#@ dynamic-form-maker
+msgid "Tab Delimited (.txt) - Pro only"
+msgstr "Ficha delimitados (.txt) - Pro sólo"
+
+#: includes/class-export.php:102
+#@ dynamic-form-maker
+msgid "Excel (.xls) - Pro only"
+msgstr "Excel (.xls) - sólo"
+
+#: includes/class-export.php:116
+#@ dynamic-form-maker
+msgid "Date Range"
+msgstr "Intervalo de fechas"
+
+#: includes/class-export.php:131
+#@ dynamic-form-maker
+msgid "Page to Export"
+msgstr "Página para exportación"
+
+#: includes/class-export.php:139
+#@ dynamic-form-maker
+msgid "A large number of entries have been detected for this form. Only 1000 entries can be exported at a time."
+msgstr "Se han detectado un gran número de entradas para este formulario. Sólo 1000 entradas pueden ser exportadas a la vez."
+
+#: includes/class-export.php:146
+#@ dynamic-form-maker
+msgid "Fields"
+msgstr "Campos"
+
+#: includes/class-export.php:148
+#@ dynamic-form-maker
+msgid "Select All"
+msgstr "Seleccionar todo"
+
+#: includes/class-export.php:161
+#@ dynamic-form-maker
+msgid "Download Export File"
+msgstr "Descargar archivo de exportación"
+
+#: includes/email.php:11
+#@ dynamic-form-maker
+msgid "Security check: hidden spam field should be blank."
+msgstr "Comprobación de seguridad: campo oculto spam debe estar en blanco."
+
+#: includes/email.php:13
+#@ dynamic-form-maker
+msgid "Security check: failed secret question. Please try again!"
+msgstr "Comprobación de seguridad: falló la pregunta secreta. Por favor vuelva a intentarlo!"
+
+#: includes/email.php:21
+#@ dynamic-form-maker
+msgid "Security check: looks like you are a SPAM bot. If you think this is an error, please email the site owner."
+msgstr "Comprobación de seguridad: parece que eres un bot de SPAM. Si usted piensa que esto es un error, envíe un correo electrónico al propietario del sitio."
+
+#: includes/email.php:111
+#, php-format
+#@ dynamic-form-maker
+msgid "File size exceeds %dMB. Most email providers will reject emails with attachments larger than %dMB. Please decrease the file size and try again."
+msgstr "Tamaño del archivo excede %dMB. Mayoría de los proveedores de correo electrónico rechazará correos electrónicos con archivos adjuntos más grandes que %dMB. Por favor, disminuir el tamaño del archivo y vuelva a intentarlo."
+
+#: includes/email.php:262
+#@ dynamic-form-maker
+msgid "Your responses look too much like spam and could not be sent at this time."
+msgstr "Sus respuestas mirar demasiado como spam y no podrían ser enviados en este tiempo."
+
+#: includes/form-output.php:326
+#@ dynamic-form-maker
+msgid "Address"
+msgstr "Dirección"
+
+#: includes/form-output.php:330
+#@ dynamic-form-maker
+msgid "Address Line 2"
+msgstr "Dirección línea 2"
+
+#: includes/form-output.php:334
+#@ dynamic-form-maker
+msgid "City"
+msgstr "Ciudad"
+
+#: includes/form-output.php:338
+#@ dynamic-form-maker
+msgid "State / Province / Region"
+msgstr "Estado / provincia / región"
+
+#: includes/form-output.php:342
+#@ dynamic-form-maker
+msgid "Postal / Zip Code"
+msgstr "Postal / Código postal"
+
+#: includes/form-output.php:346
+#@ dynamic-form-maker
+msgid "Country"
+msgstr "País"
+
+#: includes/form-output.php:558
+#@ dynamic-form-maker
+msgid "Please enter any two digits with <strong>no</strong> spaces (Example: 12)"
+msgstr "Introduce dos dígitos <strong>sin</strong> espacios (ejemplo: 12)"
+
+#: includes/form-output.php:571
+#@ dynamic-form-maker
+msgid "This box is for spam protection - <strong>please leave it blank</strong>"
+msgstr "Esta caja es para protección contra el spam - <strong>por favor déjalo en blanco</strong>"
+
+#: dfm.php:206
+#@ dynamic-form-maker
+msgid "Recent Dynamic Form Maker Entries"
+msgstr "Las últimas entradas de forma Visual Builder"
+
+#: dfm.php:229
+#@ dynamic-form-maker
+msgid "You currently do not have any forms."
+msgstr "Actualmente no tiene ninguna."
+
+#: dfm.php:231
+#@ dynamic-form-maker
+msgid "Get started!"
+msgstr "¡ Comience!"
+
+#: dfm.php:289
+#@ dynamic-form-maker
+msgid "Number of entries to show:"
+msgstr "Número de entradas a mostrar:"
+
+#: dfm.php:395
+#@ dynamic-form-maker
+msgid "Entries per page"
+msgstr "Entradas por página"
+
+#: dfm.php:437
+#@ dynamic-form-maker
+msgid "Display Forms"
+msgstr "Formas de visualización"
+
+#: dfm.php:450
+#@ dynamic-form-maker
+msgid "Standard"
+msgstr "Estándar"
+
+#: dfm.php:491
+#@ dynamic-form-maker
+msgid "Add forms to your Posts or Pages by locating the icon shown below in the area above your post/page editor."
+msgstr "Añadir formas a tus mensajes o páginas localizando el icono que se muestra a continuación en el área por encima de su editor de posts/páginas."
+
+#: dfm.php:494
+#@ dynamic-form-maker
+msgid "You may also manually insert the shortcode into a post/page."
+msgstr "También manualmente puede insertar el código en una página de correos."
+
+#: dfm.php:495
+#@ dynamic-form-maker
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: dfm.php:1237
+#@ dynamic-form-maker
+msgid "Edit Form"
+msgstr "Editar forma"
+
+#: dfm.php:1264
+#@ dynamic-form-maker
+msgid "Now with Add-Ons"
+msgstr "Ahora con Add-ons"
+
+#: dfm.php:1265
+#@ dynamic-form-maker
+msgid "Akismet Support"
+msgstr "Apoyo de Akismet"
+
+#: dfm.php:1266
+#@ dynamic-form-maker
+msgid "Optional SPAM Verification"
+msgstr "Verificación de SPAM opcional"
+
+#: dfm.php:1267
+#@ dynamic-form-maker
+msgid "Nested Drag and Drop"
+msgstr "Gota y arrastre anidado"
+
+#: dfm.php:1268
+#@ dynamic-form-maker
+msgid "Conditional Logic"
+msgstr "Lógica condicional"
+
+#: dfm.php:1269
+#@ dynamic-form-maker
+msgid "10+ new Form Fields"
+msgstr "10 + nuevos campos de formulario"
+
+#: dfm.php:1270
+#@ dynamic-form-maker
+msgid "Complete Entries Management"
+msgstr "Completa gestión de entradas"
+
+#: dfm.php:1271
+#@ dynamic-form-maker
+msgid "Import/Export"
+msgstr "Importación/exportación"
+
+#: dfm.php:1273
+#@ dynamic-form-maker
+msgid "Plain Text Email Option"
+msgstr "Opción de correo electrónico de texto sin formato"
+
+#: dfm.php:1277
+#@ dynamic-form-maker
+msgid "Scheduling"
+msgstr "Programación"
+
+#: dfm.php:1278
+#@ dynamic-form-maker
+msgid "Limit Form Entries"
+msgstr "Límite forma entradas"
+
+#: dfm.php:1279
+#@ dynamic-form-maker
+msgid "Simple PayPal Integration"
+msgstr "Integración sencilla de PayPal"
+
+#: dfm.php:1281
+#@ dynamic-form-maker
+msgid "Live Preview"
+msgstr "Vista previa en vivo"
+
+#: dfm.php:1282
+#@ dynamic-form-maker
+msgid "Custom Capabilities"
+msgstr "Capacidades personalizadas"
+
+#: dfm.php:1392
+#@ dynamic-form-maker
+msgid "Description (HTML tags allowed)"
+msgstr "Descripción (etiquetas HTML permitidas)"
+
+#: dfm.php:1627
+#@ dynamic-form-maker
+msgid "Default Value"
+msgstr "Valor predeterminado"
+
+#: dfm.php:1637
+#@ dynamic-form-maker
+msgid "Default Country"
+msgstr "País por defecto"
+
+#: dfm.php:1697
+#@ dynamic-form-maker
+msgid "The form has been successfully created."
+msgstr "La forma se ha creado con éxito."
+
+#: dfm.php:1700
+#, php-format
+#@ dynamic-form-maker
+msgid "The %s form has been updated."
+msgstr "La forma de %s ha sido actualizada."
+
+#: dfm.php:1703
+#@ dynamic-form-maker
+msgid "The form has been successfully deleted."
+msgstr "El formulario se ha eliminado con éxito."
+
+#: dfm.php:1706
+#@ dynamic-form-maker
+msgid "The form has been successfully duplicated."
+msgstr "El formulario ha sido duplicado con éxito."
+
+#: dfm.php:1725
+#@ dynamic-form-maker
+msgid "All Forms"
+msgstr "Todas las formas"
+
+#: dfm.php:1726
+#: dfm.php:1763
+#@ dynamic-form-maker
+msgid "Add New Form"
+msgstr "Añadir nueva forma"
+
+#: dfm.php:1728
+#: dfm.php:1819
+#@ dynamic-form-maker
+msgid "Export"
+msgstr "Exportación"
+
+#: dfm.php:1787
+#, php-format
+#@ dynamic-form-maker
+msgid "Search results for \"%s\""
+msgstr "Search results for \\\"%s\\\""
+
+#: dfm.php:1859
+#@ dynamic-form-maker
+msgid "New Form"
+msgstr "Nueva forma"
+
+#: dfm.php:1941
+#@ dynamic-form-maker
+msgid "This field is required and cannot be empty."
+msgstr "Este campo es necesario y no puede estar vacío."
+
+#: dfm.php:1948
+#@ dynamic-form-maker
+msgid "Not a valid email address"
+msgstr "No una dirección válida de correo electrónico"
+
+#: dfm.php:1954
+#@ dynamic-form-maker
+msgid "Not a valid number"
+msgstr "No es un número válido"
+
+#: dfm.php:1961
+#@ dynamic-form-maker
+msgid "Not a valid phone number. Most US/Canada and International formats accepted."
+msgstr "¿No es un número de teléfono válido. La mayoría de la U.S. / Canada y formatos internacionales aceptaron."
+
+#: dfm.php:1966
+#@ dynamic-form-maker
+msgid "Not a valid URL."
+msgstr "No una dirección URL válida."
+
+#: dfm.php:1850
+#@ dynamic-form-maker
+msgid "Add New"
+msgstr "Agregar nuevo"
+
+#: dfm.php:240
+#@ dynamic-form-maker
+msgid "You currently do not have any entries."
+msgstr "Actualmente no tiene ninguna entrada."
+
