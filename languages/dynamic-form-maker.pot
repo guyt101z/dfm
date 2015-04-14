@@ -159,19 +159,19 @@ msgid "Name the form"
 msgstr ""
 
 #: includes/admin-new-form.php:18
-msgid "Required. This name is used for admin purposes."
+msgid "Required this field. This is used for admin site."
 msgstr ""
 
 #: includes/admin-new-form.php:26
-msgid "Required. This is who your emails will come from."
+msgid "Required this field. This is who your emails will come from."
 msgstr ""
 
 #: includes/admin-new-form.php:34
-msgid "Required. Replies to your email will go here."
+msgid "Required this field. Replies to your email will go from here."
 msgstr ""
 
 #: includes/admin-new-form.php:35
-msgid "Tip: for best results, use an email that exists on this domain."
+msgid "Tip: for best results, use an email that exists on your domain."
 msgstr ""
 
 #: includes/admin-new-form.php:43 includes/admin-new-form.php:51
@@ -468,7 +468,7 @@ msgid "Click"
 msgstr ""
 
 #: dfm.php:446
-msgid "to Add a Field"
+msgid "to Add a Form Field"
 msgstr ""
 
 #: dfm.php:448
@@ -476,7 +476,7 @@ msgid "Standard"
 msgstr ""
 
 #: dfm.php:489
-msgid "Add forms to your Posts or Pages by locating the icon shown below in the area above your post/page editor."
+msgid "Add forms to your Posts or Pages and post type by locating the icon shown below in the area above your post/page editor."
 msgstr ""
 
 #: dfm.php:492

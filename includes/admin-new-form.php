@@ -12,27 +12,27 @@
 		<tbody>
 			<!-- Form Name -->
 			<tr valign="top">
-				<th scope="row"><label for="form-name"><?php _e( 'Name the form' , 'dynamic-form-maker'); ?></label></th>
+				<th scope="row"><label for="form-name"><?php _e( 'Name the form' , 'dynamic-form-maker'); ?><span class="is-field-required">*</span></label></th>
 				<td>
 					<input type="text" autofocus="autofocus" class="regular-text required" id="form-name" name="form_title" />
-					<p class="description"><?php _e( 'Required. This name is used for admin purposes.' , 'dynamic-form-maker'); ?></p>
+					<p class="description"><?php _e( 'Required this field. This is used for admin site.' , 'dynamic-form-maker'); ?></p>
 				</td>
 			</tr>
 			<!-- Sender Name -->
 			<tr valign="top">
-				<th scope="row"><label for="form-email-sender-name"><?php _e( 'Your Name or Company' , 'dynamic-form-maker'); ?></label></th>
+				<th scope="row"><label for="form-email-sender-name"><?php _e( 'Your Name or Company' , 'dynamic-form-maker'); ?><span class="is-field-required">*</span></label></th>
 				<td>
 					<input type="text" value="" placeholder="" class="regular-text required" id="form-email-sender-name" name="form_email_from_name" />
-					<p class="description"><?php _e( 'Required. This option sets the "From" display name of the email that is sent.' , 'dynamic-form-maker'); ?></p>
+					<p class="description"><?php _e( 'Required this field. This option sets the "From" email display name that is sent.' , 'dynamic-form-maker'); ?></p>
 				</td>
 			</tr>
 			<!-- Reply-to Email -->
 			<tr valign="top">
-				<th scope="row"><label for="form-email-from"><?php _e( 'Reply-To E-mail' , 'dynamic-form-maker'); ?></label></th>
+				<th scope="row"><label for="form-email-from"><?php _e( 'Reply-To E-mail' , 'dynamic-form-maker'); ?><span class="is-field-required">*</span></label></th>
 				<td>
 					<input type="text" value="" placeholder="" class="regular-text required" id="form-email-from" name="form_email_from" />
-					<p class="description"><?php _e( 'Required. Replies to your email will go here.' , 'dynamic-form-maker'); ?></p>
-					<p class="description"><?php _e( 'Tip: for best results, use an email that exists on this domain.' , 'dynamic-form-maker'); ?></p>
+					<p class="description"><?php _e( 'Required this field. Replies to your email will go from here.' , 'dynamic-form-maker'); ?></p>
+					<p class="description"><?php _e( 'Tip: for best results, use an email that exists on your domain.' , 'dynamic-form-maker'); ?></p>
 				</td>
 			</tr>
 			<!-- Email Subject -->
@@ -48,7 +48,7 @@
 				<th scope="row"><label for="form-email-to"><?php _e( 'E-mail To' , 'dynamic-form-maker'); ?></label></th>
 				<td>
 					<input type="text" value="" placeholder="" class="regular-text" id="form-email-to" name="form_email_to[]" />
-					<p class="description"><?php _e( 'Who to send the submitted data to. You can add more after creating the form.' , 'dynamic-form-maker'); ?></p>
+					<p class="description"><?php _e( 'Send the submitted data to. You can add more after creating the form.' , 'dynamic-form-maker'); ?></p>
 				</td>
 			</tr>
 

@@ -4,7 +4,7 @@ global $wpdb;
 // Get global settings
 $dfm_settings 	= get_option( 'dfm-settings' );
 
-// Settings - Place Address labels above fields
+// Settings - Place Address above fields
 $settings_address_labels	= isset( $dfm_settings['address-labels'] ) ? false : true;
 
 // Extract shortcode attributes, set defaults

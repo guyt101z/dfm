@@ -147,7 +147,7 @@
 }
 #dfm-form-builder-frame {
     display: block;
-    margin: 0 -8px 0 290px;
+    margin: 0 290px 0 -8px;
 }
 .rtl #dfm-form-builder-frame {
     margin: 0 290px 0 -8px;
@@ -409,7 +409,7 @@ strong .dfm-meta-entries-total span {
     background: white;
 }
 .dfm-postbox-container {
-    float: left;
+    float: right;
     margin: 0 8px;
     width: 100%}
 .rtl .dfm-postbox-container {
@@ -437,7 +437,7 @@ strong .dfm-meta-entries-total span {
     display: none;
 }
 #dfm-form-builder-frame.columns-2 #dfm-postbox-container-1, #dfm-form-builder-frame.columns-3 #dfm-postbox-container-1 {
-    margin-left: -290px;
+    margin-right: -290px;
     width: 281px;
 }
 .rtl #dfm-form-builder-frame.columns-2 #dfm-postbox-container-1, .rtl #dfm-form-builder-frame.columns-3 #dfm-postbox-container-1 {

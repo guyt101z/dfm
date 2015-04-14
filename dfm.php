@@ -494,8 +494,8 @@ class Dynamic_form_maker_Builder{
 		$page_main = $this->_admin_pages[ 'dfm' ];
 
 		if ( $current_screen->id == $page_main && isset( $_REQUEST['form'] ) ) {
-			add_meta_box( 'dfm_form_items_meta_box', __( 'Form Items', 'dynamic-form-maker' ), array( &$this, 'meta_box_form_items' ), $page_main, 'side', 'high' );
-			add_meta_box( 'dfm_form_media_button_tip', __( 'Display Forms', 'dynamic-form-maker' ), array( &$this, 'meta_box_display_forms' ), $page_main, 'side', 'low' );
+			add_meta_box( 'dfm_form_items_meta_box', __( 'Dynamic Form Items', 'dynamic-form-maker' ), array( &$this, 'meta_box_form_items' ), $page_main, 'side', 'high' );
+			add_meta_box( 'dfm_form_media_button_tip', __( 'Dynamic Display Forms', 'dynamic-form-maker' ), array( &$this, 'meta_box_display_forms' ), $page_main, 'side', 'low' );
 		}
 	}
 	/**
@@ -506,28 +506,28 @@ class Dynamic_form_maker_Builder{
 	public function meta_box_form_items() {
 	?>
 		<div class="taxonomydiv">
-			<p><strong><?php _e( 'Click' , 'dynamic-form-maker'); ?></strong> <?php _e( 'to Add a Field' , 'dynamic-form-maker'); ?> <img id="add-to-form" alt="" src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" class="waiting spinner" /></p>
+			<p><strong><?php _e( 'Click' , 'dynamic-form-maker'); ?></strong> <?php _e( 'to Add a Form Field' , 'dynamic-form-maker'); ?> <img id="add-to-form" alt="" src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" class="waiting spinner" /></p>
 			<ul class="posttype-tabs add-menu-item-tabs" id="dfm-field-tabs">
 				<li class="tabs"><a href="#standard-fields" class="nav-tab-link dfm-field-types"><?php _e( 'Standard' , 'dynamic-form-maker'); ?></a></li>
 			</ul>
 			<div id="standard-fields" class="tabs-panel tabs-panel-active">
 				<ul class="dfm-fields-col-1">
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-fieldset">Fieldset</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-text"><b></b>Text</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-text"><b></b>Text Box</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-checkbox"><b></b>Checkbox</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-select"><b></b>Select</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-datepicker"><b></b>Date</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-url"><b></b>URL</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-digits"><b></b>Number</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-phone"><b></b>Phone</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-address"><b></b>Address</a></li>						
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-select"><b></b>Select</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-digits"><b></b>Number</a></li>					
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-datepicker"><b></b>Date</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-file"><b></b>File Upload</a></li>
 				</ul>
 				<ul class="dfm-fields-col-2">
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-section">Section</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-textarea"><b></b>Textarea</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-radio"><b></b>Radio</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-address"><b></b>Address</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-email"><b></b>Email</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-url"><b></b>URL</a></li>										
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-currency"><b></b>Currency</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-time"><b></b>Time</a></li>
 
@@ -543,14 +543,14 @@ class Dynamic_form_maker_Builder{
 	}
 
 	/**
-	 * Output for the Display Forms meta box
+	 * Output for the Dynamic Display Forms meta box
 	 *
 	 * @since 1.8
 	 */
 	public function meta_box_display_forms() {
 	?>
-		<p><?php _e( 'Add forms to your Posts or Pages by locating the <strong>Add Form</strong> button in the area above your post/page editor.', 'dynamic-form-maker' ); ?></p>
-    	<p><?php _e( 'You may also manually insert the shortcode into a post/page.', 'dynamic-form-maker' ); ?></p>
+		<p><?php _e( 'Add created forms to your Posts or Pages and any post type by locating the <strong>Add Form</strong> button in the area above your post/page/post type editor.', 'dynamic-form-maker' ); ?></p>
+    	<p><?php _e( 'You may also manually add the shortcode into a post/page/post type.', 'dynamic-form-maker' ); ?></p>
     	<p>
     		<?php _e( 'Shortcode', 'dynamic-form-maker' ); ?>
     		<input value="[dfm id='<?php echo (int) $_REQUEST['form']; ?>']" readonly="readonly" />
@@ -1639,38 +1639,41 @@ class Dynamic_form_maker_Builder{
 			<input name="action" type="hidden" value="dfm_settings" />
 			<?php wp_nonce_field( 'dfm-update-settings' ); ?>
 			<h3><?php _e( 'Global Settings', 'dynamic-form-maker' ); ?></h3>
-			<p><?php _e( 'These settings will affect all forms on your site.', 'dynamic-form-maker' ); ?></p>
-			<table class="form-table">
+			<p><?php _e( 'Settings will affect all forms on your site.', 'dynamic-form-maker' ); ?></p>
+			<table class="form-table">				
+
 				<tr valign="top">
-					<th scope="row"><?php _e( 'CSS', 'dynamic-form-maker-pro' ); ?></th>
+					<th scope="row"><label for="dfm-settings-sender-mail-header"><?php _e( 'Sender Mail Header', 'dynamic-form-maker' ); ?></label></th>
 					<td>
-						<fieldset>
 						<?php
-							$disable = array(
-								'always-load-css'     => __( 'Always load CSS', 'dynamic-form-maker' ),
-								'disable-css'         => __( 'Disable CSS', 'dynamic-form-maker' ),	// dynamic-form-maker-css
-							);
+						// Use the admin_email as the From email
+						$from_email = get_site_option( 'admin_email' );
 
-							foreach ( $disable as $key => $title ) :
+						// Get the site domain and get rid of www.
+						$sitename = strtolower( $_SERVER['SERVER_NAME'] );
+						if ( substr( $sitename, 0, 4 ) == 'www.' )
+							$sitename = substr( $sitename, 4 );
 
-								$dfm_settings[ $key ] = isset( $dfm_settings[ $key ] ) ? $dfm_settings[ $key ] : '';
+						// Get the domain from the admin_email
+						list( $user, $domain ) = explode( '@', $from_email );
+
+						// If site domain and admin_email domain match, use admin_email, otherwise a same domain email must be created
+						$from_email = ( $sitename == $domain ) ? $from_email : "wordpress@$sitename";
+
+						$dfm_settings['sender-mail-header'] = isset( $dfm_settings['sender-mail-header'] ) ? $dfm_settings['sender-mail-header'] : $from_email;
 						?>
-							<label for="dfm-settings-<?php echo $key; ?>">
-								<input type="checkbox" name="dfm-settings[<?php echo $key; ?>]" id="dfm-settings-<?php echo $key; ?>" value="1" <?php checked( $dfm_settings[ $key ], 1 ); ?> /> <?php echo $title; ?>
-							</label>
-							<br>
-						<?php endforeach; ?>
-						</fieldset>
+						<input type="text" name="dfm-settings[sender-mail-header]" id="dfm-settings-sender-mail-header" value="<?php echo $dfm_settings['sender-mail-header']; ?>" class="regular-text" />
+						<p class="description"><?php _e( 'Server configurations require an existing email on the domain be used when sending emails.', 'dynamic-form-maker' ); ?></p>
 					</td>
 				</tr>
-
+				
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Form Output', 'dynamic-form-maker-pro' ); ?></th>
 					<td>
 						<fieldset>
 						<?php
 							$disable = array(
-								'address-labels'      => __( 'Place Address labels above fields', 'dynamic-form-maker' ),	// dfm_address_labels_placement
+								'address-labels'      => __( 'Place Address above fields', 'dynamic-form-maker' ),	// dfm_address_labels_placement
 								'show-version'        => __( 'Disable meta tag version', 'dynamic-form-maker' ),	// dfm_show_version
 							);
 
@@ -1703,28 +1706,27 @@ class Dynamic_form_maker_Builder{
 					</td>
 				</tr>
 
+				
 				<tr valign="top">
-					<th scope="row"><label for="dfm-settings-sender-mail-header"><?php _e( 'Sender Mail Header', 'dynamic-form-maker' ); ?></label></th>
+					<th scope="row"><?php _e( 'CSS', 'dynamic-form-maker-pro' ); ?></th>
 					<td>
+						<fieldset>
 						<?php
-						// Use the admin_email as the From email
-						$from_email = get_site_option( 'admin_email' );
+							$disable = array(
+								'always-load-css'     => __( 'Always load CSS', 'dynamic-form-maker' ),
+								'disable-css'         => __( 'Disable CSS', 'dynamic-form-maker' ),	// dynamic-form-maker-css
+							);
 
-						// Get the site domain and get rid of www.
-						$sitename = strtolower( $_SERVER['SERVER_NAME'] );
-						if ( substr( $sitename, 0, 4 ) == 'www.' )
-							$sitename = substr( $sitename, 4 );
+							foreach ( $disable as $key => $title ) :
 
-						// Get the domain from the admin_email
-						list( $user, $domain ) = explode( '@', $from_email );
-
-						// If site domain and admin_email domain match, use admin_email, otherwise a same domain email must be created
-						$from_email = ( $sitename == $domain ) ? $from_email : "wordpress@$sitename";
-
-						$dfm_settings['sender-mail-header'] = isset( $dfm_settings['sender-mail-header'] ) ? $dfm_settings['sender-mail-header'] : $from_email;
+								$dfm_settings[ $key ] = isset( $dfm_settings[ $key ] ) ? $dfm_settings[ $key ] : '';
 						?>
-						<input type="text" name="dfm-settings[sender-mail-header]" id="dfm-settings-sender-mail-header" value="<?php echo $dfm_settings['sender-mail-header']; ?>" class="regular-text" />
-						<p class="description"><?php _e( 'Some server configurations require an existing email on the domain be used when sending emails.', 'dynamic-form-maker' ); ?></p>
+							<label for="dfm-settings-<?php echo $key; ?>">
+								<input type="checkbox" name="dfm-settings[<?php echo $key; ?>]" id="dfm-settings-<?php echo $key; ?>" value="1" <?php checked( $dfm_settings[ $key ], 1 ); ?> /> <?php echo $title; ?>
+							</label>
+							<br>
+						<?php endforeach; ?>
+						</fieldset>
 					</td>
 				</tr>
 			</table>
