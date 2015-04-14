@@ -57,7 +57,7 @@ Build beautiful, fully functional contact forms in only a few minutes without wr
 * File Upload
 * Instructions (plain or HTML-formatted text)
 
-= Entries =
+= Form Entries =
 
 * Manage submitted entries in WordPress dashboard
 * Bulk Export to CSV
@@ -213,5 +213,5 @@ function my_scripts_method() {
 
 1. Dynamic Form Maker page
 2. Configuring field item options
-3. Entries management screen
+3. Form Entries management screen
 4. Rendered form on a page

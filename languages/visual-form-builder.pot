@@ -279,7 +279,7 @@ msgid "Go to the last page"
 msgstr ""
 
 #: includes/class-export.php:17
-msgid "Entries ID"
+msgid "Form Entries ID"
 msgstr ""
 
 #: includes/class-export.php:20
@@ -324,7 +324,7 @@ msgstr ""
 
 #: includes/class-export.php:91 dfm.php:1721
 #: dfm.php:1745
-msgid "Entries"
+msgid "Form Entries"
 msgstr ""
 
 #: includes/class-export.php:94
@@ -436,7 +436,7 @@ msgid "Settings"
 msgstr ""
 
 #: dfm.php:217
-msgid "Recent Dynamic Form Maker Entries"
+msgid "Recent Dynamic Form Maker Form Entries"
 msgstr ""
 
 #: dfm.php:240
@@ -452,7 +452,7 @@ msgid "Number of entries to show:"
 msgstr ""
 
 #: dfm.php:395
-msgid "Entries per page"
+msgid "Form Entries per page"
 msgstr ""
 
 #: dfm.php:434
@@ -520,7 +520,7 @@ msgid "10+ new Form Fields"
 msgstr ""
 
 #: dfm.php:1266
-msgid "Complete Entries Management"
+msgid "Complete Form Entries Management"
 msgstr ""
 
 #: dfm.php:1267
@@ -552,7 +552,7 @@ msgid "Scheduling"
 msgstr ""
 
 #: dfm.php:1274
-msgid "Limit Form Entries"
+msgid "Limit Form Form Entries"
 msgstr ""
 
 #: dfm.php:1275

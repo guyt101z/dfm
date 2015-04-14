@@ -1,6 +1,6 @@
 <?php
 /**
- * Class that builds our Entries table
+ * Class that builds our Form Entries table
  *
  * @since 1.2
  */
@@ -14,7 +14,7 @@ class DinamicFormMaker_Export {
 
 		// Setup our default columns
 		$this->default_cols = array(
-			'entries_id' 		=> __( 'Entries ID' , 'dynamic-form-maker'),
+			'entries_id' 		=> __( 'Form Entries ID' , 'dynamic-form-maker'),
 			'date_submitted' 	=> __( 'Date Submitted' , 'dynamic-form-maker'),
 			'ip_address' 		=> __( 'IP Address' , 'dynamic-form-maker'),
 			'subject' 			=> __( 'Subject' , 'dynamic-form-maker'),
@@ -91,7 +91,7 @@ class DinamicFormMaker_Export {
         	<p><label><input type="radio" name="dfm-content" value="forms" disabled="disabled" /> <?php _e( 'Forms', 'dynamic-form-maker' ); ?></label></p>
         	<p class="description"><?php _e( 'This will contain all of your forms, fields, and email design settings', 'dynamic-form-maker' ); ?>.<br><strong>*<?php _e( 'Only available in Dynamic Form Maker Pro', 'dynamic-form-maker' ); ?>*</strong></p>
 
-        	<p><label><input type="radio" name="dfm-content" value="entries" checked="checked" /> <?php _e( 'Entries', 'dynamic-form-maker' ); ?></label></p>
+        	<p><label><input type="radio" name="dfm-content" value="entries" checked="checked" /> <?php _e( 'Form Entries', 'dynamic-form-maker' ); ?></label></p>
 
         	<ul id="entries-filters" class="dfm-export-filters">
         		<li><p class="description"><?php _e( 'This will export entries in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import entries on another site, please use the All data option above.', 'dynamic-form-maker' ); ?></p></li>

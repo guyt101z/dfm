@@ -373,7 +373,7 @@ msgstr ""
 
 #: includes/class-export.php:17
 #@ dynamic-form-maker
-msgid "Entries ID"
+msgid "Form Entries ID"
 msgstr "ID d'entrées"
 
 #: includes/class-export.php:20
@@ -432,7 +432,7 @@ msgstr "Ce tableau contiendra tous vos formulaires, les champs et les paramètre
 #: dfm.php:1731
 #: dfm.php:1755
 #@ dynamic-form-maker
-msgid "Entries"
+msgid "Form Entries"
 msgstr "Entrées"
 
 #: includes/class-export.php:94
@@ -574,7 +574,7 @@ msgstr "Paramètres"
 
 #: dfm.php:217
 #@ dynamic-form-maker
-msgid "Recent Dynamic Form Maker Entries"
+msgid "Recent Dynamic Form Maker Form Entries"
 msgstr "Entrées récentes de générateur de forme visuelle"
 
 #: dfm.php:240
@@ -599,7 +599,7 @@ msgstr "Nombre d'entrées à afficher :"
 
 #: dfm.php:403
 #@ dynamic-form-maker
-msgid "Entries per page"
+msgid "Form Entries per page"
 msgstr "Entrées par page"
 
 #: dfm.php:442
@@ -684,7 +684,7 @@ msgstr "10 + nouveaux champs de formulaire"
 
 #: dfm.php:1276
 #@ dynamic-form-maker
-msgid "Complete Entries Management"
+msgid "Complete Form Entries Management"
 msgstr "Gestion des entrées complètes"
 
 #: dfm.php:1277
@@ -724,7 +724,7 @@ msgstr "Ordonnancement"
 
 #: dfm.php:1284
 #@ dynamic-form-maker
-msgid "Limit Form Entries"
+msgid "Limit Form Form Entries"
 msgstr "Limite les entrées de formulaire"
 
 #: dfm.php:1285

@@ -568,7 +568,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	// !Entries Select All
+	// !Form Entries Select All
 	$( '#dfm-export-select-all' ).click( function( e ) {
 		e.preventDefault();
 
@@ -581,7 +581,7 @@ jQuery(document).ready(function($) {
 		$( '#dfm-export-entries-fields input[type="checkbox"]' ).prop( 'checked', false );
 	});
 
-	// !Entries fields
+	// !Form Entries fields
 	$( '#dfm-export-entries-forms' ).change( function(){
 		var id = $( this ).val(),
 			count = dfm_entries_count( id );

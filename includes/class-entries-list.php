@@ -1,10 +1,10 @@
 <?php
 /**
- * Class that builds our Entries table
+ * Class that builds our Form Entries table
  *
  * @since 1.2
  */
-class VisualFormBuilder_Entries_List extends WP_List_Table {
+class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 
 	function __construct(){
 		global $status, $page, $wpdb;
@@ -155,10 +155,10 @@ class VisualFormBuilder_Entries_List extends WP_List_Table {
 		if ( $today > 0 )
 			$where .= " AND entries.date_submitted >= curdate()";
 
-		// Entries type filter
+		// Form Entries type filter
 		$where .= ( $this->get_entry_status() && 'all' !== $this->get_entry_status() ) ? $wpdb->prepare( ' AND entries.entry_approved = %s', $this->get_entry_status() ) : '';
 
-		// Always display approved entries, unless an Entries Type filter is set
+		// Always display approved entries, unless an Form Entries Type filter is set
 		if ( !$this->get_entry_status() || 'all' == $this->get_entry_status() )
 			$where .= $wpdb->prepare( ' AND entries.entry_approved = %d', 1 );
 
@@ -548,7 +548,7 @@ class VisualFormBuilder_Entries_List extends WP_List_Table {
 		// Entry type filter
 		$where .= ( $this->get_entry_status() && 'all' !== $this->get_entry_status() ) ? $wpdb->prepare( ' AND entries.entry_approved = %s', $this->get_entry_status() ) : '';
 
-		// Always display approved entries, unless an Entries Type filter is set
+		// Always display approved entries, unless an Form Entries Type filter is set
 		if ( !$this->get_entry_status() || 'all' == $this->get_entry_status() )
 			$where .= $wpdb->prepare( ' AND entries.entry_approved = %d', 1 );
 

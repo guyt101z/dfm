@@ -91,7 +91,7 @@ msgstr "Borrar"
 
 #: includes/class-export.php:17
 #@ dynamic-form-maker
-msgid "Entries ID"
+msgid "Form Entries ID"
 msgstr "ID entradas"
 
 #: includes/class-entries-list.php:218
@@ -318,7 +318,7 @@ msgstr "Formularios"
 #: dfm.php:1727
 #: dfm.php:1783
 #@ dynamic-form-maker
-msgid "Entries"
+msgid "Form Entries"
 msgstr "Entradas"
 
 #: dfm.php:436
@@ -859,7 +859,7 @@ msgstr "Esta caja es para protección contra el spam - <strong>por favor déjalo
 
 #: dfm.php:206
 #@ dynamic-form-maker
-msgid "Recent Dynamic Form Maker Entries"
+msgid "Recent Dynamic Form Maker Form Entries"
 msgstr "Las últimas entradas de forma Visual Builder"
 
 #: dfm.php:229
@@ -879,7 +879,7 @@ msgstr "Número de entradas a mostrar:"
 
 #: dfm.php:395
 #@ dynamic-form-maker
-msgid "Entries per page"
+msgid "Form Entries per page"
 msgstr "Entradas por página"
 
 #: dfm.php:437
@@ -944,7 +944,7 @@ msgstr "10 + nuevos campos de formulario"
 
 #: dfm.php:1270
 #@ dynamic-form-maker
-msgid "Complete Entries Management"
+msgid "Complete Form Entries Management"
 msgstr "Completa gestión de entradas"
 
 #: dfm.php:1271
@@ -964,7 +964,7 @@ msgstr "Programación"
 
 #: dfm.php:1278
 #@ dynamic-form-maker
-msgid "Limit Form Entries"
+msgid "Limit Form Form Entries"
 msgstr "Límite forma entradas"
 
 #: dfm.php:1279

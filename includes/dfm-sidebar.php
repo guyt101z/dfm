@@ -16,7 +16,7 @@
 			<li><?php _e( 'Nested Drag and Drop' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Conditional Logic' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( '10+ new Form Fields' , 'dynamic-form-maker'); ?></li>
-			<li><?php _e( 'Complete Entries Management' , 'dynamic-form-maker'); ?></li>
+			<li><?php _e( 'Complete Form Entries Management' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Import/Export' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Quality HTML Email Template' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Plain Text Email Option' , 'dynamic-form-maker'); ?></li>

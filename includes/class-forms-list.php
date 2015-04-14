@@ -1,10 +1,10 @@
 <?php
 /**
- * Class that builds our Entries table
+ * Class that builds our Form Entries table
  *
  * @since 1.2
  */
-class VisualFormBuilder_Forms_List extends WP_List_Table {
+class DynamicFormMaker_Forms_List extends WP_List_Table {
 
 	public $errors;
 
@@ -72,7 +72,7 @@ class VisualFormBuilder_Forms_List extends WP_List_Table {
 		echo sprintf(
 			'<div class="entries-count-wrapper"><a href="%1$s" title="%2$s" class="dfm-meta-entries-total"><span class="entries-count">%4$s</span></a> %3$s</div>',
 			esc_url( add_query_arg( array( 'form-filter' => $form_id ), admin_url( 'admin.php?page=dfm-entries' ) ) ),
-			esc_attr__( 'Entries Total', 'dynamic-form-maker-pro' ),
+			esc_attr__( 'Form Entries Total', 'dynamic-form-maker-pro' ),
 			__( 'Total', 'dynamic-form-maker-pro' ),
 			number_format_i18n( $count['total'] )
 		);
@@ -83,7 +83,7 @@ class VisualFormBuilder_Forms_List extends WP_List_Table {
 		echo sprintf(
 			'<div class="entries-count-wrapper"><a href="%1$s" title="%2$s" class="dfm-meta-entries-total"><span class="entries-count">%4$s</span></a> %3$s</div>',
 			esc_url( add_query_arg( array( 'form-filter' => $form_id, 'today' => 1 ), admin_url( 'admin.php?page=dfm-entries' ) ) ),
-			esc_attr__( 'Entries Today', 'dynamic-form-maker-pro' ),
+			esc_attr__( 'Form Entries Today', 'dynamic-form-maker-pro' ),
 			__( 'Today', 'dynamic-form-maker-pro' ),
 			number_format_i18n( $count['today'] )
 		);
@@ -111,7 +111,7 @@ class VisualFormBuilder_Forms_List extends WP_List_Table {
 			'cb' 			=> '<input type="checkbox" />', //Render a checkbox instead of text
 			'form_title' 	=> __( 'Form' , 'dynamic-form-maker'),
 			'form_id' 		=> __( 'Form ID' , 'dynamic-form-maker'),
-			'entries'		=> __( 'Entries', 'dynamic-form-maker' ),
+			'entries'		=> __( 'Form Entries', 'dynamic-form-maker' ),
 		);
 
 		return $columns;
@@ -276,7 +276,7 @@ class VisualFormBuilder_Forms_List extends WP_List_Table {
 	}
 
 	/**
-	 * Process ALL actions on the Entries screen, not only Bulk Actions
+	 * Process ALL actions on the Form Entries screen, not only Bulk Actions
 	 *
 	 * @since 1.2
 	 */

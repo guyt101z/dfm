@@ -203,13 +203,13 @@ class Dynamic_form_maker_Builder{
 	public function includes(){
 		global $entries_list, $entries_detail;
 
-		// Load the Entries List class
+		// Load the Form Form Entries List class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-entries-list.php' );
-		$entries_list = new VisualFormBuilder_Entries_List();
+		$entries_list = new DynamicFormMaker_Form_Entries_List();
 
-		// Load the Entries Details class
+		// Load the Form Form Entries Details class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-entries-detail.php' );
-		$entries_detail = new VisualFormBuilder_Entries_Detail();
+		$entries_detail = new DynamicFormMaker_Form_Entries_Detail();
 	}
 
 	public function include_forms_list() {
@@ -217,7 +217,7 @@ class Dynamic_form_maker_Builder{
 
 		// Load the Forms List class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-forms-list.php' );
-		$forms_list = new VisualFormBuilder_Forms_List();
+		$forms_list = new DynamicFormMaker_Forms_List();
 	}
 
 	/**
@@ -254,7 +254,7 @@ class Dynamic_form_maker_Builder{
 	 * @since 2.7
 	 */
 	public function add_dashboard_widget() {
-		wp_add_dashboard_widget( 'dfm-dashboard', __( 'Recent Dynamic Form Maker Entries', 'dynamic-form-maker' ), array( &$this, 'dashboard_widget' ), array( &$this, 'dashboard_widget_control' ) );
+		wp_add_dashboard_widget( 'dfm-dashboard', __( 'Recent Dynamic Form Maker Form Entries', 'dynamic-form-maker' ), array( &$this, 'dashboard_widget' ), array( &$this, 'dashboard_widget_control' ) );
 	}
 
 	/**
@@ -430,7 +430,7 @@ class Dynamic_form_maker_Builder{
 	}
 
 	/**
-	 * Adds the Screen Options tab to the Entries screen
+	 * Adds the Screen Options tab to the Form Entries screen
 	 *
 	 * @since 1.0
 	 */
@@ -444,7 +444,7 @@ class Dynamic_form_maker_Builder{
 			case $page_entries :
 
 				add_screen_option( 'per_page', array(
-					'label'		=> __( 'Entries per page', 'dynamic-form-maker' ),
+					'label'		=> __( 'Form Entries per page', 'dynamic-form-maker' ),
 					'default'	=> 20,
 					'option'	=> 'dfm_entries_per_page'
 				) );
@@ -1522,9 +1522,10 @@ class Dynamic_form_maker_Builder{
 
 		add_submenu_page( 'dynamic-form-maker', __( 'Dynamic Form Maker', 'dynamic-form-maker' ), __( 'All Forms', 'dynamic-form-maker' ), 'manage_options', 'dynamic-form-maker', array( &$this, 'admin' ) );
 		$current_pages[ 'dfm-add-new' ] = add_submenu_page( 'dynamic-form-maker', __( 'Add New Form', 'dynamic-form-maker' ), __( 'Add New Form', 'dynamic-form-maker' ), 'manage_options', 'dfm-add-new', array( &$this, 'admin_add_new' ) );
-		$current_pages[ 'dfm-entries' ] = add_submenu_page( 'dynamic-form-maker', __( 'Entries', 'dynamic-form-maker' ), __( 'Entries', 'dynamic-form-maker' ), 'manage_options', 'dfm-entries', array( &$this, 'admin_entries' ) );
-		$current_pages[ 'dfm-export' ] = add_submenu_page( 'dynamic-form-maker', __( 'Export', 'dynamic-form-maker' ), __( 'Export', 'dynamic-form-maker' ), 'manage_options', 'dfm-export', array( &$this, 'admin_export' ) );
 		$current_pages[ 'dfm-settings' ] = add_submenu_page( 'dynamic-form-maker', __( 'Settings', 'dynamic-form-maker' ), __( 'Settings', 'dynamic-form-maker' ), 'manage_options', 'dfm-settings', array( &$this, 'admin_settings' ) );
+		$current_pages[ 'dfm-entries' ] = add_submenu_page( 'dynamic-form-maker', __( 'Form Entries', 'dynamic-form-maker' ), __( 'Form Entries', 'dynamic-form-maker' ), 'manage_options', 'dfm-entries', array( &$this, 'admin_entries' ) );
+		$current_pages[ 'dfm-export' ] = add_submenu_page( 'dynamic-form-maker', __( 'Export', 'dynamic-form-maker' ), __( 'Export', 'dynamic-form-maker' ), 'manage_options', 'dfm-export', array( &$this, 'admin_export' ) );
+		
 
 		// All plugin page load hooks
 		foreach ( $current_pages as $key => $page ) :
@@ -1538,14 +1539,14 @@ class Dynamic_form_maker_Builder{
 		// Save pages array for filter/action use throughout plugin
 		$this->_admin_pages = $current_pages;
 
-		// Adds a Screen Options tab to the Entries screen
+		// Adds a Screen Options tab to the Form Entries screen
 		add_action( 'load-' . $current_pages['dfm'], array( &$this, 'screen_options' ) );
 		add_action( 'load-' . $current_pages['dfm-entries'], array( &$this, 'screen_options' ) );
 
 		// Add meta boxes to the form builder admin page
 		add_action( 'load-' . $current_pages['dfm'], array( &$this, 'add_meta_boxes' ) );
 
-		// Include Entries and Import files
+		// Include Form Entries and Import files
 		add_action( 'load-' . $current_pages['dfm-entries'], array( &$this, 'includes' ) );
 
 		add_action( 'load-' . $current_pages['dfm'], array( &$this, 'include_forms_list' ) );
@@ -1569,7 +1570,7 @@ class Dynamic_form_maker_Builder{
 	}
 
 	/**
-	 * Display Entries
+	 * Display Form Entries
 	 *
 	 *
 	 * @since 2.7.2
@@ -1579,7 +1580,7 @@ class Dynamic_form_maker_Builder{
 ?>
 	<div class="wrap">
 		<h2>
-			<?php _e( 'Entries', 'dynamic-form-maker' ); ?>
+			<?php _e( 'Form Entries', 'dynamic-form-maker' ); ?>
 <?php
 			// If searched, output the query
 			if ( isset( $_REQUEST['s'] ) && !empty( $_REQUEST['s'] ) )

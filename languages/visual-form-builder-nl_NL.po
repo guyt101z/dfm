@@ -362,7 +362,7 @@ msgstr "Ga naar de laatste pagina"
 
 #: includes/class-export.php:17
 #@ dynamic-form-maker
-msgid "Entries ID"
+msgid "Form Entries ID"
 msgstr "Invoer ID"
 
 #: includes/class-export.php:20
@@ -421,7 +421,7 @@ msgstr "Dit zal alles bevatten over je formulieren, velden, invoer en email inst
 #: dfm.php:1721
 #: dfm.php:1745
 #@ dynamic-form-maker
-msgid "Entries"
+msgid "Form Entries"
 msgstr "Invoer"
 
 #: includes/class-export.php:94
@@ -553,7 +553,7 @@ msgstr "Instellingen"
 
 #: dfm.php:217
 #@ dynamic-form-maker
-msgid "Recent Dynamic Form Maker Entries"
+msgid "Recent Dynamic Form Maker Form Entries"
 msgstr "Recente Dynamic Form Maker invoer"
 
 #: dfm.php:240
@@ -573,7 +573,7 @@ msgstr "Aantal invoeren tonen:"
 
 #: dfm.php:395
 #@ dynamic-form-maker
-msgid "Entries per page"
+msgid "Form Entries per page"
 msgstr "Invoer per pagina"
 
 #: dfm.php:434
@@ -658,7 +658,7 @@ msgstr "meer dan 10 nieuwe formulier velden"
 
 #: dfm.php:1266
 #@ dynamic-form-maker
-msgid "Complete Entries Management"
+msgid "Complete Form Entries Management"
 msgstr "Beheer invoeren"
 
 #: dfm.php:1267
@@ -698,7 +698,7 @@ msgstr "Planning"
 
 #: dfm.php:1274
 #@ dynamic-form-maker
-msgid "Limit Form Entries"
+msgid "Limit Form Form Entries"
 msgstr "Beperk het aantal invoeren"
 
 #: dfm.php:1275

@@ -86,7 +86,7 @@ msgid "Export Selected"
 msgstr "Експортирай избраните"
 
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/dynamic-form-maker/class-entries-list.php:214
-msgid "Entries ID"
+msgid "Form Entries ID"
 msgstr "ID на записа"
 
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/dynamic-form-maker/class-entries-list.php:369
@@ -121,7 +121,7 @@ msgid "Forms"
 msgstr "Форми"
 
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/dynamic-form-maker/dfm.php:646
-msgid "Entries"
+msgid "Form Entries"
 msgstr "Записи"
 
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/dynamic-form-maker/dfm.php:685

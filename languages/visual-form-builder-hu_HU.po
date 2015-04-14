@@ -91,7 +91,7 @@ msgstr "Törlés"
 
 #: includes/class-export.php:17
 #@ dynamic-form-maker
-msgid "Entries ID"
+msgid "Form Entries ID"
 msgstr "Bejegyzés ID"
 
 #: includes/class-entries-list.php:218
@@ -125,7 +125,7 @@ msgstr "Űrlapok"
 #: dfm.php:1721
 #: dfm.php:1745
 #@ dynamic-form-maker
-msgid "Entries"
+msgid "Form Entries"
 msgstr "Bejegyzések"
 
 #: dfm.php:434
@@ -691,7 +691,7 @@ msgstr "Ez a rovat a spam védelem - <strong>kérlek, hagyd üresen</strong>"
 
 #: dfm.php:217
 #@ dynamic-form-maker
-msgid "Recent Dynamic Form Maker Entries"
+msgid "Recent Dynamic Form Maker Form Entries"
 msgstr "A legújabb vizuális formában Builder bejegyzések"
 
 #: dfm.php:240
@@ -711,7 +711,7 @@ msgstr "Szám-ból címszavakat-hoz mutat:"
 
 #: dfm.php:395
 #@ dynamic-form-maker
-msgid "Entries per page"
+msgid "Form Entries per page"
 msgstr "Bejegyzések oldalanként"
 
 #: dfm.php:435
@@ -781,7 +781,7 @@ msgstr "10 + új forma megfog"
 
 #: dfm.php:1266
 #@ dynamic-form-maker
-msgid "Complete Entries Management"
+msgid "Complete Form Entries Management"
 msgstr "Teljes tételek kezelése"
 
 #: dfm.php:1267
@@ -821,7 +821,7 @@ msgstr "Ütemezés"
 
 #: dfm.php:1274
 #@ dynamic-form-maker
-msgid "Limit Form Entries"
+msgid "Limit Form Form Entries"
 msgstr "Limit űrlapbejegyzéseket"
 
 #: dfm.php:1275
