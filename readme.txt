@@ -15,8 +15,6 @@ Build beautiful, fully functional contact forms in only a few minutes without wr
 
 = Upgrade to Dynamic Form Maker Pro =
 
-If you are a fan of Dynamic Form Maker and want extra features and functionality, [Dynamic Form Maker Pro](http://dfmpro.com) is available.
-
 = Features =
 
 * Add fields with one click
