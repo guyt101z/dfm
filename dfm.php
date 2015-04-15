@@ -514,26 +514,26 @@ class Dynamic_form_maker_Builder{
 				<ul class="dfm-fields-col-1">
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-fieldset">Fieldset</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-text"><i class="fa fa-font"></i>Text</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-checkbox"><i class="fa fa-font"></i>Checkbox</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-phone"><i class="fa fa-font"></i>Phone</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-address"><i class="fa fa-font"></i>Address</a></li>						
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-select"><i class="fa fa-font"></i>Select</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-digits"><i class="fa fa-font"></i>Number</a></li>					
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-datepicker"><i class="fa fa-font"></i>Date</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-file"><i class="fa fa-font"></i>File Upload</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-checkbox"><i class="fa fa-check-square-o"></i>Checkbox</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-phone"><i class="fa fa-phone"></i>Phone</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-address"><i class="fa fa-location-arrow"></i>Address</a></li>						
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-select"><i class="fa fa-list"></i>Select</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-digits"><i class="fa fa-sort-numeric-asc"></i>Number</a></li>					
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-datepicker"><i class="fa fa-calendar"></i>Date</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-file"><i class="fa fa-cloud-upload"></i>File Upload</a></li>
 				</ul>
 				<ul class="dfm-fields-col-2">
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-section">Section</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-textarea"><i class="fa fa-file-text-o"></i>Textarea</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-radio"><i class="fa fa-font"></i>Radio</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-email"><i class="fa fa-font"></i>Email</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-url"><i class="fa fa-font"></i>URL</a></li>										
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-currency"><i class="fa fa-font"></i>Currency</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-time"><i class="fa fa-font"></i>Time</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-radio"><i class="fa fa-dot-circle-o"></i>Radio</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-email"><i class="fa fa-envelope-o"></i>Email</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-url"><i class="fa fa-link"></i>URL</a></li>										
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-currency"><i class="fa fa-usd"></i>Currency</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-time"><i class="fa fa-clock-o"></i>Time</a></li>
 
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-html"><i class="fa fa-font"></i>HTML</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-html"><i class="fa fa-file-code-o"></i>HTML</a></li>
 
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-instructions"><i class="fa fa-font"></i>Instructions</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-instructions"><i class="fa fa-comment-o"></i>Instructions</a></li>
 				</ul>
 				<div class="clear"></div>
 			</div> <!-- #standard-fields -->
