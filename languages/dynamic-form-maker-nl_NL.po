@@ -388,7 +388,7 @@ msgstr "Zodra je het bestand opgeslagen hebt, kan je gegevens importeren van Vis
 
 #: includes/class-export.php:83
 #@ visual-form-builder
-msgid "Choose what to export"
+msgid "Choose to export"
 msgstr "Kies wat je wilt exporteren"
 
 #: includes/class-export.php:85
@@ -441,7 +441,7 @@ msgstr "Comma gescheiden (.csv)"
 
 #: includes/class-export.php:99
 #@ visual-form-builder
-msgid "Tab Delimited (.txt) - Pro only"
+msgid "Tab Delimited (.txt)"
 msgstr "Tab gescheiden (.txt) - alleen voor de Pro versie"
 
 #: includes/class-export.php:100

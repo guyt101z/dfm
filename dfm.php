@@ -149,7 +149,7 @@ class Dynamic_form_maker_Builder{
 		add_action( 'init', array( &$this, 'confirmation' ), 12 );
 
 		// Add CSS to the front-end
-		add_action( 'wp_enqueue_scripts', array( &$this, 'css' ) );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'dfm_css' ) );
 	}
 
 	/**
@@ -201,23 +201,23 @@ class Dynamic_form_maker_Builder{
 	 * @since 1.2
 	 */
 	public function includes(){
-		global $entries_list, $entries_detail;
+		global $dfm_entries_list, $dfm_entries_detail;
 
 		// Load the Form Form Entries List class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-entries-list.php' );
-		$entries_list = new DynamicFormMaker_Form_Entries_List();
+		$dfm_entries_list = new DynamicFormMaker_Form_Entries_List();
 
 		// Load the Form Form Entries Details class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-entries-detail.php' );
-		$entries_detail = new DynamicFormMaker_Form_Entries_Detail();
+		$dfm_entries_detail = new DynamicFormMaker_Form_Entries_Detail();
 	}
 
 	public function include_forms_list() {
-		global $forms_list;
+		global $dfm_forms_list;
 
 		// Load the Forms List class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-forms-list.php' );
-		$forms_list = new DynamicFormMaker_Forms_List();
+		$dfm_forms_list = new DynamicFormMaker_Forms_List();
 	}
 
 	/**
@@ -513,27 +513,27 @@ class Dynamic_form_maker_Builder{
 			<div id="standard-fields" class="tabs-panel tabs-panel-active">
 				<ul class="dfm-fields-col-1">
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-fieldset">Fieldset</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-text"><b></b>Text Box</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-checkbox"><b></b>Checkbox</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-phone"><b></b>Phone</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-address"><b></b>Address</a></li>						
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-select"><b></b>Select</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-digits"><b></b>Number</a></li>					
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-datepicker"><b></b>Date</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-file"><b></b>File Upload</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-text"><i class="fa fa-font"></i>Text</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-checkbox"><i class="fa fa-font"></i>Checkbox</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-phone"><i class="fa fa-font"></i>Phone</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-address"><i class="fa fa-font"></i>Address</a></li>						
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-select"><i class="fa fa-font"></i>Select</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-digits"><i class="fa fa-font"></i>Number</a></li>					
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-datepicker"><i class="fa fa-font"></i>Date</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-file"><i class="fa fa-font"></i>File Upload</a></li>
 				</ul>
 				<ul class="dfm-fields-col-2">
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-section">Section</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-textarea"><b></b>Textarea</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-radio"><b></b>Radio</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-email"><b></b>Email</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-url"><b></b>URL</a></li>										
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-currency"><b></b>Currency</a></li>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-time"><b></b>Time</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-textarea"><i class="fa fa-file-text-o"></i>Textarea</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-radio"><i class="fa fa-font"></i>Radio</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-email"><i class="fa fa-font"></i>Email</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-url"><i class="fa fa-font"></i>URL</a></li>										
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-currency"><i class="fa fa-font"></i>Currency</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-time"><i class="fa fa-font"></i>Time</a></li>
 
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-html"><b></b>HTML</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-html"><i class="fa fa-font"></i>HTML</a></li>
 
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-instructions"><b></b>Instructions</a></li>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-instructions"><i class="fa fa-font"></i>Instructions</a></li>
 				</ul>
 				<div class="clear"></div>
 			</div> <!-- #standard-fields -->
@@ -669,9 +669,12 @@ class Dynamic_form_maker_Builder{
 		wp_enqueue_script( 'dfm-admin', plugins_url( "/js/dfm-admin$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-form-validation' ), '20140412', true );
 		wp_enqueue_script( 'nested-sortable', plugins_url( "/js/jquery.ui.nestedSortable$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-ui-sortable' ), '1.3.5', true );
 
-		wp_enqueue_style( 'dynamic-form-maker-style', plugins_url( "/css/dynamic-form-maker-admin$this->load_dev_files.css", __FILE__ ), array(), '20140412' );
+		wp_enqueue_style( 'dynamic-form-maker-style', plugins_url( "/css/dynamic-form-maker-admin$this->load_dev_files.css", __FILE__ ), array(), '20150415' );
+		
+		wp_enqueue_style( 'dfm-font-awesome-css', plugins_url( "/css/font-awesome/css/font-awesome.min.css", __FILE__ ), array(), '20150415' );
+		
 
-		wp_localize_script( 'dfm-admin', 'VfbAdminPages', array( 'dfm_pages' => $this->_admin_pages ) );
+		wp_localize_script( 'dfm-admin', 'DfmAdminPages', array( 'dfm_pages' => $this->_admin_pages ) );
 	}
 
 	/**
@@ -745,17 +748,17 @@ class Dynamic_form_maker_Builder{
 	 *
 	 * @since 1.0
 	 */
-	public function css() {
+	public function dfm_css() {
 
 		$dfm_settings = get_option( 'dfm-settings' );
 
-		wp_register_style( 'dfm-jqueryui-css', apply_filters( 'dfm-date-picker-css', plugins_url( '/css/jqueryUi/jquery-ui-1.10.3.min.css', __FILE__ ) ), array(), '20131203' );
-		wp_register_style( 'dynamic-form-maker-css', apply_filters( 'dynamic-form-maker-css', plugins_url( "/css/dynamic-form-maker$this->load_dev_files.css", __FILE__ ) ), array(), '20140412' );
+		wp_register_style( 'dfm-jqueryui-css', apply_filters( 'dfm-date-picker-css', plugins_url( '/css/jqueryUi/jquery-ui-1.10.3.min.css', __FILE__ ) ), array(), '20150415' );
+		wp_register_style( 'dynamic-form-maker-css', apply_filters( 'dynamic-form-maker-css', plugins_url( "/css/dynamic-form-maker$this->load_dev_files.css", __FILE__ ) ), array(), '20150415' );		
 
 		// Settings - Always load CSS
 		if ( isset( $dfm_settings['always-load-css'] ) ) {
 			wp_enqueue_style( 'dynamic-form-maker-css' );
-			wp_enqueue_style( 'dfm-jqueryui-css' );
+			wp_enqueue_style( 'dfm-jqueryui-css' );	
 
 			return;
 		}
@@ -783,13 +786,14 @@ class Dynamic_form_maker_Builder{
 				return;
 			}
 		}
-
+		
+		
 		wp_enqueue_style( 'dynamic-form-maker-css' );
 		wp_enqueue_style( 'dfm-jqueryui-css' );
 	}
 
 	/**
-	 * Save new forms on the VFB Pro > Add New page
+	 * Save new forms on the DFM Pro > Add New page
 	 *
 	 * @access public
 	 * @since 2.8.1
@@ -1162,7 +1166,7 @@ class Dynamic_form_maker_Builder{
 	}
 
 	/**
-	 * Save options on the VFB Pro > Settings page
+	 * Save options on the DFM Pro > Settings page
 	 *
 	 * @access public
 	 * @since 2.8.1
@@ -1432,7 +1436,7 @@ class Dynamic_form_maker_Builder{
 	 * @since 2.5
 	 */
 	public function all_forms() {
-		global $wpdb, $forms_list;
+		global $wpdb, $dfm_forms_list;
 
 		$order = sanitize_sql_orderby( 'form_title ASC' );
 
@@ -1445,11 +1449,11 @@ class Dynamic_form_maker_Builder{
 		endif;
 
 		echo '<form id="forms-filter" method="post" action="">';
-		$forms_list->views();
-		$forms_list->prepare_items();
+		$dfm_forms_list->views();
+		$dfm_forms_list->prepare_items();
 
-    	$forms_list->search_box( 'search', 'search_id' );
-    	$forms_list->display();
+    	$dfm_forms_list->search_box( 'search', 'search_id' );
+    	$dfm_forms_list->display();
 
 		echo '</form>';
 ?>
@@ -1524,7 +1528,7 @@ class Dynamic_form_maker_Builder{
 		$current_pages[ 'dfm-add-new' ] = add_submenu_page( 'dynamic-form-maker', __( 'Add New Form', 'dynamic-form-maker' ), __( 'Add New Form', 'dynamic-form-maker' ), 'manage_options', 'dfm-add-new', array( &$this, 'admin_add_new' ) );
 		$current_pages[ 'dfm-settings' ] = add_submenu_page( 'dynamic-form-maker', __( 'Settings', 'dynamic-form-maker' ), __( 'Settings', 'dynamic-form-maker' ), 'manage_options', 'dfm-settings', array( &$this, 'admin_settings' ) );
 		$current_pages[ 'dfm-entries' ] = add_submenu_page( 'dynamic-form-maker', __( 'Form Entries', 'dynamic-form-maker' ), __( 'Form Entries', 'dynamic-form-maker' ), 'manage_options', 'dfm-entries', array( &$this, 'admin_entries' ) );
-		$current_pages[ 'dfm-export' ] = add_submenu_page( 'dynamic-form-maker', __( 'Export', 'dynamic-form-maker' ), __( 'Export', 'dynamic-form-maker' ), 'manage_options', 'dfm-export', array( &$this, 'admin_export' ) );
+		$current_pages[ 'dfm-export' ] = add_submenu_page( 'dynamic-form-maker', __( 'Export', 'dynamic-form-maker' ), __( 'Export', 'dynamic-form-maker' ), 'manage_options', 'dfm-export', array( &$this, 'admin_form_export' ) );
 		
 
 		// All plugin page load hooks
@@ -1576,7 +1580,7 @@ class Dynamic_form_maker_Builder{
 	 * @since 2.7.2
 	 */
 	public function admin_entries() {
-		global $entries_list, $entries_detail;
+		global $dfm_entries_list, $dfm_entries_detail;
 ?>
 	<div class="wrap">
 		<h2>
@@ -1589,15 +1593,15 @@ class Dynamic_form_maker_Builder{
 		</h2>
 <?php
 		if ( isset( $_REQUEST['action'] ) && in_array( $_REQUEST['action'], array( 'view', 'edit', 'update_entry' ) ) ) :
-			$entries_detail->entries_detail();
+			$dfm_entries_detail->entries_detail();
 		else :
-			$entries_list->views();
-			$entries_list->prepare_items();
+			$dfm_entries_list->views();
+			$dfm_entries_list->prepare_items();
 ?>
     	<form id="entries-filter" method="post" action="">
 <?php
-        	$entries_list->search_box( 'search', 'search_id' );
-        	$entries_list->display();
+        	$dfm_entries_list->search_box( 'search', 'search_id' );
+        	$dfm_entries_list->display();
 ?>
         </form>
 	<?php endif; ?>
@@ -1611,13 +1615,13 @@ class Dynamic_form_maker_Builder{
 	 *
 	 * @since 2.7.2
 	 */
-	public function admin_export() {
-		global $export;
+	public function admin_form_export() {
+		global $export_entries;
 ?>
 	<div class="wrap">
 		<h2><?php _e( 'Export', 'dynamic-form-maker' ); ?></h2>
 <?php
-		$export->display();
+		$export_entries->display_export();
 ?>
 	</div>
 <?php
@@ -2063,10 +2067,10 @@ class Dynamic_form_maker_Builder{
 	}
 }
 
-// The VFB widget
+// The DFM widget
 require( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-widget.php' );
 
 // Special case to load Export class so AJAX is registered
 require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-export.php' );
-if ( !isset( $export ) )
-	$export = new DinamicFormMaker_Export();
+if ( !isset( $export_entries ) )
+	$export_entries = new DinamicFormMaker_Export();

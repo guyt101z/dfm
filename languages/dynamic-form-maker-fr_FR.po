@@ -399,7 +399,7 @@ msgstr "Une fois que vous avez enregistré le fichier, vous serez en mesure d'im
 
 #: includes/class-export.php:83
 #@ visual-form-builder
-msgid "Choose what to export"
+msgid "Choose to export"
 msgstr "Choisissez ce qu'il faut exporter"
 
 #: includes/class-export.php:85
@@ -452,7 +452,7 @@ msgstr "Séparés par des virgules (.csv)"
 
 #: includes/class-export.php:99
 #@ visual-form-builder
-msgid "Tab Delimited (.txt) - Pro only"
+msgid "Tab Delimited (.txt)"
 msgstr "Onglet délimité (.txt) - Pro uniquement"
 
 #: includes/class-export.php:100

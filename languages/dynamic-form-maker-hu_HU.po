@@ -538,7 +538,7 @@ msgstr "Miután mentette a fájlt, lesz ez az oldal vizuális Form Builder Pro a
 
 #: includes/class-export.php:83
 #@ visual-form-builder
-msgid "Choose what to export"
+msgid "Choose to export"
 msgstr "Válassza ki az exportálandó"
 
 #: includes/class-export.php:85
@@ -579,7 +579,7 @@ msgstr "Vesszővel elválasztott (.csv)"
 
 #: includes/class-export.php:99
 #@ visual-form-builder
-msgid "Tab Delimited (.txt) - Pro only"
+msgid "Tab Delimited (.txt)"
 msgstr "Tab Delimited (.txt) - Pro"
 
 #: includes/class-export.php:100

@@ -299,7 +299,7 @@ msgid "Once you have saved the file, you will be able to import Dynamic Form Mak
 msgstr ""
 
 #: includes/class-export.php:83
-msgid "Choose what to export"
+msgid "Choose to export"
 msgstr ""
 
 #: includes/class-export.php:85
@@ -340,7 +340,7 @@ msgid "Comma Separated (.csv)"
 msgstr ""
 
 #: includes/class-export.php:99
-msgid "Tab Delimited (.txt) - Pro only"
+msgid "Tab Delimited (.txt)"
 msgstr ""
 
 #: includes/class-export.php:100

@@ -712,7 +712,7 @@ msgstr "Una vez que ha guardado el archivo, podrá importar datos de forma Visua
 
 #: includes/class-export.php:85
 #@ visual-form-builder
-msgid "Choose what to export"
+msgid "Choose to export"
 msgstr "Elegir qué exportar"
 
 #: includes/class-export.php:87
@@ -753,7 +753,7 @@ msgstr "Separados por comas (.csv)"
 
 #: includes/class-export.php:101
 #@ visual-form-builder
-msgid "Tab Delimited (.txt) - Pro only"
+msgid "Tab Delimited (.txt)"
 msgstr "Ficha delimitados (.txt) - Pro sólo"
 
 #: includes/class-export.php:102

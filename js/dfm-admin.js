@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
 
-	if( window.VfbAdminPages ) {
-		var obj = VfbAdminPages.dfm_pages;
+	if( window.DfmAdminPages ) {
+		var obj = DfmAdminPages.dfm_pages;
 
 		// Only add meta box toggles to main form builder
 		if ( pagenow == obj['dfm'] ) {

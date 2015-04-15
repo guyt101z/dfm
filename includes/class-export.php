@@ -43,7 +43,7 @@ class DinamicFormMaker_Export {
 	 * @since 1.7
 	 *
 	 */
-	public function display(){
+	public function display_export(){
 		global $wpdb;
 
 		// Query to get all forms
@@ -80,28 +80,30 @@ class DinamicFormMaker_Export {
 		endif;
 
 		?>
-        <form method="post" id="dfm-export">
-        	<p><?php _e( 'Backup and save some or all of your Dynamic Form Maker data.', 'dynamic-form-maker' ); ?></p>
-        	<p><?php _e( 'Once you have saved the file, you will be able to import Dynamic Form Maker Pro data from this site into another site.', 'dynamic-form-maker' ); ?></p>
-        	<h3><?php _e( 'Choose what to export', 'dynamic-form-maker' ); ?></h3>
-
-        	<p><label><input type="radio" name="dfm-content" value="all" disabled="disabled" /> <?php _e( 'All data', 'dynamic-form-maker' ); ?></label></p>
-        	<p class="description"><?php _e( 'This will contain all of your forms, fields, entries, and email design settings.', 'dynamic-form-maker' ); ?><br><strong>*<?php _e( 'Only available in Dynamic Form Maker Pro', 'dynamic-form-maker' ); ?>*</strong></p>
-
-        	<p><label><input type="radio" name="dfm-content" value="forms" disabled="disabled" /> <?php _e( 'Forms', 'dynamic-form-maker' ); ?></label></p>
-        	<p class="description"><?php _e( 'This will contain all of your forms, fields, and email design settings', 'dynamic-form-maker' ); ?>.<br><strong>*<?php _e( 'Only available in Dynamic Form Maker Pro', 'dynamic-form-maker' ); ?>*</strong></p>
-
-        	<p><label><input type="radio" name="dfm-content" value="entries" checked="checked" /> <?php _e( 'Form Entries', 'dynamic-form-maker' ); ?></label></p>
+        <form method="post" id="dfm-export">       	
 
         	<ul id="entries-filters" class="dfm-export-filters">
+				
+				<li>
+					<p><?php _e( 'Backup and save some or all of your Dynamic Form Maker data.', 'dynamic-form-maker' ); ?></p>
+					<p><?php _e( 'Once you have saved the file, you will be able to import Dynamic Form Maker Pro data from this site into another site.', 'dynamic-form-maker' ); ?></p>
+        		<li>
+        			<label class="dfm-export-label" for="dfm-content"><?php _e( 'Choose to export', 'dynamic-form-maker' ); ?>:</label>
+        			<select name="dfm-content"> 
+						<option value="all" disabled="disabled"><?php _e( 'All data - Pro only', 'dynamic-form-maker' ); ?></option>
+						<option value="forms" disabled="disabled"><?php _e( 'Forms - Pro only', 'dynamic-form-maker' ); ?></option>        				
+        				<option value="entries"  selected="selected"><?php _e( 'Form Entries', 'dynamic-form-maker' ); ?></option>												
+        			</select>
+        		</li>
+			
         		<li><p class="description"><?php _e( 'This will export entries in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import entries on another site, please use the All data option above.', 'dynamic-form-maker' ); ?></p></li>
         		<!-- Format -->
         		<li>
         			<label class="dfm-export-label" for="format"><?php _e( 'Format', 'dynamic-form-maker' ); ?>:</label>
-        			<select name="format">
-        				<option value="csv" selected="selected"><?php _e( 'Comma Separated (.csv)', 'dynamic-form-maker' ); ?></option>
-        				<option value="txt" disabled="disabled"><?php _e( 'Tab Delimited (.txt) - Pro only', 'dynamic-form-maker' ); ?></option>
-        				<option value="xls" disabled="disabled"><?php _e( 'Excel (.xls) - Pro only', 'dynamic-form-maker' ); ?></option>
+        			<select name="format">        				
+        				<option value="txt"  selected="selected"><?php _e( 'Tab Delimited (.txt)', 'dynamic-form-maker' ); ?></option>
+						<option value="csv" disabled="disabled"><?php _e( 'Comma Separated (.csv) - Pro only', 'dynamic-form-maker' ); ?></option>
+        				<option value="xls" disabled="disabled"><?php _e( 'Excel (.xls) - Pro only', 'dynamic-form-maker' ); ?></option>						
         			</select>
         		</li>
         		<!-- Forms -->
@@ -487,7 +489,7 @@ class DinamicFormMaker_Export {
 	 * @return string Either no entries or the entry headers
 	 */
 	public function ajax_load_options() {
-		global $wpdb, $export;
+		global $wpdb, $export_entries;
 
 		if ( !isset( $_REQUEST['action'] ) )
 			return;
@@ -525,7 +527,7 @@ class DinamicFormMaker_Export {
 		$entries = $wpdb->get_results( "SELECT data FROM {$this->entries_table_name} WHERE form_id = $form_id AND entry_approved = 1 LIMIT $limit $offset", ARRAY_A );
 
 		// Get columns
-		$columns = $export->get_cols( $entries );
+		$columns = $export_entries->get_cols( $entries );
 
 		// Get JSON data
 		$data = json_decode( $columns, true );
@@ -536,7 +538,7 @@ class DinamicFormMaker_Export {
 	}
 
 	public function ajax_entries_count() {
-		global $wpdb, $export;
+		global $wpdb, $export_entries;
 
 		if ( !isset( $_REQUEST['action'] ) )
 			return;
@@ -546,7 +548,7 @@ class DinamicFormMaker_Export {
 
 		$form_id = absint( $_REQUEST['id'] );
 
-		echo $export->count_entries( $form_id );
+		echo $export_entries->count_entries( $form_id );
 
 		wp_die();
 	}
@@ -603,7 +605,7 @@ class DinamicFormMaker_Export {
 		if ( !isset( $_REQUEST['dfm-content'] ) || 'entries' == $_REQUEST['dfm-content'] ) {
 			$args['content'] = 'entries';
 
-			$args['format'] = 'csv';
+			$args['format'] = $_REQUEST['format'];
 
 			if ( isset( $_REQUEST['entries_form_id'] ) )
 				$args['form_id'] = (int) $_REQUEST['entries_form_id'];

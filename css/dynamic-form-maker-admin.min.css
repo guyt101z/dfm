@@ -694,12 +694,11 @@ label.error {
     padding-right: 10px;
 }
 .dfm-menu-item-type-fieldset, .dfm-menu-item-type-verification, #form-element-fieldset {
-    background: #e3e3e3;
-    box-shadow: 0 1px 0 #e3e3e3 inset;
+    background: #fafafa;
+	box-shadow: 0 1px 0 #dfdfdf inset;
 }
 .admin-color-classic .dfm-menu-item-type-fieldset, .admin-color-classic .dfm-menu-item-type-verification, .admin-color-classic #form-element-fieldset {
-    background: #e2f3ff;
-    box-shadow: 0 1px 0 #fff inset;
+    background: #e2f3ff;   
 }
 .dfm-menu-item-handle .item-title {
     min-height: 20px;
@@ -809,7 +808,7 @@ ul#dfm-menu-to-edit ul {
     background-image: none;
 }
 .ui-state-disabled .dfm-menu-item-handle, .ui-state-disabled .menu-item-handle {
-    background: #dfdfdf;
+    background: #fafafa;
     box-shadow: none;
     cursor: default;
 }
@@ -857,7 +856,7 @@ ul.dfm-fields-col-1, ul.dfm-fields-col-2 {
     position: relative;
     display: block;
     margin-right: 8px;
-    padding: 4px 0 4px 34px;
+    padding: 4px 0 4px 9px;
     border: 1px solid #bbb;
     border-radius: 3px;
     color: #464646;
@@ -873,6 +872,7 @@ ul.dfm-fields-col-1, ul.dfm-fields-col-2 {
 .dfm-draggable-form-items:hover {
     border-color: #aaa;
 }
+/*
 .dfm-draggable-form-items b {
     position: absolute;
     left: 8px;
@@ -884,6 +884,13 @@ ul.dfm-fields-col-1, ul.dfm-fields-col-2 {
     background-repeat: no-repeat;
     line-height: 16px;
 }
+*/
+.dfm-draggable-form-items .fa{
+  font-size: 15px;
+  text-align: left;
+  padding-right: 5px;
+}
+/*
 .rtl .dfm-draggable-form-items b {
     left: auto;
     right: 8px;
@@ -969,6 +976,8 @@ ul.dfm-fields-col-1, ul.dfm-fields-col-2 {
 #form-element-url b {
     background-position: -480px 0;
 }
+*/
+
 .static-vars-inactive {
     display: none;
 }
@@ -1198,16 +1207,11 @@ ul.dfm-fields-col-1, ul.dfm-fields-col-2 {
 .rtl .dfm-export-label {
     float: right;
 }
-#dfm-export-entries-fields {
-    height: 275px;
-    width: 300px;
+#dfm-export-entries-fields {    
     overflow: auto;
-    display: block;
-    border: 1px solid #e8e8e8;
-    border-radius: 3px;
+    display: block;    
     margin-left: 10em;
-    padding: 5px;
-    background: white;
+    padding: 5px;    
 }
 #dfm-export-select-all, #dfm-export-unselect-all {
     width: 150px;
@@ -1342,4 +1346,8 @@ tr textarea {
     background-image: url('../images/arrows-vs.png?d=20130611');
     background-size: 15px 123px;
 }
+}
+#dfm-export a{
+	box-shadow:none;
+	-webkit-box-shadow:none;
 }
