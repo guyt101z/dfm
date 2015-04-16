@@ -1,4 +1,11 @@
-<form method="post" id="dynamic-form-maker-new-form" action="">
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1"><?php _e( 'Contact form' , 'dynamic-form-maker'); ?></a></li>
+    <li><a href="#tabs-2"><?php _e( 'User Form' , 'dynamic-form-maker'); ?></a></li>    
+  </ul>
+  <div id="tabs-1">
+    <p>
+	<form method="post" id="dynamic-form-maker-new-form" action="">
 	<input name="action" type="hidden" value="create_form" />
     <?php
     	wp_nonce_field( 'create_form' );
@@ -7,8 +14,7 @@
     		wp_die( __( 'You do not have sufficient permissions to create a new form.', 'dynamic-form-maker' ) );
     ?>
 	<h3><?php _e( 'Create a form' , 'dynamic-form-maker'); ?></h3>
-
-	<table class="form-table">
+		<table class="form-table">
 		<tbody>
 			<!-- Form Name -->
 			<tr valign="top">
@@ -56,3 +62,11 @@
 	</table>
 	<?php submit_button( __( 'Create Form', 'dynamic-form-maker' ) ); ?>
 </form>
+	</p>
+  </div>
+  <div id="tabs-2">
+    <p>Second.</p>
+  </div>  
+</div>
+	
+	

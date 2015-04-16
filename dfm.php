@@ -665,14 +665,14 @@ class Dynamic_form_maker_Builder{
 	public function admin_scripts() {
 		wp_enqueue_script( 'jquery-ui-sortable' );
 		wp_enqueue_script( 'postbox' );
+		wp_enqueue_script( 'jquery-com-ui-js', plugins_url( '/js/jquery-ui.js', __FILE__ ), array( 'jquery' ), '1.11.4', true );
 		wp_enqueue_script( 'jquery-form-validation', plugins_url( '/js/jquery.validate.min.js', __FILE__ ), array( 'jquery' ), '1.9.0', true );
 		wp_enqueue_script( 'dfm-admin', plugins_url( "/js/dfm-admin$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-form-validation' ), '20140412', true );
 		wp_enqueue_script( 'nested-sortable', plugins_url( "/js/jquery.ui.nestedSortable$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-ui-sortable' ), '1.3.5', true );
-
+		wp_enqueue_style( 'dfm-jqueryui-css', plugins_url( "/css/jqueryUi/jquery-ui-1.10.3.min.css", __FILE__ ), array(), '20150415' );
 		wp_enqueue_style( 'dynamic-form-maker-style', plugins_url( "/css/dynamic-form-maker-admin$this->load_dev_files.css", __FILE__ ), array(), '20150415' );
 		
-		wp_enqueue_style( 'dfm-font-awesome-css', plugins_url( "/css/font-awesome/css/font-awesome.min.css", __FILE__ ), array(), '20150415' );
-		
+		wp_enqueue_style( 'dfm-font-awesome-css', plugins_url( "/css/font-awesome/css/font-awesome.min.css", __FILE__ ), array(), '20150415' );		
 
 		wp_localize_script( 'dfm-admin', 'DfmAdminPages', array( 'dfm_pages' => $this->_admin_pages ) );
 	}
