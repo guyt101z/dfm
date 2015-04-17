@@ -794,7 +794,7 @@ msgid "All Forms"
 msgstr ""
 
 #: dfm.php:1720 dfm.php:1744
-msgid "Add New Form"
+msgid "Add New"
 msgstr ""
 
 #: dfm.php:1722 dfm.php:1746

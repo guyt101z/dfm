@@ -1,7 +1,5 @@
 jQuery(document).ready(function($) {
 	
-	$( "#tabs" ).tabs();
-
 	if( window.DfmAdminPages ) {
 		var obj = DfmAdminPages.dfm_pages;
 

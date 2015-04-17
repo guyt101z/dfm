@@ -2,7 +2,7 @@
 /**
  * Class that builds our Form Entries table
  *
- * @since 1.2
+ * @since 1.0
  */
 class DinamicFormMaker_Export {
 
@@ -40,7 +40,7 @@ class DinamicFormMaker_Export {
 	/**
 	 * Display the export form
 	 *
-	 * @since 1.7
+	 * @since 1.0
 	 *
 	 */
 	public function display_export(){
@@ -90,8 +90,8 @@ class DinamicFormMaker_Export {
         		<li>
         			<label class="dfm-export-label" for="dfm-content"><?php _e( 'Choose to export', 'dynamic-form-maker' ); ?>:</label>
         			<select name="dfm-content"> 
-						<option value="all" disabled="disabled"><?php _e( 'All data - Pro only', 'dynamic-form-maker' ); ?></option>
-						<option value="forms" disabled="disabled"><?php _e( 'Forms - Pro only', 'dynamic-form-maker' ); ?></option>        				
+						<!--<option value="all" disabled="disabled"><?php //_e( 'All data - Pro only', 'dynamic-form-maker' ); ?></option>
+						<option value="forms" disabled="disabled"><?php //_e( 'Forms - Pro only', 'dynamic-form-maker' ); ?></option>-->        				
         				<option value="entries"  selected="selected"><?php _e( 'Form Entries', 'dynamic-form-maker' ); ?></option>												
         			</select>
         		</li>
@@ -102,8 +102,8 @@ class DinamicFormMaker_Export {
         			<label class="dfm-export-label" for="format"><?php _e( 'Format', 'dynamic-form-maker' ); ?>:</label>
         			<select name="format">        				
         				<option value="txt"  selected="selected"><?php _e( 'Tab Delimited (.txt)', 'dynamic-form-maker' ); ?></option>
-						<option value="csv" disabled="disabled"><?php _e( 'Comma Separated (.csv) - Pro only', 'dynamic-form-maker' ); ?></option>
-        				<option value="xls" disabled="disabled"><?php _e( 'Excel (.xls) - Pro only', 'dynamic-form-maker' ); ?></option>						
+						<!--<option value="csv" disabled="disabled"><?php //_e( 'Comma Separated (.csv) - Pro only', 'dynamic-form-maker' ); ?></option>
+        				<option value="xls" disabled="disabled"><?php //_e( 'Excel (.xls) - Pro only', 'dynamic-form-maker' ); ?></option>-->						
         			</select>
         		</li>
         		<!-- Forms -->
@@ -176,7 +176,7 @@ class DinamicFormMaker_Export {
 	/**
 	 * Build the entries export array
 	 *
-	 * @since 1.7
+	 * @since 1.0
 	 *
 	 * @param array $args Filters defining what should be included in the export
 	 */
@@ -188,7 +188,7 @@ class DinamicFormMaker_Export {
 
 		$defaults = array(
 			'content' 		=> 'entries',
-			'format' 		=> 'csv',
+			'format' 		=> 'txt',
 			'form_id' 		=> 0,
 			'start_date' 	=> false,
 			'end_date' 		=> false,
@@ -254,7 +254,7 @@ class DinamicFormMaker_Export {
 	/**
 	 * Build the entries as JSON
 	 *
-	 * @since 1.7
+	 * @since 1.0
 	 *
 	 * @param array $entries The resulting database query for entries
 	 */
@@ -437,9 +437,9 @@ class DinamicFormMaker_Export {
 	}
 
 	/**
-	 * Return the entries data formatted for CSV
+	 * Return the entries data formatted for txt
 	 *
-	 * @since 1.7
+	 * @since 1.0
 	 *
 	 * @param array $data The multidimensional array of entries data
 	 * @param array $fields The selected fields to export
@@ -484,7 +484,7 @@ class DinamicFormMaker_Export {
 	/**
 	 * Build the checkboxes when changing forms
 	 *
-	 * @since 2.6.8
+	 * @since 1.0
 	 *
 	 * @return string Either no entries or the entry headers
 	 */

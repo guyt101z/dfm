@@ -1026,7 +1026,7 @@ msgstr "Todas las formas"
 #: visual-form-builder.php:1726
 #: visual-form-builder.php:1763
 #@ visual-form-builder
-msgid "Add New Form"
+msgid "Add New"
 msgstr "Añadir nueva forma"
 
 #: visual-form-builder.php:1728

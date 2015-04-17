@@ -1005,7 +1005,7 @@ msgstr "Alle formulieren"
 #: visual-form-builder.php:1720
 #: visual-form-builder.php:1744
 #@ visual-form-builder
-msgid "Add New Form"
+msgid "Add New"
 msgstr "Nieuw Formulier toevoegen"
 
 #: visual-form-builder.php:1722

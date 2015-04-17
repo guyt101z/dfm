@@ -4,11 +4,11 @@ Plugin Name: Dynamic Form Maker
 Description: Dynamic Form Maker has a easy interface. It has jQuery validation,entry tracking system and basic logical verification system.
 Author: Jakir Hossain
 Author URI: http://jakir.net
-Version: 1.0.0
+Version: 1.0
 */
 
 // Version number to output as meta tag
-define( 'VFB_VERSION', '1.0.0' );
+define( 'VFB_VERSION', '1.0' );
 
 /*
 This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,10 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
+// Load User Role
+		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-user-role-ajax.php' );
+		$aur_ajax = new user_role_ajax_call_class();
 
 // Instantiate new class
 $dynamic_form_maker = new Dynamic_form_maker_Builder();
@@ -64,7 +68,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Admin page menu hooks
 	 *
-	 * @since 2.7.2
+	 * @since 1.0
 	 * @var array
 	 * @access private
 	 */
@@ -73,7 +77,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Flag used to display post_max_vars error when saving
 	 *
-	 * @since 2.7.6
+	 * @since 1.0
 	 * @var string
 	 * @access protected
 	 */
@@ -97,6 +101,7 @@ class Dynamic_form_maker_Builder{
 
 		// Saving functions
 		add_action( 'admin_init', array( &$this, 'save_add_new_form' ) );
+		add_action( 'admin_init', array( &$this, 'save_add_new_user_form' ) );
 		add_action( 'admin_init', array( &$this, 'save_update_form' ) );
 		add_action( 'admin_init', array( &$this, 'save_trash_delete_form' ) );
 		add_action( 'admin_init', array( &$this, 'save_copy_form' ) );
@@ -174,7 +179,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Output plugin version number to help with troubleshooting
 	 *
-	 * @since 2.7.5
+	 * @since 1.0
 	 */
 	public function add_meta_keyword() {
 		// Get global settings
@@ -189,7 +194,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Load localization file
 	 *
-	 * @since 2.7
+	 * @since 1.0
 	 */
 	public function languages() {
 		load_plugin_textdomain( 'dynamic-form-maker', false , 'dynamic-form-maker/languages' );
@@ -198,7 +203,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Adds extra include files
 	 *
-	 * @since 1.2
+	 * @since 1.0
 	 */
 	public function includes(){
 		global $dfm_entries_list, $dfm_entries_detail;
@@ -210,6 +215,9 @@ class Dynamic_form_maker_Builder{
 		// Load the Form Form Entries Details class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-entries-detail.php' );
 		$dfm_entries_detail = new DynamicFormMaker_Form_Entries_Detail();
+		
+		
+		
 	}
 
 	public function include_forms_list() {
@@ -223,7 +231,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Add Settings link to Plugins page
 	 *
-	 * @since 1.8
+	 * @since 1.0
 	 * @return $links array Links to add to plugin name
 	 */
 	public function plugin_action_links( $links, $file ) {
@@ -236,7 +244,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Adds the media button image
 	 *
-	 * @since 2.3
+	 * @since 1.0
 	 */
 	public function add_media_button(){
     	if ( current_user_can( 'manage_options' ) ) :
@@ -251,7 +259,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Adds the dashboard widget
 	 *
-	 * @since 2.7
+	 * @since 1.0
 	 */
 	public function add_dashboard_widget() {
 		wp_add_dashboard_widget( 'dfm-dashboard', __( 'Recent Dynamic Form Maker Form Entries', 'dynamic-form-maker' ), array( &$this, 'dashboard_widget' ), array( &$this, 'dashboard_widget_control' ) );
@@ -260,7 +268,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Displays the dashboard widget content
 	 *
-	 * @since 2.7
+	 * @since 1.0
 	 */
 	public function dashboard_widget() {
 		global $wpdb;
@@ -315,7 +323,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Displays the dashboard widget form control
 	 *
-	 * @since 2.7
+	 * @since 1.0
 	 */
 	public function dashboard_widget_control() {
 		if ( !$widget_options = get_option( 'dfm_dashboard_widget_options' ) )
@@ -486,7 +494,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Add meta boxes to form builder screen
 	 *
-	 * @since 1.8
+	 * @since 1.0
 	 */
 	public function add_meta_boxes() {
 		global $current_screen;
@@ -501,7 +509,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Output for Form Items meta box
 	 *
-	 * @since 1.8
+	 * @since 1.0
 	 */
 	public function meta_box_form_items() {
 	?>
@@ -545,7 +553,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Output for the Dynamic Display Forms meta box
 	 *
-	 * @since 1.8
+	 * @since 1.0
 	 */
 	public function meta_box_display_forms() {
 	?>
@@ -561,7 +569,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Check database version and run SQL install, if needed
 	 *
-	 * @since 2.1
+	 * @since 1.0
 	 */
 	public function update_db_check() {
 		// Add a database version to help with upgrades and run SQL install
@@ -656,6 +664,8 @@ class Dynamic_form_maker_Builder{
 		dbDelta( $form_sql );
 		dbDelta( $entries_sql );
 	}
+	
+	
 
 	/**
 	 * Queue plugin scripts for sorting form fields
@@ -667,14 +677,17 @@ class Dynamic_form_maker_Builder{
 		wp_enqueue_script( 'postbox' );
 		wp_enqueue_script( 'jquery-com-ui-js', plugins_url( '/js/jquery-ui.js', __FILE__ ), array( 'jquery' ), '1.11.4', true );
 		wp_enqueue_script( 'jquery-form-validation', plugins_url( '/js/jquery.validate.min.js', __FILE__ ), array( 'jquery' ), '1.9.0', true );
-		wp_enqueue_script( 'dfm-admin', plugins_url( "/js/dfm-admin$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-form-validation' ), '20140412', true );
+		wp_enqueue_script( 'jquery-validate-js', plugins_url( '/js/jquery.validate.js', __FILE__ ), array( 'jquery' ), '20150417', true );
+		wp_enqueue_script( 'dfm-admin', plugins_url( "/js/dfm-admin$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-form-validation' ), '20150417', true );
 		wp_enqueue_script( 'nested-sortable', plugins_url( "/js/jquery.ui.nestedSortable$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-ui-sortable' ), '1.3.5', true );
 		wp_enqueue_style( 'dfm-jqueryui-css', plugins_url( "/css/jqueryUi/jquery-ui-1.10.3.min.css", __FILE__ ), array(), '20150415' );
 		wp_enqueue_style( 'dynamic-form-maker-style', plugins_url( "/css/dynamic-form-maker-admin$this->load_dev_files.css", __FILE__ ), array(), '20150415' );
 		
 		wp_enqueue_style( 'dfm-font-awesome-css', plugins_url( "/css/font-awesome/css/font-awesome.min.css", __FILE__ ), array(), '20150415' );		
 
-		wp_localize_script( 'dfm-admin', 'DfmAdminPages', array( 'dfm_pages' => $this->_admin_pages ) );
+		wp_localize_script( 'dfm-admin', 'DfmAdminPages', array( 'dfm_pages' => $this->_admin_pages ) );		
+		
+		
 	}
 
 	/**
@@ -793,10 +806,10 @@ class Dynamic_form_maker_Builder{
 	}
 
 	/**
-	 * Save new forms on the DFM Pro > Add New page
+	 * Save new forms  > Add New page
 	 *
 	 * @access public
-	 * @since 2.8.1
+	 * @since 1.0
 	 * @return void
 	 */
 	public function save_add_new_form() {
@@ -894,12 +907,115 @@ class Dynamic_form_maker_Builder{
 		wp_redirect( 'admin.php?page=dynamic-form-maker&action=edit&form=' . $new_form_selected );
 		exit();
 	}
+	
+	/**
+	 * New forms  > Add New user
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @return void
+	 */
+	public function save_add_new_user_form() {
+		global $wpdb;
+
+		if ( !isset( $_REQUEST['action'] ) || !isset( $_GET['page'] ) )
+			return;
+
+		if ( 'dfm-add-new' !== $_GET['page'] )
+			return;
+
+		if ( 'create_user' !== $_REQUEST['action'] )
+			return;
+
+		check_admin_referer( 'create_user' );
+
+		$form_key 		= sanitize_title( $_REQUEST['form_title'] );
+		$form_title 	= esc_html( $_REQUEST['form_title'] );
+		$user_role = esc_html( $_REQUEST['user_role'] );
+		$form_subject 	= '';
+		$form_from 		= '';
+		$form_to 		= '';
+
+		$newdata = array(
+			'form_key' 				=> $form_key,
+			'form_title' 			=> $form_title,
+			'form_email_from_name'	=> $form_from_name,
+			'form_email_subject'	=> $form_subject,
+			'form_email_from'		=> $form_from,
+			'form_email_to'			=> $form_to,
+			'form_success_message'	=> '<p id="form_success">Your user form was successfully submitted. Thank you for contacting us.</p>'
+		);
+
+		// Create the form
+		$wpdb->insert( $this->form_table_name, $newdata );
+
+		// Get form ID to add our first field
+		$new_form_selected = $wpdb->insert_id;
+
+		// Setup the initial fieldset
+		$initial_fieldset = array(
+			'form_id' 			=> $wpdb->insert_id,
+			'field_key' 		=> 'fieldset',
+			'field_type' 		=> 'fieldset',
+			'field_name' 		=> 'Fieldset',
+			'field_sequence' 	=> 0
+		);
+
+		// Add the first fieldset to get things started
+		$wpdb->insert( $this->field_table_name, $initial_fieldset );
+
+		$verification_fieldset = array(
+			'form_id' 			=> $new_form_selected,
+			'field_key' 		=> 'verification',
+			'field_type' 		=> 'verification',
+			'field_name' 		=> 'Verification',
+			'field_description' => '(This is for preventing spam)',
+			'field_sequence' 	=> 1
+		);
+
+		// Insert the submit field
+		$wpdb->insert( $this->field_table_name, $verification_fieldset );
+
+		$verify_fieldset_parent_id = $wpdb->insert_id;
+
+		$secret = array(
+			'form_id' 			=> $new_form_selected,
+			'field_key' 		=> 'secret',
+			'field_type' 		=> 'secret',
+			'field_name' 		=> 'Please enter any two digits',
+			'field_description'	=> 'Example: 12',
+			'field_size' 		=> 'medium',
+			'field_required' 	=> 'yes',
+			'field_parent' 		=> $verify_fieldset_parent_id,
+			'field_sequence' 	=> 2
+		);
+
+		// Insert the submit field
+		$wpdb->insert( $this->field_table_name, $secret );
+
+		// Make the submit last in the sequence
+		$submit = array(
+			'form_id' 			=> $new_form_selected,
+			'field_key' 		=> 'submit',
+			'field_type' 		=> 'submit',
+			'field_name' 		=> 'Submit',
+			'field_parent' 		=> $verify_fieldset_parent_id,
+			'field_sequence' 	=> 3
+		);
+
+		// Insert the submit field
+		$wpdb->insert( $this->field_table_name, $submit );
+
+		// Redirect to keep the URL clean (use AJAX in the future?)
+		wp_redirect( 'admin.php?page=dynamic-form-maker&action=edit&form=' . $new_form_selected );
+		exit();
+	}
 
 	/**
 	 * Save the form
 	 *
 	 * @access public
-	 * @since 2.8.1
+	 * @since 1.0
 	 * @return void
 	 */
 	public function save_update_form() {
@@ -1037,7 +1153,7 @@ class Dynamic_form_maker_Builder{
 	 * This is a placeholder function since all processing is handled in includes/class-forms-list.php
 	 *
 	 * @access public
-	 * @since 2.8.1
+	 * @since 1.0
 	 * @return void
 	 */
 	public function save_trash_delete_form() {
@@ -1070,7 +1186,7 @@ class Dynamic_form_maker_Builder{
 	 * Handle form duplication
 	 *
 	 * @access public
-	 * @since 2.8.1
+	 * @since 1.0
 	 * @return void
 	 */
 	public function save_copy_form() {
@@ -1169,7 +1285,7 @@ class Dynamic_form_maker_Builder{
 	 * Save options on the DFM Pro > Settings page
 	 *
 	 * @access public
-	 * @since 2.8.1
+	 * @since 1.0
 	 * @return void
 	 */
 	public function save_settings() {
@@ -1229,7 +1345,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * The jQuery create field callback
 	 *
-	 * @since 1.9
+	 * @since 1.0
 	 */
 	public function ajax_create_field() {
 		global $wpdb;
@@ -1322,7 +1438,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * The jQuery delete field callback
 	 *
-	 * @since 1.9
+	 * @since 1.0
 	 */
 	public function ajax_delete_field() {
 		global $wpdb;
@@ -1352,7 +1468,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * The jQuery form settings callback
 	 *
-	 * @since 2.2
+	 * @since 1.0
 	 */
 	public function ajax_form_settings() {
 		global $current_user;
@@ -1392,7 +1508,7 @@ class Dynamic_form_maker_Builder{
 	 *
 	 * Used for inserting the form shortcode with desired form ID
 	 *
-	 * @since 2.3
+	 * @since 1.0
 	 */
 	public function ajax_media_button(){
 		global $wpdb;
@@ -1433,7 +1549,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * All Forms output in admin
 	 *
-	 * @since 2.5
+	 * @since 1.0
 	 */
 	public function all_forms() {
 		global $wpdb, $dfm_forms_list;
@@ -1464,7 +1580,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Build field output in admin
 	 *
-	 * @since 1.9
+	 * @since 1.0
 	 */
 	public function field_output( $form_nav_selected_id, $field_id = NULL ) {
 		require( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/admin-field-options.php' );
@@ -1524,11 +1640,12 @@ class Dynamic_form_maker_Builder{
 
 		$current_pages[ 'dfm' ] = add_menu_page( __( 'Dynamic Form Maker', 'dynamic-form-maker' ), __( 'Dynamic Form Maker', 'dynamic-form-maker' ), 'manage_options', 'dynamic-form-maker', array( &$this, 'admin' ), plugins_url( 'dynamic-form-maker/images/dfm_icon.png' ) );
 
-		add_submenu_page( 'dynamic-form-maker', __( 'Dynamic Form Maker', 'dynamic-form-maker' ), __( 'All Forms', 'dynamic-form-maker' ), 'manage_options', 'dynamic-form-maker', array( &$this, 'admin' ) );
-		$current_pages[ 'dfm-add-new' ] = add_submenu_page( 'dynamic-form-maker', __( 'Add New Form', 'dynamic-form-maker' ), __( 'Add New Form', 'dynamic-form-maker' ), 'manage_options', 'dfm-add-new', array( &$this, 'admin_add_new' ) );
-		$current_pages[ 'dfm-settings' ] = add_submenu_page( 'dynamic-form-maker', __( 'Settings', 'dynamic-form-maker' ), __( 'Settings', 'dynamic-form-maker' ), 'manage_options', 'dfm-settings', array( &$this, 'admin_settings' ) );
+		add_submenu_page( 'dynamic-form-maker', __( 'Dynamic Form Maker', 'dynamic-form-maker' ), __( 'All Forms', 'dynamic-form-maker' ), 'manage_options', 'dynamic-form-maker', array( &$this, 'admin' ) );		
+		$current_pages[ 'dfm-add-new' ] = add_submenu_page( 'dynamic-form-maker', __( 'Add New', 'dynamic-form-maker' ), __( 'Add New', 'dynamic-form-maker' ), 'manage_options', 'dfm-add-new', array( &$this, 'admin_add_new' ) );		
 		$current_pages[ 'dfm-entries' ] = add_submenu_page( 'dynamic-form-maker', __( 'Form Entries', 'dynamic-form-maker' ), __( 'Form Entries', 'dynamic-form-maker' ), 'manage_options', 'dfm-entries', array( &$this, 'admin_entries' ) );
-		$current_pages[ 'dfm-export' ] = add_submenu_page( 'dynamic-form-maker', __( 'Export', 'dynamic-form-maker' ), __( 'Export', 'dynamic-form-maker' ), 'manage_options', 'dfm-export', array( &$this, 'admin_form_export' ) );
+		$current_pages[ 'dfm-export' ] = add_submenu_page( 'dynamic-form-maker', __( 'Export', 'dynamic-form-maker' ), __( 'Export', 'dynamic-form-maker' ), 'manage_options', 'dfm-export', array( &$this, 'form_export_for_admin' ) );
+		$current_pages[ 'dfm-settings' ] = add_submenu_page( 'dynamic-form-maker', __( 'Settings', 'dynamic-form-maker' ), __( 'Settings', 'dynamic-form-maker' ), 'manage_options', 'dfm-settings', array( &$this, 'admin_settings' ) );
+		
 		
 
 		// All plugin page load hooks
@@ -1557,27 +1674,27 @@ class Dynamic_form_maker_Builder{
 	}
 
 	/**
-	 * Display Add New Form page
+	 * Display Add New page
 	 *
 	 *
-	 * @since 2.7.2
+	 * @since 1.0
 	 */
 	public function admin_add_new() {
 ?>
 	<div class="wrap">
-		<h2><?php _e( 'Add New Form', 'dynamic-form-maker' ); ?></h2>
+		<h2><?php _e( 'Add New', 'dynamic-form-maker' ); ?></h2>
 <?php
 		include_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/admin-new-form.php' );
 ?>
 	</div>
 <?php
 	}
-
+	
 	/**
 	 * Display Form Entries
 	 *
 	 *
-	 * @since 2.7.2
+	 * @since 1.0
 	 */
 	public function admin_entries() {
 		global $dfm_entries_list, $dfm_entries_detail;
@@ -1613,15 +1730,16 @@ class Dynamic_form_maker_Builder{
 	 * Display Export
 	 *
 	 *
-	 * @since 2.7.2
+	 * @since 1.0
 	 */
-	public function admin_form_export() {
+	public function form_export_for_admin() {
 		global $export_entries;
 ?>
 	<div class="wrap">
 		<h2><?php _e( 'Export', 'dynamic-form-maker' ); ?></h2>
 <?php
-		$export_entries->display_export();
+		//$export_entries->display_export();
+		include_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/admin-export-form.php' );
 ?>
 	</div>
 <?php
@@ -1791,7 +1909,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Handle confirmation when form is submitted
 	 *
-	 * @since 1.3
+	 * @since 1.0
 	 */
 	function confirmation(){
 		global $wpdb;
@@ -1848,7 +1966,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Validate the input
 	 *
-	 * @since 2.2
+	 * @since 1.0
 	 */
 	public function validate_input( $data, $name, $type, $required ) {
 
@@ -1892,7 +2010,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Sanitize the input
 	 *
-	 * @since 2.5
+	 * @since 1.0
 	 */
 	public function sanitize_input( $data, $type ) {
 		if ( strlen( $data ) > 0 ) :
@@ -1934,7 +2052,7 @@ class Dynamic_form_maker_Builder{
 	/**
 	 * Make sure the User Agent string is not a SPAM bot
 	 *
-	 * @since 1.3
+	 * @since 1.0
 	 */
 	public function isBot() {
 		$bots = apply_filters( 'dfm_blocked_spam_bots', array(
@@ -2074,3 +2192,140 @@ require( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-widget
 require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-export.php' );
 if ( !isset( $export_entries ) )
 	$export_entries = new DinamicFormMaker_Export();
+
+
+	/**
+	 * Manage User Role
+	 *
+	 * @since 1.0
+	 */
+	 
+add_action( 'admin_footer', 'dfm_user_role' ); // Write our JS below here
+function dfm_user_role() { ?>
+<script>
+jQuery(function() {
+			
+		 var dialog, form,		 
+			name = jQuery( "#name" ),
+			caps = jQuery( "#caps" ),
+			allFields = jQuery( [] ).add( name ),
+			tips = jQuery( ".validateTips" );			
+dialog = jQuery( "#dialog-form" ).dialog({
+		autoOpen: false,
+		height: 230,
+		width: 350,
+		modal: true,
+		buttons: {			
+	 'Add User': function() {	
+                submit = true;
+                form.submit();
+            },
+		Cancel: function() {
+		dialog.dialog( "close" );
+		}
+		},
+		close: function() {
+		form[ 0 ].reset();
+		allFields.removeClass( "ui-state-error" );
+		}
+});
+
+	form = dialog.find( "form" ).on( "submit", function( event ) {
+		event.preventDefault();
+	
+	});
+
+	jQuery( "#create-user" ).button().on( "click", function() {
+		dialog.dialog( "open" );		
+	});
+
+});
+
+jQuery(document).ready(function(e) {
+	jQuery(document).on('click','.delete_role',function() {		
+	var del=jQuery(this).attr('id');
+ 	jQuery( "#dialog-confirm" ).dialog({
+	resizable: false,
+	height:140,
+	modal: true,
+	buttons: {
+		"Delete all items": function() {
+			var data = {
+									action: 'del_aur_role',
+									 del_role:del						
+									};
+				jQuery.ajax(ajax_object.ajax_url, {
+									type: "POST",
+									data: data,
+									cache: false,
+									success: function (response) {
+									jQuery('.drop_down_ud').html(response);									
+									jQuery("#"+del).remove();																								
+									jQuery( "#dialog-confirm" ).dialog( "close" );										
+									},
+									error: function (error) {
+										if (typeof console === "object") {
+											console.log(error);
+										}
+									},
+									complete: function () {
+									}
+								});
+			},
+			Cancel: function() {
+			jQuery( this ).dialog( "close" );
+			}
+		}
+	});
+  });
+    
+});
+
+jQuery(function() {
+	
+		 var dialog, form,		 
+			name = jQuery( "#name1" ),
+			allFields = jQuery( [] ).add( name ),
+			tips = jQuery( ".validateTips" );
+
+var old_role = "";
+dialog = jQuery( "#dialog-form-edit" ).dialog({
+		autoOpen: false,
+		height: 190,
+		width: 350,
+		modal: true,
+		buttons: {			
+	 'Edit user Role': function() {	
+                submit = true;
+                form.submit();
+            },
+		Cancel: function() {
+		dialog.dialog( "close" );
+		}
+		},
+		close: function() {
+		form[ 0 ].reset();
+		allFields.removeClass( "ui-state-error" );
+		}
+});
+
+	form = dialog.find( "form" ).on( "submit", function( event ) {
+		event.preventDefault();		
+		
+	});
+	
+	jQuery(document).on('click','.edit_role',function() {	
+		dialog.dialog( "open" );
+		old_role=jQuery(this).attr('id');	
+		old_role_name=jQuery(this).attr('name');
+		jQuery("#name1").val(old_role_name);
+		jQuery("#oldname").val(old_role);
+		jQuery("#oldnew").val(old_role_name);
+	});
+
+
+});
+</script>
+
+     <?php
+}

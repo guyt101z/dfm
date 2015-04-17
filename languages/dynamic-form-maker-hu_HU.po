@@ -1025,7 +1025,7 @@ msgstr "Minden formája"
 #: visual-form-builder.php:1720
 #: visual-form-builder.php:1744
 #@ visual-form-builder
-msgid "Add New Form"
+msgid "Add New"
 msgstr "Új űrlap"
 
 #: visual-form-builder.php:1722
