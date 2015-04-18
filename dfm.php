@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 // Load User Role
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-user-role-ajax.php' );
-		$aur_ajax = new user_role_ajax_call_class();
+		$user_role_ajax = new user_role_ajax_call_class();
 
 // Instantiate new class
 $dynamic_form_maker = new Dynamic_form_maker_Builder();
@@ -675,9 +675,8 @@ class Dynamic_form_maker_Builder{
 	public function admin_scripts() {
 		wp_enqueue_script( 'jquery-ui-sortable' );
 		wp_enqueue_script( 'postbox' );
-		wp_enqueue_script( 'jquery-com-ui-js', plugins_url( '/js/jquery-ui.js', __FILE__ ), array( 'jquery' ), '1.11.4', true );
-		wp_enqueue_script( 'jquery-form-validation', plugins_url( '/js/jquery.validate.min.js', __FILE__ ), array( 'jquery' ), '1.9.0', true );
-		wp_enqueue_script( 'jquery-validate-js', plugins_url( '/js/jquery.validate.js', __FILE__ ), array( 'jquery' ), '20150417', true );
+		wp_enqueue_script( 'jquery-com-ui-js', plugins_url( '/js/jquery-ui.min.js', __FILE__ ), array( 'jquery' ), '1.11.4', true );
+		wp_enqueue_script( 'jquery-form-validation', plugins_url( '/js/jquery.validate.min.js', __FILE__ ), array( 'jquery' ), '1.9.0', true );		
 		wp_enqueue_script( 'dfm-admin', plugins_url( "/js/dfm-admin$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-form-validation' ), '20150417', true );
 		wp_enqueue_script( 'nested-sortable', plugins_url( "/js/jquery.ui.nestedSortable$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-ui-sortable' ), '1.3.5', true );
 		wp_enqueue_style( 'dfm-jqueryui-css', plugins_url( "/css/jqueryUi/jquery-ui-1.10.3.min.css", __FILE__ ), array(), '20150415' );

@@ -890,6 +890,12 @@ ul.dfm-fields-col-1, ul.dfm-fields-col-2 {
   text-align: left;
   padding-right: 5px;
 }
+
+#dfm-form-builder-main .fa{
+  font-size: 15px;
+  margin-left: 6px;
+}
+
 /*
 .rtl .dfm-draggable-form-items b {
     left: auto;
@@ -989,7 +995,7 @@ ul.dfm-fields-col-1, ul.dfm-fields-col-2 {
     display: inline-block;
     overflow: visible;
     margin: 0;
-    padding: .5em 2.5em .5em 1em;
+    padding: .5em 0.5em .5em 1em;
     outline: 0;
     border: 1px solid #d4d4d4;
     border-radius: .2em;

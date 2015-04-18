@@ -86,7 +86,7 @@ class DinamicFormMaker_Export {
 				
 				<li>
 					<p><?php _e( 'Backup and save some or all of your Dynamic Form Maker data.', 'dynamic-form-maker' ); ?></p>
-					<p><?php _e( 'Once you have saved the file, you will be able to import Dynamic Form Maker Pro data from this site into another site.', 'dynamic-form-maker' ); ?></p>
+					<p><?php //_e( 'Once you have saved the file, you will be able to import Dynamic Form Maker Pro data from this site into another site.', 'dynamic-form-maker' ); ?></p>
         		<li>
         			<label class="dfm-export-label" for="dfm-content"><?php _e( 'Choose to export', 'dynamic-form-maker' ); ?>:</label>
         			<select name="dfm-content"> 
@@ -96,7 +96,7 @@ class DinamicFormMaker_Export {
         			</select>
         		</li>
 			
-        		<li><p class="description"><?php _e( 'This will export entries in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import entries on another site, please use the All data option above.', 'dynamic-form-maker' ); ?></p></li>
+        		<li><p class="description"><?php _e( 'This will export entries in either a .txt.', 'dynamic-form-maker' ); ?></p></li>
         		<!-- Format -->
         		<li>
         			<label class="dfm-export-label" for="format"><?php _e( 'Format', 'dynamic-form-maker' ); ?>:</label>

@@ -90,15 +90,16 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                 <div class="dfm-button-group">
 					<a href="#form-settings" id="form-settings-button" class="dfm-button dfm-settings <?php echo $opened_tab; ?>">
 						<?php _e( 'Settings' , 'dynamic-form-maker'); ?>
-						<span class="dfm-interface-icon dfm-interface-settings"></span>
+						<i class="fa fa-cogs"></i>
 					</a>
                     <a href="<?php echo esc_url( wp_nonce_url( admin_url('admin.php?page=dynamic-form-maker&amp;action=copy_form&amp;form=' . $form_nav_selected_id ), 'copy-form-' . $form_nav_selected_id ) ); ?>" class="dfm-button dfm-duplicate">
                     	<?php _e( 'Duplicate' , 'dynamic-form-maker'); ?>
-                    	<span class="dfm-interface-icon dfm-interface-duplicate"></span>
+                    	<!--<span class="dfm-interface-icon dfm-interface-duplicate fa fa-files-o"></span>-->
+						<i class="fa fa-files-o"></i>
                     </a>
                     <a href="<?php echo esc_url( wp_nonce_url( admin_url('admin.php?page=dynamic-form-maker&amp;action=delete_form&amp;form=' . $form_nav_selected_id ), 'delete-form-' . $form_nav_selected_id ) ); ?>" class="dfm-button dfm-delete dfm-last menu-delete">
                     	<?php _e( 'Delete' , 'dynamic-form-maker'); ?>
-                    	<span class="dfm-interface-icon dfm-interface-trash"></span>
+                    	<i class="fa fa-trash-o"></i>
                     </a>
 
                     <?php submit_button( __( 'Save', 'dynamic-form-maker' ), 'primary', 'save_form', false ); ?>

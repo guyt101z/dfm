@@ -425,7 +425,7 @@ foreach ( $fields as &$field ) :
 		<!-- Delete link -->
 		<a href="<?php echo esc_url( wp_nonce_url( admin_url('admin.php?page=dynamic-form-maker&amp;action=delete_field&amp;form=' . $form_nav_selected_id . '&amp;field=' . $field->field_id ), 'delete-field-' . $form_nav_selected_id ) ); ?>" class="dfm-button dfm-delete item-delete submitdelete deletion">
 			<?php _e( 'Delete' , 'dynamic-form-maker'); ?>
-			<span class="dfm-interface-icon dfm-interface-trash"></span>
+			<i class="fa fa-trash-o"></i>
 		</a>
 <?php endif; ?>
 
