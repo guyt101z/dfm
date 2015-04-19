@@ -520,7 +520,17 @@ class Dynamic_form_maker_Builder{
 			</ul>
 			<div id="standard-fields" class="tabs-panel tabs-panel-active">
 				<ul class="dfm-fields-col-1">
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-fieldset">Fieldset</a></li>
+				<li><a href="#" class="dfm-draggable-form-items" id="form-element-fieldset">Fieldset</a></li>
+				<?php
+					global $wpdb;
+					$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+					$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = ".$_REQUEST['form'] );
+					$form_type = $form_table[0]->form_type;
+					if($form_type === 'user_form'):
+				?>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-username"><i class="fa fa-user"></i>Username</a></li>					
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-re-password"><i class="fa fa-lock"></i>Re-Password</a></li>
+				<?php endif; ?>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-text"><i class="fa fa-font"></i>Text</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-checkbox"><i class="fa fa-check-square-o"></i>Checkbox</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-phone"><i class="fa fa-phone"></i>Phone</a></li>
@@ -531,7 +541,13 @@ class Dynamic_form_maker_Builder{
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-file"><i class="fa fa-cloud-upload"></i>File Upload</a></li>
 				</ul>
 				<ul class="dfm-fields-col-2">
+				
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-section">Section</a></li>
+					<?php
+						if($form_type === 'user_form'):
+					?>					
+						<li><a href="#" class="dfm-draggable-form-items" id="form-element-password"><i class="fa fa-lock"></i>Password</a></li>					
+					<?php endif; ?>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-textarea"><i class="fa fa-file-text-o"></i>Textarea</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-radio"><i class="fa fa-dot-circle-o"></i>Radio</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-email"><i class="fa fa-envelope-o"></i>Email</a></li>
@@ -543,6 +559,9 @@ class Dynamic_form_maker_Builder{
 
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-instructions"><i class="fa fa-comment-o"></i>Instructions</a></li>
 				</ul>
+				
+				
+				
 				<div class="clear"></div>
 			</div> <!-- #standard-fields -->
 		</div> <!-- .taxonomydiv -->
@@ -624,6 +643,7 @@ class Dynamic_form_maker_Builder{
 
 		$form_sql = "CREATE TABLE $form_table_name (
 				form_id BIGINT(20) NOT NULL AUTO_INCREMENT,
+				form_type VARCHAR(255),
 				form_key TINYTEXT NOT NULL,
 				form_title TEXT NOT NULL,
 				form_email_subject TEXT,
@@ -833,6 +853,7 @@ class Dynamic_form_maker_Builder{
 		$form_to 		= serialize( $_REQUEST['form_email_to'] );
 
 		$newdata = array(
+		    'form_type' 			=> 'email_form',
 			'form_key' 				=> $form_key,
 			'form_title' 			=> $form_title,
 			'form_email_from_name'	=> $form_from_name,
@@ -937,6 +958,7 @@ class Dynamic_form_maker_Builder{
 		$form_to 		= '';
 
 		$newdata = array(
+			'form_type' 				=> 'user_form',
 			'form_key' 				=> $form_key,
 			'form_title' 			=> $form_title,
 			'form_email_from_name'	=> $form_name,

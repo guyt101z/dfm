@@ -834,7 +834,7 @@ ul#dfm-menu-to-edit ul {
 #form-items .tabs-panel {
     overflow: visible;
     padding: .5em 0 .5em 4px;
-    min-height: 325px;
+    min-height: 383px;
     height: auto;
 }
 .rtl #form-items .tabs-panel {
