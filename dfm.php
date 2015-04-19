@@ -931,6 +931,7 @@ class Dynamic_form_maker_Builder{
 		$form_key 		= sanitize_title( $_REQUEST['form_title'] );
 		$form_title 	= esc_html( $_REQUEST['form_title'] );
 		$user_role = esc_html( $_REQUEST['user_role'] );
+		$form_name = '';
 		$form_subject 	= '';
 		$form_from 		= '';
 		$form_to 		= '';
@@ -938,8 +939,8 @@ class Dynamic_form_maker_Builder{
 		$newdata = array(
 			'form_key' 				=> $form_key,
 			'form_title' 			=> $form_title,
-			'form_email_from_name'	=> $form_from_name,
-			'form_email_subject'	=> $form_subject,
+			'form_email_from_name'	=> $form_name,
+			'form_email_subject'	=> $user_role,
 			'form_email_from'		=> $form_from,
 			'form_email_to'			=> $form_to,
 			'form_success_message'	=> '<p id="form_success">Your user form was successfully submitted. Thank you for contacting us.</p>'
