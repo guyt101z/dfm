@@ -1,3 +1,7 @@
+<script>
+var homeUrl = '<?php echo home_url(); ?>';
+var adminUrl = '<?php echo admin_url(); ?>';
+</script>
 <?php
 global $wpdb;
 
@@ -221,17 +225,42 @@ foreach ( $fields as $field ) :
 		case 'currency' :
 		case 'number' :
 		case 'phone' :
+		case 'username' :
+		case 'password' :
+		case 're-password' :
+		
 
 			// HTML5 types
 			if ( in_array( $field_type, array( 'email', 'url' ) ) )
 				$type = esc_attr( $field_type );
-			elseif ( 'phone' == $field_type )
+			elseif ( 'phone' == $field_type ){
 				$type = 'tel';
-			else
+				$typeClass = '';
+			}
+				
+			elseif ( 'username' == $field_type ){
 				$type = 'text';
+				$typeClass = 'userName';
+			}
+				
+			elseif ( 'password' == $field_type ){
+				$type = 'password';
+				$typeClass = 'userPass';
+			}
+				
+			elseif ( 're-password' == $field_type ){
+				$type = 'password';
+				$typeClass = 'userRePass';
+			}
+				
+			else {
+				$type = 'text';
+				$typeClass = '';
+			}
+				
 
 			$form_item = sprintf(
-				'<input type="%8$s" name="dfm-%1$d" id="%2$s" value="%3$s" class="dfm-text %4$s %5$s %6$s %7$s" />',
+				'<input type="%8$s" name="dfm-%1$d" id="%2$s" value="%3$s" class="dfm-text %4$s %5$s %6$s %7$s '.$typeClass.'" />',
 				$field_id,
 				$id_attr,
 				$default,

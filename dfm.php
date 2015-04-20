@@ -25,6 +25,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+
+
 // Load User Role
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-user-role-ajax.php' );
 		$user_role_ajax = new user_role_ajax_call_class();
@@ -126,6 +128,8 @@ class Dynamic_form_maker_Builder{
 		// Add all AJAX functions
 		foreach( $actions as $name ) {
 			add_action( "wp_ajax_dynamic_form_maker_$name", array( &$this, "ajax_$name" ) );
+			add_action( 'wp_ajax_nopriv_userNameExitFunction','userNameExitFunction' );
+            add_action( 'wp_ajax_userNameExitFunction','userNameExitFunction' );
 		}
 
 		// Adds additional media button to insert form shortcode
@@ -708,6 +712,8 @@ class Dynamic_form_maker_Builder{
 		
 		
 	}
+	
+
 
 	/**
 	 * Queue form validation scripts
@@ -726,10 +732,14 @@ class Dynamic_form_maker_Builder{
 		wp_register_script( 'dynamic-form-maker-validation', plugins_url( "/js/dfm-validation$this->load_dev_files.js", __FILE__ ) , array( 'jquery', 'jquery-form-validation' ), '20140412', true );
 		wp_register_script( 'dynamic-form-maker-metadata', plugins_url( '/js/jquery.metadata.js', __FILE__ ) , array( 'jquery', 'jquery-form-validation' ), '2.0', true );
 		wp_register_script( 'dfm-ckeditor', plugins_url( '/js/ckeditor/ckeditor.js', __FILE__ ), array( 'jquery' ), '4.1', true );
+		
+		wp_register_script( 'dfm-user-panel', plugins_url( '/js/dfm-user.js', __FILE__ ), array( 'jquery' ), '1.0', true );
 
 		wp_enqueue_script( 'jquery-form-validation' );
 		wp_enqueue_script( 'dynamic-form-maker-validation' );
 		wp_enqueue_script( 'dynamic-form-maker-metadata' );
+		wp_enqueue_script( 'dfm-user-panel' );
+		
 
 		$locale = get_locale();
         $translations = array(
@@ -2215,6 +2225,28 @@ require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-e
 if ( !isset( $export_entries ) )
 	$export_entries = new DinamicFormMaker_Export();
 
+	/**
+	 * Manage username Exit Check
+	 *
+	 * @since 1.0
+	 */
+
+function userNameExitFunction(){	
+		$username = $_POST['usernameCheck'];
+		
+		$checkUser = username_exists( $username );
+		if($checkUser != '' && $username !=''){
+			echo '<span class="error">Username already exist !</span><input type="hidden" class="form-control" id="userAlreadyExistCheck" name="userCheck" value="error">';
+		} 
+		elseif($checkUser == '' && $username !='') {
+			echo '<span class="no-error">Username available</span>';
+		} else {
+			$emptiTYY = '';
+		   	echo $emptiTYY;
+		}		
+  die();
+  }
+
 
 	/**
 	 * Manage User Role
@@ -2225,6 +2257,7 @@ if ( !isset( $export_entries ) )
 add_action( 'admin_footer', 'dfm_user_role' ); // Write our JS below here
 function dfm_user_role() { ?>
 <script>
+
 jQuery(function() {
 			
 		 var dialog, form,		 
