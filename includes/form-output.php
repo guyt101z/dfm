@@ -236,31 +236,36 @@ foreach ( $fields as $field ) :
 			elseif ( 'phone' == $field_type ){
 				$type = 'tel';
 				$typeClass = '';
+				$strength_indicator = '';
 			}
 				
 			elseif ( 'username' == $field_type ){
 				$type = 'text';
 				$typeClass = 'userName';
+				$strength_indicator = '';
 			}
 				
 			elseif ( 'password' == $field_type ){
 				$type = 'password';
 				$typeClass = 'userPass';
+				$strength_indicator = $field->field_options;
 			}
 				
 			elseif ( 're-password' == $field_type ){
 				$type = 'password';
 				$typeClass = 'userRePass';
+				$strength_indicator = '';
 			}
 				
 			else {
 				$type = 'text';
 				$typeClass = '';
+				$strength_indicator = '';
 			}
 				
 
 			$form_item = sprintf(
-				'<input type="%8$s" name="dfm-%1$d" id="%2$s" value="%3$s" class="dfm-text %4$s %5$s %6$s %7$s '.$typeClass.'" />',
+				'<input type="%8$s" name="dfm-%1$d" id="%2$s" value="%3$s" class="'.$typeClass.' '.$strength_indicator.' dfm-text %4$s %5$s %6$s %7$s" />',
 				$field_id,
 				$id_attr,
 				$default,

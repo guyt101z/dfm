@@ -605,7 +605,7 @@ class DinamicFormMaker_Export {
 		if ( !isset( $_REQUEST['dfm-content'] ) || 'entries' == $_REQUEST['dfm-content'] ) {
 			$args['content'] = 'entries';
 
-			$args['format'] = $_REQUEST['format'];
+			$args['format'] = @$_REQUEST['format'];
 
 			if ( isset( $_REQUEST['entries_form_id'] ) )
 				$args['form_id'] = (int) $_REQUEST['entries_form_id'];

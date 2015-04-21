@@ -420,6 +420,20 @@ foreach ( $fields as &$field ) :
                 <input type="text" value="<?php echo stripslashes( esc_attr( $field->field_css ) ); ?>" name="field_css-<?php echo $field->field_id; ?>" class="widefat" id="edit-form-item-css-<?php echo $field->field_id; ?>" maxlength="255" />
             </label>
 		</p>
+		
+		<?php if ( $field->field_type == 'password' ) : ?>
+		<label for="edit-form-item-strength-indicator">
+				<?php _e( 'Strength indicator' , 'dynamic-form-maker'); ?>
+                <span class="dfm-tooltip" title="<?php esc_attr_e( 'About Strength indicator', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & ).', 'dynamic-form-maker' ); ?>">(?)</span>
+                <br />
+				<select name="field_strength_indicator-<?php echo $field->field_id; ?>" class="widefat" id="edit-form-item-strength-indicator-<?php echo $field->field_id; ?>">				
+					<option value="very_weak" <?php selected( $field->field_options, 'very_weak' ); ?>><?php _e( 'Very weak' , 'dynamic-form-maker'); ?></option>
+					<option value="weak" <?php selected( $field->field_options, 'weak' ); ?>><?php _e( 'Weak' , 'dynamic-form-maker'); ?></option>
+					<option value="medium" <?php selected( $field->field_options, 'medium' ); ?>><?php _e( 'Medium' , 'dynamic-form-maker'); ?></option>
+					<option value="strong" <?php selected( $field->field_options, 'strong' ); ?>><?php _e( 'Strong' , 'dynamic-form-maker'); ?></option>
+				</select>
+		</label>
+		<?php endif; ?>
 
 	<?php endif; ?>
 <?php endif; ?>
