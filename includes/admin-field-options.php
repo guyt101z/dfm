@@ -309,7 +309,7 @@ foreach ( $fields as &$field ) :
 			   <?php endif; ?>
 
 			</label>
-		</p>
+		</p> 
 
 		<!-- Required -->
 		<p class="field-link-target description description-thin">
@@ -318,11 +318,14 @@ foreach ( $fields as &$field ) :
                 <span class="dfm-tooltip" title="<?php esc_attr_e( 'About Required', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'Requires the field to be completed before the form is submitted. By default, all fields are set to No.', 'dynamic-form-maker' ); ?>">(?)</span>
                 <br />
 				<select name="field_required-<?php echo $field->field_id; ?>" class="widefat" id="edit-form-item-required-<?php echo $field->field_id; ?>">
+				<?php if ( !in_array( $field->field_type , array( 'password','username','re-password' ) ) ) : ?>
 					<option value="no" <?php selected( $field->field_required, 'no' ); ?>><?php _e( 'No' , 'dynamic-form-maker'); ?></option>
+					<?php endif; ?>
 					<option value="yes" <?php selected( $field->field_required, 'yes' ); ?>><?php _e( 'Yes' , 'dynamic-form-maker'); ?></option>
 				</select>
 			</label>
 		</p>
+		
 
 		<?php if ( !in_array( $field->field_type, array( 'radio', 'checkbox', 'time' ) ) ) : ?>
 			<!-- Size -->

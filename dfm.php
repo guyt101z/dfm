@@ -25,18 +25,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
-
-// Load User Role
-		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-user-role-ajax.php' );
-		$user_role_ajax = new user_role_ajax_call_class();
-
 // Instantiate new class
 $dynamic_form_maker = new Dynamic_form_maker_Builder();
 
 // Dynamic Form Maker class
 class Dynamic_form_maker_Builder{
-
+	
 	/**
 	 * The DB version. Used for SQL install and upgrades.
 	 *
@@ -165,7 +159,7 @@ class Dynamic_form_maker_Builder{
 	 * Allow for additional plugin code to be run during admin_init
 	 * which is not available during the plugin __construct()
 	 *
-	 * @since 2.7
+	 * @since 1.0
 	 */
 	public function additional_plugin_setup() {
 
@@ -223,6 +217,9 @@ class Dynamic_form_maker_Builder{
 		
 		
 	}
+	
+	 
+	
 
 	public function include_forms_list() {
 		global $dfm_forms_list;
@@ -1702,7 +1699,8 @@ class Dynamic_form_maker_Builder{
 		// Include Form Entries and Import files
 		add_action( 'load-' . $current_pages['dfm-entries'], array( &$this, 'includes' ) );
 
-		add_action( 'load-' . $current_pages['dfm'], array( &$this, 'include_forms_list' ) );
+		add_action( 'load-' . $current_pages['dfm'], array( &$this, 'include_forms_list' ) );	
+		
 	}
 
 	/**
@@ -2247,140 +2245,3 @@ function userNameExitFunction(){
   die();
   }
 
-
-	/**
-	 * Manage User Role
-	 *
-	 * @since 1.0
-	 */
-	 
-add_action( 'admin_footer', 'dfm_user_role' ); // Write our JS below here
-function dfm_user_role() { ?>
-<script>
-
-jQuery(function() {
-			
-		 var dialog, form,		 
-			name = jQuery( "#name" ),
-			caps = jQuery( "#caps" ),
-			allFields = jQuery( [] ).add( name ),
-			tips = jQuery( ".validateTips" );			
-dialog = jQuery( "#dialog-form" ).dialog({
-		autoOpen: false,
-		height: 230,
-		width: 350,
-		modal: true,
-		buttons: {			
-	 'Add User': function() {	
-                submit = true;
-                form.submit();
-            },
-		Cancel: function() {
-		dialog.dialog( "close" );
-		}
-		},
-		close: function() {
-		form[ 0 ].reset();
-		allFields.removeClass( "ui-state-error" );
-		}
-});
-
-	form = dialog.find( "form" ).on( "submit", function( event ) {
-		event.preventDefault();
-	
-	});
-
-	jQuery( "#create-user" ).button().on( "click", function() {
-		dialog.dialog( "open" );		
-	});
-
-});
-
-jQuery(document).ready(function(e) {
-	jQuery(document).on('click','.delete_role',function() {		
-	var del=jQuery(this).attr('id');
- 	jQuery( "#dialog-confirm" ).dialog({
-	resizable: false,
-	height:140,
-	modal: true,
-	buttons: {
-		"Delete all items": function() {
-			var data = {
-									action: 'del_aur_role',
-									 del_role:del						
-									};
-				jQuery.ajax(ajax_object.ajax_url, {
-									type: "POST",
-									data: data,
-									cache: false,
-									success: function (response) {
-									jQuery('.drop_down_ud').html(response);									
-									jQuery("#"+del).remove();																								
-									jQuery( "#dialog-confirm" ).dialog( "close" );										
-									},
-									error: function (error) {
-										if (typeof console === "object") {
-											console.log(error);
-										}
-									},
-									complete: function () {
-									}
-								});
-			},
-			Cancel: function() {
-			jQuery( this ).dialog( "close" );
-			}
-		}
-	});
-  });
-    
-});
-
-jQuery(function() {
-	
-		 var dialog, form,		 
-			name = jQuery( "#name1" ),
-			allFields = jQuery( [] ).add( name ),
-			tips = jQuery( ".validateTips" );
-
-var old_role = "";
-dialog = jQuery( "#dialog-form-edit" ).dialog({
-		autoOpen: false,
-		height: 190,
-		width: 350,
-		modal: true,
-		buttons: {			
-	 'Edit user Role': function() {	
-                submit = true;
-                form.submit();
-            },
-		Cancel: function() {
-		dialog.dialog( "close" );
-		}
-		},
-		close: function() {
-		form[ 0 ].reset();
-		allFields.removeClass( "ui-state-error" );
-		}
-});
-
-	form = dialog.find( "form" ).on( "submit", function( event ) {
-		event.preventDefault();		
-		
-	});
-	
-	jQuery(document).on('click','.edit_role',function() {	
-		dialog.dialog( "open" );
-		old_role=jQuery(this).attr('id');	
-		old_role_name=jQuery(this).attr('name');
-		jQuery("#name1").val(old_role_name);
-		jQuery("#oldname").val(old_role);
-		jQuery("#oldnew").val(old_role_name);
-	});
-
-
-});
-</script>
-
-     <?php
-}
