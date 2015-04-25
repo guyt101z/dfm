@@ -1007,8 +1007,48 @@ class Dynamic_form_maker_Builder{
 			'field_size' 		=> 'medium'
 		);
 
-		// Insert the submit field
+		// Insert the username field
 		$wpdb->insert( $this->field_table_name, $username );
+		
+		// Make the password last in the
+		$password = array(
+			'form_id' 			=> $new_form_selected,
+			'field_key' 		=> 'password',
+			'field_type' 		=> 'password',
+			'field_options'		=> 'medium',
+			'field_name' 		=> 'Password',			
+			'field_sequence' 	=> 2,
+			'field_required'	=> 'yes',
+			'field_size' 		=> 'medium'
+		);
+		// Insert the password field
+		$wpdb->insert( $this->field_table_name, $password );
+		
+		// Make the password last in the
+		$rePassword = array(
+			'form_id' 			=> $new_form_selected,
+			'field_key' 		=> 're-password',
+			'field_type' 		=> 're-password',			
+			'field_name' 		=> 'Re-Password',			
+			'field_sequence' 	=> 3,
+			'field_required'	=> 'yes',
+			'field_size' 		=> 'medium'
+		);
+		// Insert the password field
+		$wpdb->insert( $this->field_table_name, $rePassword );
+		
+		// Make the email last in the
+		$emailAdd = array(
+			'form_id' 			=> $new_form_selected,
+			'field_key' 		=> 'email',
+			'field_type' 		=> 'email',			
+			'field_name' 		=> 'Email',			
+			'field_sequence' 	=> 4,
+			'field_required'	=> 'yes',
+			'field_size' 		=> 'medium'
+		);
+		// Insert the password field
+		$wpdb->insert( $this->field_table_name, $emailAdd );
 
 		$verification_fieldset = array(
 			'form_id' 			=> $new_form_selected,
@@ -1016,7 +1056,7 @@ class Dynamic_form_maker_Builder{
 			'field_type' 		=> 'verification',
 			'field_name' 		=> 'Verification',
 			'field_description' => '(This is for preventing spam)',
-			'field_sequence' 	=> 2
+			'field_sequence' 	=> 5
 		);
 
 		// Insert the submit field
@@ -1033,7 +1073,7 @@ class Dynamic_form_maker_Builder{
 			'field_size' 		=> 'medium',
 			'field_required' 	=> 'yes',
 			'field_parent' 		=> $verify_fieldset_parent_id,
-			'field_sequence' 	=> 3
+			'field_sequence' 	=> 6
 		);
 
 		// Insert the submit field
@@ -1046,7 +1086,7 @@ class Dynamic_form_maker_Builder{
 			'field_type' 		=> 'submit',
 			'field_name' 		=> 'Submit',
 			'field_parent' 		=> $verify_fieldset_parent_id,
-			'field_sequence' 	=> 4
+			'field_sequence' 	=> 7
 		);
 
 		// Insert the submit field

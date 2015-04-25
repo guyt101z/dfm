@@ -226,49 +226,66 @@ foreach ( $fields as $field ) :
 		case 'url' :
 		case 'currency' :
 		case 'number' :
-		case 'phone' :
-		case 'username' :
-		case 'password' :
-		case 're-password' :
-		
+		case 'phone' :		
 
 			// HTML5 types
 			if ( in_array( $field_type, array( 'email', 'url' ) ) )
 				$type = esc_attr( $field_type );
 			elseif ( 'phone' == $field_type ){
-				$type = 'tel';
-				$typeClass = '';
-				$strength_indicator = '';
+				$type = 'tel';				
+			}				
+			else {
+				$type = 'text';				
 			}
 				
-			elseif ( 'username' == $field_type ){
+
+			$form_item = sprintf(
+				'<input type="%8$s" name="dfm-%1$d" id="%2$s" value="%3$s" class="dfm-text %4$s %5$s %6$s %7$s" />',
+				$field_id,
+				$id_attr,
+				$default,
+				$size,
+				$required,
+				$validation,
+				$css,
+				$type
+			);
+
+			$output .= ( !empty( $description ) ) ? sprintf( '<span class="dfm-span">%1$s<label>%2$s</label></span>', $form_item, $description ) : $form_item;
+
+			break;
+			
+			
+		
+		case 'username' :
+		case 'password' :
+		case 're-password' :
+		// HTML5 types
+			if ( 'username' == $field_type ){
 				$type = 'text';
 				$typeClass = 'userName';
 				$strength_indicator = '';
+				$fieldName = 'userName';
 			}
 				
 			elseif ( 'password' == $field_type ){
 				$type = 'password';
 				$typeClass = 'userPass';
 				$strength_indicator = $field->field_options;
+				$fieldName = 'password';
 			}
 				
 			elseif ( 're-password' == $field_type ){
 				$type = 'password';
 				$typeClass = 'userRePass';
 				$strength_indicator = '';
+				$fieldName = 'rePassword';
 			}
-				
-			else {
-				$type = 'text';
-				$typeClass = '';
-				$strength_indicator = '';
-			}
-				
+			else{}
 
 			$form_item = sprintf(
-				'<input type="%8$s" name="dfm-%1$d" id="%2$s" value="%3$s" class="'.$typeClass.' '.$strength_indicator.' dfm-text %4$s %5$s %6$s %7$s" />',
-				$field_id,
+				'<input type="%8$s" name="dfm-%1$s" id="%2$s" value="%3$s" class="'.$typeClass.' '.$strength_indicator.' dfm-text %4$s %5$s %6$s %7$s" />',
+				$fieldName,
 				$id_attr,
 				$default,
 				$size,

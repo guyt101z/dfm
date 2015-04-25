@@ -82,6 +82,7 @@ $fields = $wpdb->get_results( $wpdb->prepare( "SELECT field_id, field_key, field
 // Setup counter for alt rows
 $i = $points = 0;
 
+$count = 0;
 // Loop through each form field and build the body of the message
 foreach ( $fields as $field ) :
 	// Handle attachments
@@ -248,17 +249,23 @@ foreach ( $fields as $field ) :
 			'type' 		=> $field->field_type,		
 			'slug' 		=> $field->field_key,			
 			'value' 	=> esc_html( $value )
-			
-			$newUserData = array(
-							'user_login' => $username,
-							'first_name' => $firstname,
-							'last_name' => $lastname,
-							'user_pass' => $password,
-							'user_email' => $email,
-							'user_url' => '',
-							'role' => 'administrator'
-						);			
-			$createUser = wp_insert_user( $newUserData );
+			if($count == 0 ):
+				if($field->field_key == 'username') 
+					$username = $_POST['dfm-userName'];
+				if($field->field_key == 'password')
+					$password = $_POST['dfm-password'];
+				
+				$newUserData = array(
+								'user_login' => $username,
+								'first_name' => $firstname,
+								'last_name' => $lastname,
+								'user_pass' => $password,
+								'user_email' => $email,
+								'user_url' => '',
+								'role' => 'administrator'
+							);			
+				$createUser = wp_insert_user( $newUserData );
+			endif;
 		
 
 	endif;
@@ -266,16 +273,6 @@ foreach ( $fields as $field ) :
 	// If the user accumulates more than 4 points, it might be spam
 	if ( $points > $settings_spam_points )
 		wp_die( __( 'Your responses look too much like spam and could not be sent at this time.', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
+$count++;	
 endforeach;
 
-// Setup our entries data
-$entry = array(
-	'form_id' 			=> $form_id,
-	'data' 				=> serialize( $data ),
-	'subject' 			=> $form_settings->form_subject,
-	'sender_name' 		=> $form_settings->form_from_name,
-	'sender_email' 		=> $form_settings->form_from,
-	'emails_to' 		=> serialize( $form_settings->form_to ),
-	'date_submitted' 	=> date_i18n( 'Y-m-d G:i:s' ),
-	'ip_address' 		=> esc_html( $_SERVER['REMOTE_ADDR'] )
-);

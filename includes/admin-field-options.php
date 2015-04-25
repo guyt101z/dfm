@@ -318,9 +318,18 @@ foreach ( $fields as &$field ) :
                 <span class="dfm-tooltip" title="<?php esc_attr_e( 'About Required', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'Requires the field to be completed before the form is submitted. By default, all fields are set to No.', 'dynamic-form-maker' ); ?>">(?)</span>
                 <br />
 				<select name="field_required-<?php echo $field->field_id; ?>" class="widefat" id="edit-form-item-required-<?php echo $field->field_id; ?>">
-				<?php if ( !in_array( $field->field_type , array( 'password','username','re-password' ) ) ) : ?>
+				<?php 
+				global $wpdb;
+				$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+				$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = ".$_REQUEST['form'] );
+				$form_type = $form_table[0]->form_type;
+				if($form_type == 'user_form'){
+				if(!in_array( $field->field_type , array( 'password','username','re-password','email' ) )):				
+				 ?>
 					<option value="no" <?php selected( $field->field_required, 'no' ); ?>><?php _e( 'No' , 'dynamic-form-maker'); ?></option>
-					<?php endif; ?>
+				<?php endif; } else { ?>
+					<option value="no" <?php selected( $field->field_required, 'no' ); ?>><?php _e( 'No' , 'dynamic-form-maker'); ?></option>
+				<?php } ?>
 					<option value="yes" <?php selected( $field->field_required, 'yes' ); ?>><?php _e( 'Yes' , 'dynamic-form-maker'); ?></option>
 				</select>
 			</label>
@@ -438,13 +447,28 @@ foreach ( $fields as &$field ) :
 	<?php endif; ?>
 <?php endif; ?>
 
-<?php if ( !in_array( $field->field_type, array( 'verification', 'secret', 'submit' ) ) ) : ?>
+<?php 
+	global $wpdb;
+	$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+	$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = ".$_REQUEST['form'] );
+	$form_type = $form_table[0]->form_type;
+	if($form_type == 'user_form'){
+	if(!in_array( $field->field_type , array( 'verification', 'secret', 'submit', 'password','username','re-password','email' ) )):
+	 ?>
 		<!-- Delete link -->
 		<a href="<?php echo esc_url( wp_nonce_url( admin_url('admin.php?page=dynamic-form-maker&amp;action=delete_field&amp;form=' . $form_nav_selected_id . '&amp;field=' . $field->field_id ), 'delete-field-' . $form_nav_selected_id ) ); ?>" class="dfm-button dfm-delete item-delete submitdelete deletion">
 			<?php _e( 'Delete' , 'dynamic-form-maker'); ?>
 			<i class="fa fa-trash-o"></i>
 		</a>
-<?php endif; ?>
+	<?php endif; } else { 
+	if ( !in_array( $field->field_type, array( 'verification', 'secret', 'submit' ) ) ) :
+	?>
+	<!-- Delete link -->
+		<a href="<?php echo esc_url( wp_nonce_url( admin_url('admin.php?page=dynamic-form-maker&amp;action=delete_field&amp;form=' . $form_nav_selected_id . '&amp;field=' . $field->field_id ), 'delete-field-' . $form_nav_selected_id ) ); ?>" class="dfm-button dfm-delete item-delete submitdelete deletion">
+			<?php _e( 'Delete' , 'dynamic-form-maker'); ?>
+			<i class="fa fa-trash-o"></i>
+		</a>
+	<?php endif; } ?>
 
 <input type="hidden" name="field_id[<?php echo $field->field_id; ?>]" value="<?php echo $field->field_id; ?>" />
 </div>
