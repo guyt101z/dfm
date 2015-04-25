@@ -5,6 +5,8 @@ var adminUrl = '<?php echo admin_url(); ?>';
 <?php
 global $wpdb;
 
+
+
 // Get global settings
 $dfm_settings 	= get_option( 'dfm-settings' );
 
@@ -609,9 +611,16 @@ foreach ( $fields as $field ) :
 			break;
 
 		case 'submit' :
+			$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+			$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = $form_id" );
+			$form_type = $form_table[0]->form_type;
+			if($form_type === 'user_form'):
+				$submitClass = 'userRegisterSubmit';
+			endif;
+		
 			$submit = sprintf(
 				'<li class="dfm-item dfm-item-submit" id="item-%2$s">
-				<input type="submit" name="dfm-submit" id="%2$s" value="%3$s" class="dfm-submit %4$s" />
+				<input type="submit" name="dfm-submit" id="%2$s" value="%3$s" class="'.$submitClass.' dfm-submit %4$s" />
 				</li>',
 				$field_id,
 				$id_attr,
@@ -662,6 +671,13 @@ $output .= sprintf(
 );
 
 $output .= wp_referer_field( false );
+
+$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = $form_id" );
+$form_type = $form_table[0]->form_type;
+if($form_type === 'user_form'):
+	$output .= '<input type="hidden" name="userRegiForm" value="yes" />';
+endif;
 
 // Close the form out
 $output .= '</form>';

@@ -312,13 +312,19 @@ p#form_success, .dfm-form-success {
 .dfm-conditional-hide {
     display: none;
 }
-.unameCheck .error{
+.error{
 	color:red;
 }
-
-.unameCheck .no-error{
+.no-error{
 	color:green;
 }
+#unameCheck,#passwordStrength,passwordMatch{
+	margin-left:10px;
+}
+.dfm-item-username .userName{
+	padding: 0.5278em !important;
+}
+
 #passwordStrength.veryWeak_pass,
 #passwordStrength.weak_pass,
 #passwordStrength.medium_pass,

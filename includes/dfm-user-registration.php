@@ -1,10 +1,10 @@
 <?php
 global $wpdb, $post;
 
-if ( isset( $_POST['userRegisterSubmit'] ) )
+if ( !isset( $_POST['userRegisterSubmit'] ) )
 	return;
 
-if ( isset( $_POST['userRegiForm'] ) )
+if ( !isset( $_POST['userRegiForm'] ) )
 	return;
 
 $required 		= ( isset( $_POST['_dfm-required-secret'] ) && $_POST['_dfm-required-secret'] == '0' ) ? false : true;
@@ -62,47 +62,18 @@ $order = sanitize_sql_orderby( 'form_id DESC' );
 $form = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $this->form_table_name WHERE form_id = %d ORDER BY $order", $form_id ) );
 
 $form_settings = (object) array(
-	'form_title' 					=> stripslashes( html_entity_decode( $form->form_title, ENT_QUOTES, 'UTF-8' ) ),
-	'form_subject' 					=> stripslashes( html_entity_decode( $form->form_email_subject, ENT_QUOTES, 'UTF-8' ) ),
-	'form_to' 						=> ( is_array( unserialize( $form->form_email_to ) ) ) ? unserialize( $form->form_email_to ) : explode( ',', unserialize( $form->form_email_to ) ),
-	'form_from' 					=> stripslashes( $form->form_email_from ),
-	'form_from_name' 				=> stripslashes( $form->form_email_from_name ),
-	'form_notification_setting' 	=> stripslashes( $form->form_notification_setting ),
-	'form_notification_email_name' 	=> stripslashes( $form->form_notification_email_name ),
-	'form_notification_email_from' 	=> stripslashes( $form->form_notification_email_from ),
-	'form_notification_subject' 	=> stripslashes( html_entity_decode( $form->form_notification_subject, ENT_QUOTES, 'UTF-8' ) ),
-	'form_notification_message' 	=> stripslashes( $form->form_notification_message ),
-	'form_notification_entry' 		=> stripslashes( $form->form_notification_entry )
+	'form_title' 					=> stripslashes( html_entity_decode( $form->form_title, ENT_QUOTES, 'UTF-8' ) ),		
+	'form_type' 					=> stripslashes( $form->form_type ),
+	'form_user_role' 				=> stripslashes( $form->form_user_role ),	
+	'form_notification_message' 	=> stripslashes( $form->form_notification_message )	
 );
 // Allow the form settings to be filtered (ex: return $form_settings->'form_title' = 'Hello World';)
 $form_settings = (object) apply_filters_ref_array( 'dfm_email_form_settings', array( $form_settings, $form_id ) );
 
-// Sender name field ID
-$sender = $form->form_email_from_name_override;
-
-// Sender email field ID
-$email = $form->form_email_from_override;
-
-// Notifcation email field ID
-$notify = $form->form_notification_email;
-
-$reply_to_name	= $form_settings->form_from_name;
-$reply_to_email	= $form_settings->form_from;
-
-// Use field for sender name
-if ( !empty( $sender ) && isset( $_POST[ 'dfm-' . $sender ] ) ) {
-	$form_settings->form_from_name = wp_kses_data( $_POST[ 'dfm-' . $sender ] );
-	$reply_to_name = $form_settings->form_from_name;
-}
-
-// Use field for sender email
-if ( !empty( $email ) && isset( $_POST[ 'dfm-' . $email ] ) ) {
-	$form_settings->form_from = sanitize_email( $_POST[ 'dfm-' . $email ] );
-	$reply_to_email = $form_settings->form_from;
-}
-
-// Use field for copy email
-$copy_email = ( !empty( $notify ) ) ? sanitize_email( $_POST[ 'dfm-' . $notify ] ) : '';
+$form_title	= $form_settings->form_title;
+$form_type	= $form_settings->form_type;
+$form_user_role	= $form_settings->form_user_role;
+$form_notification_message	= $form_settings->form_notification_message;
 
 // Query to get all forms
 $order = sanitize_sql_orderby( 'field_sequence ASC' );
@@ -110,18 +81,6 @@ $fields = $wpdb->get_results( $wpdb->prepare( "SELECT field_id, field_key, field
 
 // Setup counter for alt rows
 $i = $points = 0;
-
-// Setup HTML email vars
-$header = $body = $message = $footer = $html_email = $auto_response_email = $attachments = '';
-
-// Prepare the beginning of the content
-$header = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-			<html>
-			<head>
-			<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-			<title>HTML Email</title>
-			</head>
-			<body><table rules="all" style="border-color: #666;" cellpadding="10">' . "\n";
 
 // Loop through each form field and build the body of the message
 foreach ( $fields as $field ) :
@@ -286,15 +245,21 @@ foreach ( $fields as $field ) :
 			endif;
 		endif;
 
-		$data[] = array(
-			'id' 		=> $field->field_id,
-			'slug' 		=> $field->field_key,
-			'name' 		=> $field->field_name,
-			'type' 		=> $field->field_type,
-			'options' 	=> $field->field_options,
-			'parent_id' => $field->field_parent,
+			'type' 		=> $field->field_type,		
+			'slug' 		=> $field->field_key,			
 			'value' 	=> esc_html( $value )
-		);
+			
+			$newUserData = array(
+							'user_login' => $username,
+							'first_name' => $firstname,
+							'last_name' => $lastname,
+							'user_pass' => $password,
+							'user_email' => $email,
+							'user_url' => '',
+							'role' => 'administrator'
+						);			
+			$createUser = wp_insert_user( $newUserData );
+		
 
 	endif;
 
@@ -314,96 +279,3 @@ $entry = array(
 	'date_submitted' 	=> date_i18n( 'Y-m-d G:i:s' ),
 	'ip_address' 		=> esc_html( $_SERVER['REMOTE_ADDR'] )
 );
-
-// Insert this data into the entries table
-$wpdb->insert( $this->entries_table_name, $entry );
-
-// Close out the content
-$footer .= '<tr>
-<td class="footer" height="61" align="left" valign="middle" colspan="2">
-<p style="font-size: 12px; font-weight: normal; margin: 0; line-height: 16px; padding: 0;">This email was built and sent using <a href="http://wordpress.org/extend/plugins/dynamic-form-maker/" style="font-size: 12px;">Dynamic Form Maker</a>.</p>
-</td>
-</tr>
-</table>
-</body>
-</html>' . "\n";
-
-// Build complete HTML email
-$message = $header . $body . $footer;
-
-// Wrap lines longer than 70 words to meet email standards
-$message = wordwrap( $message, 70 );
-
-// Decode HTML for message so it outputs properly
-$notify_message = ( $form_settings->form_notification_message !== '' ) ? html_entity_decode( $form_settings->form_notification_message ) : '';
-
-// Initialize header filter vars
-$header_from_name  		= function_exists( 'mb_encode_mimeheader' ) ? mb_encode_mimeheader( stripslashes( $reply_to_name ) ) : stripslashes( $reply_to_name );
-$header_from       		= $reply_to_email;
-$header_content_type 	= 'text/html';
-
-// Either prepend the notification message to the submitted entry, or send by itself
-if ( $form_settings->form_notification_entry !== '' )
-	$auto_response_email = $header . $notify_message . $body . $footer;
-else
-	$auto_response_email = sprintf( '%1$s<table cellspacing="0" border="0" cellpadding="0" width="100%%"><tr><td colspan="2" class="mainbar" align="left" valign="top" width="600">%2$s</td></tr>%3$s', $header, $notify_message, $footer );
-
-
-// Build email headers
-$from_name = ( $header_from_name == '' ) ? 'WordPress' : $header_from_name;
-
-// Use the admin_email as the From email
-$from_email = get_site_option( 'admin_email' );
-
-// Get the site domain and get rid of www.
-$sitename = strtolower( $_SERVER['SERVER_NAME'] );
-if ( substr( $sitename, 0, 4 ) == 'www.' )
-	$sitename = substr( $sitename, 4 );
-
-// Get the domain from the admin_email
-list( $user, $domain ) = explode( '@', $from_email );
-
-// If site domain and admin_email domain match, use admin_email, otherwise a same domain email must be created
-$from_email = ( $sitename == $domain ) ? $from_email : "wordpress@$sitename";
-
-// Settings - Sender Mail Header
-$settings_sender_header = isset( $dfm_settings['sender-mail-header'] ) ? $dfm_settings['sender-mail-header'] : $from_email;
-
-// Allow Sender email to be filtered
-$from_email = apply_filters( 'dfm_sender_mail_header', $settings_sender_header, $form_id );
-
-$reply_to  = "\"$from_name\" <$header_from>";
-$headers[] = "Sender: $from_email";
-$headers[] = "From: $reply_to";
-$headers[] = "Reply-To: $reply_to";
-$headers[] = "Content-Type: $header_content_type; charset=\"" . get_option('blog_charset') . "\"";
-
-$form_subject 	= wp_specialchars_decode( $form_settings->form_subject, ENT_QUOTES );
-$notify_subject = wp_specialchars_decode( $form_settings->form_notification_subject, ENT_QUOTES );
-
-// Sanitize main emails_to
-$emails_to = array_map( 'sanitize_email', $form_settings->form_to );
-
-// Send the mail
-foreach ( $emails_to as $email ) {
-	wp_mail( $email, $form_subject, $message, $headers, $attachments );
-}
-
-// Send auto-responder email
-if ( $form_settings->form_notification_setting !== '' ) :
-
-	$attachments = ( $form_settings->form_notification_entry !== '' ) ? $attachments : '';
-
-	// Reset headers for notification email
-	$reply_name		= function_exists( 'mb_encode_mimeheader' ) ? mb_encode_mimeheader( stripslashes( $form_settings->form_notification_email_name ) ) : stripslashes( $form_settings->form_notification_email_name );
-	$reply_email  = $form_settings->form_notification_email_from;
-	$reply_to 	  = "\"$reply_name\" <$reply_email>";
-	$headers[]    = "Sender: $from_email";
-	$headers[]    = "From: $reply_to";
-	$headers[]    = "Reply-To: $reply_to";
-	$headers[]    = "Content-Type: $header_content_type; charset=\"" . get_option('blog_charset') . "\"";
-
-	// Send the mail
-	wp_mail( $copy_email, $notify_subject, $auto_response_email, $headers, $attachments );
-
-endif;

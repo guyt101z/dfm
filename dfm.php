@@ -663,6 +663,7 @@ class Dynamic_form_maker_Builder{
 				form_notification_message TEXT,
 				form_notification_entry VARCHAR(25),
 				form_label_alignment VARCHAR(25),
+				form_user_role VARCHAR(255),
 				PRIMARY KEY  (form_id)
 			) DEFAULT CHARACTER SET $charset COLLATE $collate;";
 
@@ -960,6 +961,7 @@ class Dynamic_form_maker_Builder{
 		$form_title 	= esc_html( $_REQUEST['form_title'] );
 		$user_role = esc_html( $_REQUEST['user_role'] );
 		$form_name = '';
+		$form_email_subject='';
 		$form_subject 	= '';
 		$form_from 		= '';
 		$form_to 		= '';
@@ -969,10 +971,11 @@ class Dynamic_form_maker_Builder{
 			'form_key' 				=> $form_key,
 			'form_title' 			=> $form_title,
 			'form_email_from_name'	=> $form_name,
-			'form_email_subject'	=> $user_role,
+			'form_email_subject'	=> $form_email_subject,
 			'form_email_from'		=> $form_from,
 			'form_email_to'			=> $form_to,
-			'form_success_message'	=> '<p id="form_success">Your user form was successfully submitted. Thank you for contacting us.</p>'
+			'form_success_message'	=> '<p id="form_success">User created successfully.</p>',
+			'form_user_role'		=> $user_role
 		);
 
 		// Create the form
@@ -992,6 +995,20 @@ class Dynamic_form_maker_Builder{
 
 		// Add the first fieldset to get things started
 		$wpdb->insert( $this->field_table_name, $initial_fieldset );
+		
+		// Make the username last in the
+		$username = array(
+			'form_id' 			=> $new_form_selected,
+			'field_key' 		=> 'username',
+			'field_type' 		=> 'username',
+			'field_name' 		=> 'Username',			
+			'field_sequence' 	=> 1,
+			'field_required'	=> 'yes',
+			'field_size' 		=> 'medium'
+		);
+
+		// Insert the submit field
+		$wpdb->insert( $this->field_table_name, $username );
 
 		$verification_fieldset = array(
 			'form_id' 			=> $new_form_selected,
@@ -999,14 +1016,14 @@ class Dynamic_form_maker_Builder{
 			'field_type' 		=> 'verification',
 			'field_name' 		=> 'Verification',
 			'field_description' => '(This is for preventing spam)',
-			'field_sequence' 	=> 1
+			'field_sequence' 	=> 2
 		);
 
 		// Insert the submit field
 		$wpdb->insert( $this->field_table_name, $verification_fieldset );
 
 		$verify_fieldset_parent_id = $wpdb->insert_id;
-
+				
 		$secret = array(
 			'form_id' 			=> $new_form_selected,
 			'field_key' 		=> 'secret',
@@ -1016,7 +1033,7 @@ class Dynamic_form_maker_Builder{
 			'field_size' 		=> 'medium',
 			'field_required' 	=> 'yes',
 			'field_parent' 		=> $verify_fieldset_parent_id,
-			'field_sequence' 	=> 2
+			'field_sequence' 	=> 3
 		);
 
 		// Insert the submit field
@@ -1029,7 +1046,7 @@ class Dynamic_form_maker_Builder{
 			'field_type' 		=> 'submit',
 			'field_name' 		=> 'Submit',
 			'field_parent' 		=> $verify_fieldset_parent_id,
-			'field_sequence' 	=> 3
+			'field_sequence' 	=> 4
 		);
 
 		// Insert the submit field
@@ -1993,6 +2010,17 @@ class Dynamic_form_maker_Builder{
 	 */
 	public function email() {
 		require( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/dfm-email.php' );
+	}
+	
+	
+	/**
+	 * Handle user registration
+	 *
+	 * @since 1.0
+	 * @uses user registration message
+	 */
+	public function user_registration() {
+		require( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/dfm-user-registration.php' );
 	}
 
 	/**

@@ -1,8 +1,9 @@
 var tpj=jQuery;
 tpj.noConflict();
 tpj(document).ready(function() {
-	var labelTag = tpj(".userName").prev('label').html();
-	tpj(".userName").prev('label').html(labelTag+' '+'<span class="unameCheck"></span>');
+	//var labelTag = tpj(".userName").prev('label').html();
+	//tpj(".userName").prev('label').html(labelTag+' '+'<span class="unameCheck"></span>');
+	tpj(".userName").after('<span id="unameCheck"></span>');
 	tpj(".userName").keyup(function(){
 		var userName = this.value;			
 		tpj.ajax({
@@ -17,24 +18,22 @@ tpj(document).ready(function() {
 		  //tpj("#unameCheck").html('');
 		  //tpj(".userName").after('');
 		  		  
-		  tpj(".unameCheck").html(data);
+		  tpj("#unameCheck").html(data);
 		  
 		  
 		  },
 		  error: function(MLHttpRequest, textStatus, errorThrown){
-		  alert(errorThrown);
+		   //alert(errorThrown);
 		  }
 		  
 		  });
 	});
 	
-	var passLabelTag = tpj(".userPass").prev('label').html();	
-	tpj(".userPass").prev('label').html(passLabelTag+' '+'<span id="passwordStrength"></span>');
-	tpj(".userPass").after('<input type="hidden" id="passLabel" name="passLabel" value="" />');
 	
-	var passMatchLabelTag = tpj(".userRePass").prev('label').html();	
-	tpj(".userRePass").prev('label').html(passMatchLabelTag+' '+'<span id="passwordMatch"></span>');
-	tpj(".userRePass").after('<input type="hidden" id="passReLabel" name="passReLabel" value="" />');
+	tpj(".userPass").after('<span id="passwordStrength"></span>');	
+	tpj(".userPass").after('<input type="hidden" id="passLabel" name="passLabel" value="" />');		
+	tpj(".userRePass").after('<span id="passwordMatch"></span>');	
+	tpj(".userRePass").after('<input type="hidden" id="passReLabel" name="passReLabel" value="" /><input type="hidden" id="passReLabel2" name="passReLabel2" value="" />');
 	
 	tpj('.userPass').keyup(function(e) {		
      var strongRegex = new RegExp("^(?=.{6,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
@@ -58,19 +57,20 @@ tpj(document).ready(function() {
              tpj('#passwordStrength').html('Weak!');
      }
 	 
-	 /*var userPassword = tpj(".userPass").val();
+	 var userPassword = tpj(".userPass").val();
 		 var userRePassword = tpj(".userRePass").val();
 		 if(userPassword !='' && userRePassword != ''){
 			if(userPassword == userRePassword){
-				tpj('#passwordMatch').html('');
-				tpj('#passwordStrength').attr('class','passMatch');
-				tpj('#passwordStrength').html('Password match');
+				tpj('#passReLabel2').val('match');
+				tpj('#passwordMatch').attr('class','passMatch');
+				tpj('#passwordMatch').html('Password match');
+				
 			} else {
-				tpj('#passwordMatch').html('');
-				tpj('#passwordStrength').attr('class','passNoMatch');
-				tpj('#passwordStrength').html('Password mismatch!');
+				tpj('#passReLabel2').val('mismatch');
+				tpj('#passwordMatch').attr('class','passNoMatch');
+				tpj('#passwordMatch').html('Password mismatch!');
 			}
-	 } */
+	 } 
 	 
      return true;
 });
@@ -80,7 +80,7 @@ tpj(document).ready(function() {
 	tpj('.userRePass').keyup(function(e) {		
 		 var userPassword = tpj(".userPass").val();
 		 var userRePassword = tpj(".userRePass").val();
-		 if(userPassword !='' && userRePassword != ''){
+		 //if(userPassword !='' && userRePassword != ''){
 			if(userPassword == userRePassword){
 				tpj('#passReLabel').val('match');
 				tpj('#passwordMatch').attr('class','passMatch');
@@ -90,10 +90,32 @@ tpj(document).ready(function() {
 				tpj('#passwordMatch').attr('class','passNoMatch');
 				tpj('#passwordMatch').html('Password mismatch!');
 			}
-		 }
+		 //}
      return true;
 	});
+
+
+var userNameValue = tpj(".userName").prev('label').html();	
+tpj(".userName").prev('label').html(userNameValue+' '+'<span id="userAlreadyExistCheckMess"></span>');
+var passMatchLabelTag = tpj(".userRePass").prev('label').html();	
+tpj(".userRePass").prev('label').html(passMatchLabelTag+' '+'<span id="userRePassCheckMess"></span>');
+tpj(".userRegisterSubmit").click(function(){	
+	var userAlreadyExistCheck = jQuery('#userAlreadyExistCheck').val();
+	if(userAlreadyExistCheck == '' || userAlreadyExistCheck == 'error'){
+		jQuery('#userAlreadyExistCheckMess').html('<span class="error">Please, type anouther username!</span>');
+		jQuery( ".userName" ).focus().css({'border':'1px solid red','outline':'none'});
+		return false;
+	}
 	
+	var passReLabel = jQuery('#passReLabel').val();
+	if(passReLabel == '' || passReLabel == 'mismatch'){
+		jQuery('#userRePassCheckMess').html('<span class="error">Please, type same as password!</span>');
+		jQuery( ".userPass" ).css({'border':'1px solid red','outline':'none'});
+		jQuery( ".userRePass" ).focus().css({'border':'1px solid red','outline':'none'});
+		return false;
+	}	
+	
+});
 	
 	
 });
