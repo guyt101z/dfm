@@ -1,7 +1,7 @@
 <?php
 global $wpdb, $post;
 
-if ( isset( $_POST['userRegisterSubmit'] ) )
+if ( isset( $_POST['dfm-user-submit'] ) )
 	return;
 
 if ( isset( $_POST['userRegiForm'] ) )

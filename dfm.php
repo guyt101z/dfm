@@ -149,7 +149,10 @@ class Dynamic_form_maker_Builder{
 
 		add_shortcode( 'dfm', array( &$this, 'dynamic_form_code' ) );
 		add_action( 'init', array( &$this, 'email' ), 10 );
+		add_action( 'init', array( &$this, 'user_registration' ), 10 );
 		add_action( 'init', array( &$this, 'confirmation' ), 12 );
+		
+		add_action( 'init', array( &$this, 'user_confirmation' ), 12 );
 
 		// Add CSS to the front-end
 		add_action( 'wp_enqueue_scripts', array( &$this, 'dfm_css' ) );
@@ -529,9 +532,8 @@ class Dynamic_form_maker_Builder{
 					$form_type = $form_table[0]->form_type;
 					if($form_type === 'user_form'):
 				?>
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-username"><i class="fa fa-user"></i>Username</a></li>					
-					<li><a href="#" class="dfm-draggable-form-items" id="form-element-re-password"><i class="fa fa-lock"></i>Re-Password</a></li>
-				<?php endif; ?>
+					<li><a href="#" class="dfm-draggable-form-items" id="form-element-firstname"><i class="fa fa-user"></i>First Name</a></li>
+				<?php endif;  ?>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-text"><i class="fa fa-font"></i>Text</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-checkbox"><i class="fa fa-check-square-o"></i>Checkbox</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-phone"><i class="fa fa-phone"></i>Phone</a></li>
@@ -547,7 +549,7 @@ class Dynamic_form_maker_Builder{
 					<?php
 						if($form_type === 'user_form'):
 					?>					
-						<li><a href="#" class="dfm-draggable-form-items" id="form-element-password"><i class="fa fa-lock"></i>Password</a></li>					
+						<li><a href="#" class="dfm-draggable-form-items" id="form-element-lastname"><i class="fa fa-user"></i>Last Name</a></li>					
 					<?php endif; ?>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-textarea"><i class="fa fa-file-text-o"></i>Textarea</a></li>
 					<li><a href="#" class="dfm-draggable-form-items" id="form-element-radio"><i class="fa fa-dot-circle-o"></i>Radio</a></li>
@@ -2029,6 +2031,41 @@ class Dynamic_form_maker_Builder{
 			}
 		endforeach;
 	}
+	
+		/**
+	 * Handle confirmation when form is submitted
+	 *
+	 * @since 1.0
+	 */
+	function user_confirmation(){
+		global $wpdb;
+
+		$form_id = ( isset( $_REQUEST['form_id'] ) ) ? (int) esc_html( $_REQUEST['form_id'] ) : '';
+
+		if ( !isset( $_REQUEST['dfm-user-submit'] ) )
+			return;
+
+		// Get forms
+		$order = sanitize_sql_orderby( 'form_id DESC' );
+		$forms 	= $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $this->form_table_name WHERE form_id = %d ORDER BY $order", $form_id ) );
+
+		foreach ( $forms as $form ) :
+			// If text, return output and format the HTML for display
+			if ( 'text' == $form->form_success_type )
+				return stripslashes( html_entity_decode( wp_kses_stripslashes( $form->form_success_message ) ) );
+			// If page, redirect to the permalink
+			elseif ( 'page' == $form->form_success_type ) {
+				$page = get_permalink( $form->form_success_message );
+				wp_redirect( $page );
+				exit();
+			}
+			// If redirect, redirect to the URL
+			elseif ( 'redirect' == $form->form_success_type ) {
+				wp_redirect( esc_url( $form->form_success_message ) );
+				exit();
+			}
+		endforeach;
+	}
 
 	/**
 	 * Output form via shortcode
@@ -2074,11 +2111,66 @@ class Dynamic_form_maker_Builder{
 			wp_die( "<h1>$name</h1><br>" . __( 'This field is required and cannot be empty.', 'dynamic-form-maker' ), $name, array( 'back_link' => true ) );
 
 		if ( strlen( $data ) > 0 ) :
-			switch( $type ) :
+			switch( $type ) :				
 
 				case 'email' :
-					if ( !is_email( $data ) )
+					if ( !is_email( $data ) ){
 						wp_die( "<h1>$name</h1><br>" . __( 'Not a valid email address', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
+					}					
+					break;
+
+				case 'number' :
+				case 'currency' :
+					if ( !is_numeric( $data ) )
+						wp_die( "<h1>$name</h1><br>" . __( 'Not a valid number', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
+					break;
+
+				case 'phone' :
+					if ( strlen( $data ) > 9 && preg_match( '/^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/', $data ) )
+						return true;
+					else
+						wp_die( "<h1>$name</h1><br>" . __( 'Not a valid phone number. Most US/Canada and International formats accepted.', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
+					break;
+
+				case 'url' :
+					if ( !preg_match( '|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $data ) )
+						wp_die( "<h1>$name</h1><br>" . __( 'Not a valid URL.', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
+						break;
+
+				default :
+					return true;
+					break;
+
+			endswitch;
+		endif;
+	}
+	
+	
+	/**
+	 * Validate the input
+	 *
+	 * @since 1.0
+	 */
+	public function validate_user_check( $data, $name, $type, $required ) {
+
+		if ( 'yes' == $required && strlen( $data ) == 0 )
+			wp_die( "<h1>$name</h1><br>" . __( 'This field is required and cannot be empty.', 'dynamic-form-maker' ), $name, array( 'back_link' => true ) );
+
+		if ( strlen( $data ) > 0 ) :
+			switch( $type ) :
+			
+				case 'username' :
+				if ( username_exists($data) )
+					wp_die( "<h1>$name</h1><br>" . __( 'Already exist', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
+				break;
+
+				case 'email' :
+					if ( !is_email( $data ) ){
+						wp_die( "<h1>$name</h1><br>" . __( 'Not a valid email address', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
+					}
+					if ( email_exists($data) ){
+						wp_die( "<h1>$name</h1><br>" . __( 'Already exist', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
+					}
 					break;
 
 				case 'number' :

@@ -31,6 +31,10 @@ if ( isset( $_POST['dfm-submit'] ) && isset( $_POST['form_id'] ) && $_POST['form
 	$output = $this->confirmation();
 	return;
 }
+if ( isset( $_POST['dfm-user-submit'] ) && isset( $_POST['form_id'] ) && $_POST['form_id'] == $form_id ) {
+	$output = $this->user_confirmation();
+	return;
+}
 
 $order = sanitize_sql_orderby( 'form_id DESC' );
 $form  = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $this->form_table_name WHERE form_id = %d ORDER BY $order", $form_id ) );
@@ -221,19 +225,15 @@ foreach ( $fields as $field ) :
 	endif;
 
 	switch ( $field_type ) {
-		case 'text' :
-		case 'email' :
-		case 'url' :
+		case 'text' :		
 		case 'currency' :
 		case 'number' :
 		case 'phone' :		
 
-			// HTML5 types
-			if ( in_array( $field_type, array( 'email', 'url' ) ) )
-				$type = esc_attr( $field_type );
-			elseif ( 'phone' == $field_type ){
+			// HTML5 types			
+			if ( 'phone' == $field_type ){
 				$type = 'tel';				
-			}				
+			}			
 			else {
 				$type = 'text';				
 			}
@@ -255,36 +255,94 @@ foreach ( $fields as $field ) :
 
 			break;
 			
-			
+		
+
+		if ( in_array( $field_type, array( 'email', 'url' ) ) ){
+				$type = esc_attr( $field_type );				
+			}
+		
+		$form_item = sprintf(
+				'<input type="%8$s" name="dfm-%1$d" id="%2$s" value="%3$s" class="dfm-text %4$s %5$s %6$s %7$s" />',
+				$field_id,
+				$id_attr,
+				$default,
+				$size,
+				$required,
+				$validation,
+				$css,
+				$type
+			);
+
+			$output .= ( !empty( $description ) ) ? sprintf( '<span class="dfm-span">%1$s<label>%2$s</label></span>', $form_item, $description ) : $form_item;
+		
+		break;
+		
 		
 		case 'username' :
 		case 'password' :
 		case 're-password' :
+		case 'first-name' :
+		case 'last-name' :
+		case 'email' :
+		case 'url' :
 		// HTML5 types
-			if ( 'username' == $field_type ){
+			
+			if ( 'email' == $field_type ){
+				$type = 'email';
+				$typeClass = 'email';
+				$strength_indicator = '';
+				$fieldName = 'email';
+				$autocomplete = 'off';
+			}
+			
+			elseif ( 'url' == $field_type ){
+				$type = 'url';
+				$typeClass = 'url';
+				$strength_indicator = '';
+				$fieldName = 'url';
+				$autocomplete = 'on';
+			}
+		
+			elseif ( 'username' == $field_type ){
 				$type = 'text';
 				$typeClass = 'userName';
 				$strength_indicator = '';
-				$fieldName = 'userName';
+				$fieldName = 'username';
+				$autocomplete = 'off';
 			}
-				
+			elseif ( 'first-name' == $field_type ){
+				$type = 'text';
+				$fieldName = 'firstname';
+				$typeClass = 'firstname';
+				$strength_indicator = '';
+				$autocomplete = 'on';
+			}
+			elseif ( 'last-name' == $field_type ){
+				$type = 'text';	
+				$fieldName = 'lastname';
+				$typeClass = 'lastname';
+				$strength_indicator = '';
+				$autocomplete = 'on';
+			}				
 			elseif ( 'password' == $field_type ){
 				$type = 'password';
 				$typeClass = 'userPass';
 				$strength_indicator = $field->field_options;
 				$fieldName = 'password';
+				$autocomplete = 'off';
 			}
 				
 			elseif ( 're-password' == $field_type ){
 				$type = 'password';
 				$typeClass = 'userRePass';
 				$strength_indicator = '';
-				$fieldName = 'rePassword';
+				$fieldName = 're-password';
+				$autocomplete = 'off';
 			}
 			else{}
 
 			$form_item = sprintf(
-				'<input type="%8$s" name="dfm-%1$s" id="%2$s" value="%3$s" class="'.$typeClass.' '.$strength_indicator.' dfm-text %4$s %5$s %6$s %7$s" />',
+				'<input type="%8$s" name="dfm-%1$s" id="%2$s" autocomplete="'.$autocomplete.'" value="%3$s" class="'.$typeClass.' '.$strength_indicator.' dfm-text %4$s %5$s %6$s %7$s" />',
 				$fieldName,
 				$id_attr,
 				$default,
@@ -633,8 +691,19 @@ foreach ( $fields as $field ) :
 			$form_type = $form_table[0]->form_type;
 			if($form_type === 'user_form'):
 				$submitClass = 'userRegisterSubmit';
-			endif;
+			
 		
+			$submit = sprintf(
+				'<li class="dfm-item dfm-item-submit" id="item-%2$s">
+				<input type="submit" name="dfm-user-submit" id="%2$s" value="%3$s" class="'.$submitClass.' dfm-submit %4$s" />
+				</li>',
+				$field_id,
+				$id_attr,
+				wp_specialchars_decode( esc_html( $field_name ), ENT_QUOTES ),
+				$css
+			);
+			else :
+			
 			$submit = sprintf(
 				'<li class="dfm-item dfm-item-submit" id="item-%2$s">
 				<input type="submit" name="dfm-submit" id="%2$s" value="%3$s" class="'.$submitClass.' dfm-submit %4$s" />
@@ -643,8 +712,9 @@ foreach ( $fields as $field ) :
 				$id_attr,
 				wp_specialchars_decode( esc_html( $field_name ), ENT_QUOTES ),
 				$css
-			);
-
+			);			
+			endif;
+			
 			break;
 
 		default:
@@ -693,7 +763,7 @@ $form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";
 $form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = $form_id" );
 $form_type = $form_table[0]->form_type;
 if($form_type === 'user_form'):
-	$output .= '<input type="hidden" name="userRegiForm" value="yes" />';
+	$output .= '<input type="hidden" name="userRegiForm" value="ok" />';
 endif;
 
 // Close the form out

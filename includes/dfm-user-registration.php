@@ -1,7 +1,7 @@
 <?php
 global $wpdb, $post;
 
-if ( !isset( $_POST['userRegisterSubmit'] ) )
+if ( !isset( $_POST['dfm-user-submit'] ) )
 	return;
 
 if ( !isset( $_POST['userRegiForm'] ) )
@@ -22,7 +22,7 @@ if ( true == $required && !empty( $secret_field ) ) :
 endif;
 
 // Basic security check before moving any further
-if ( !isset( $_POST['dfm-submit'] ) )
+if ( !isset( $_POST['dfm-user-submit'] ) )
 	return;
 
 // Get global settings
@@ -80,8 +80,54 @@ $order = sanitize_sql_orderby( 'field_sequence ASC' );
 $fields = $wpdb->get_results( $wpdb->prepare( "SELECT field_id, field_key, field_name, field_type, field_options, field_parent, field_required FROM $this->field_table_name WHERE form_id = %d ORDER BY $order", $form_id ) );
 
 // Setup counter for alt rows
-$i = $points = 0;
 
+
+foreach ( $fields as $field ) {
+	$value = ( isset( $_POST[ 'dfm-' . $field->field_id ] ) ) ? $_POST[ 'dfm-' . $field->field_id ] : $_POST[ 'dfm-' . $field->field_type ];
+
+		// If time field, build proper output
+		if ( is_array( $value ) && $field->field_type == 'time' )
+			$value = $this->build_array_form_item( $value, $field->field_type );
+		// If address field, build proper output
+		elseif ( is_array( $value ) && $field->field_type == 'address' )
+			$value = $this->build_array_form_item( $value, $field->field_type );
+		// If multiple values, build the list
+		elseif ( is_array( $value ) )
+			$value = $this->build_array_form_item( $value, $field->field_type );
+		elseif ( 'radio' == $field->field_type )
+			$value = wp_specialchars_decode( stripslashes( esc_html( $value ) ), ENT_QUOTES );
+		// Lastly, handle single values
+		else
+			$value = html_entity_decode( stripslashes( esc_html( $value ) ), ENT_QUOTES, 'UTF-8' );
+	//Sanitize input
+	$value = $this->sanitize_input( $value, $field->field_type );
+	// Validate input
+	$this->validate_user_check( $value, $field->field_name, $field->field_type, $field->field_required );
+}
+
+
+	$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+	$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = $form_id" );
+	$form_user_role = $form_table[0]->form_user_role;
+	$username = $_POST['dfm-username'];
+	$firstname = $_POST['dfm-firstname'];
+	$lastname = $_POST['dfm-lastname'];
+	$email = $_POST['dfm-email'];
+	$url = $_POST['dfm-url'];
+	$password = $_POST['dfm-password'];					
+
+	$newUserData = array(
+		'user_login' => $username,
+		'first_name' => $firstname,
+		'last_name' => $lastname,
+		'user_pass' => $password,
+		'user_email' => $email,
+		'user_url' => $url,
+		'role' => $form_user_role
+	);
+	$createUser = wp_insert_user( $newUserData );
+
+$i = $points = 0;
 $count = 0;
 // Loop through each form field and build the body of the message
 foreach ( $fields as $field ) :
@@ -148,25 +194,11 @@ foreach ( $fields as $field ) :
 					'value' 	=> $uploaded_file['url']
 				);
 
-				$body .= sprintf(
-					'<tr>
-					<td><strong>%1$s: </strong></td>
-					<td><a href="%2$s">%2$s</a></td>
-					</tr>' . "\n",
-					stripslashes( $field->field_name ),
-					$uploaded_file['url']
-				);
+				
 			endif;
 		else :
 			$value = ( isset( $_POST[ 'dfm-' . $field->field_id ] ) ) ? $_POST[ 'dfm-' . $field->field_id ] : '';
-			$body .= sprintf(
-				'<tr>
-				<td><strong>%1$s: </strong></td>
-				<td>%2$s</td>
-				</tr>' . "\n",
-				stripslashes( $field->field_name ),
-				$value
-			);
+			
 		endif;
 
 	// Everything else
@@ -188,91 +220,20 @@ foreach ( $fields as $field ) :
 		else
 			$value = html_entity_decode( stripslashes( esc_html( $value ) ), ENT_QUOTES, 'UTF-8' );
 
-		// Spam Words - Exploits
-		$exploits = array( 'content-type', 'bcc:', 'cc:', 'document.cookie', 'onclick', 'onload', 'javascript', 'alert' );
-		$exploits = apply_filters( 'dfm_spam_words_exploits', $exploits, $form_id );
-
-		// Spam Words - Exploits
-		$profanity = array( 'beastial', 'bestial', 'blowjob', 'clit', 'cock', 'cum', 'cunilingus', 'cunillingus', 'cunnilingus', 'cunt', 'ejaculate', 'fag', 'felatio', 'fellatio', 'fuck', 'fuk', 'fuks', 'gangbang', 'gangbanged', 'gangbangs', 'hotsex', 'jism', 'jiz', 'kock', 'kondum', 'kum', 'kunilingus', 'orgasim', 'orgasims', 'orgasm', 'orgasms', 'phonesex', 'phuk', 'phuq', 'porn', 'pussies', 'pussy', 'spunk', 'xxx' );
-		$profanity = apply_filters( 'dfm_spam_words_profanity', $profanity, $form_id );
-
-		// Spam Words - Misc
-		$spamwords = array( 'viagra', 'phentermine', 'tramadol', 'adipex', 'advai', 'alprazolam', 'ambien', 'ambian', 'amoxicillin', 'antivert', 'blackjack', 'backgammon', 'holdem', 'poker', 'carisoprodol', 'ciara', 'ciprofloxacin', 'debt', 'dating', 'porn' );
-		$spamwords = apply_filters( 'dfm_spam_words_misc', $spamwords, $form_id );
-
-		// Add up points for each spam hit
-		if ( preg_match( '/(' . implode( '|', $exploits ) . ')/i', $value ) )
-			$points += 2;
-		elseif ( preg_match( '/(' . implode( '|', $profanity ) . ')/i', $value ) )
-			$points += 1;
-		elseif ( preg_match( '/(' . implode( '|', $spamwords ) . ')/i', $value ) )
-			$points += 1;
-
 		//Sanitize input
 		$value = $this->sanitize_input( $value, $field->field_type );
 		// Validate input
-		$this->validate_input( $value, $field->field_name, $field->field_type, $field->field_required );
-
-		$removed_field_types = array( 'verification', 'secret', 'submit' );
-
-		// Don't add certain fields to the email
-		if ( ! in_array( $field->field_type, $removed_field_types ) ) :
-			if ( $field->field_type == 'fieldset' ) :
-				$body .= sprintf(
-					'<tr style="background-color:#393E40;color:white;font-size:14px;">
-					<td colspan="2">%1$s</td>
-					</tr>' . "\n",
-					stripslashes( $field->field_name )
-				);
-			elseif ( $field->field_type == 'section' ) :
-				$body .= sprintf(
-					'<tr style="background-color:#6E7273;color:white;font-size:14px;">
-					<td colspan="2">%1$s</td>
-					</tr>' . "\n",
-					stripslashes( $field->field_name )
-				);
-			else :
-				// Convert new lines to break tags for textarea in html
-				$display_value = ( 'textarea' == $field->field_type ) ? nl2br( $value ) : $value;
-
-				$body .= sprintf(
-					'<tr>
-					<td><strong>%1$s: </strong></td>
-					<td>%2$s</td>
-					</tr>' . "\n",
-					stripslashes( $field->field_name ),
-					$display_value
-				);
-			endif;
-		endif;
-
-			'type' 		=> $field->field_type,		
-			'slug' 		=> $field->field_key,			
-			'value' 	=> esc_html( $value )
-			if($count == 0 ):
-				if($field->field_key == 'username') 
-					$username = $_POST['dfm-userName'];
-				if($field->field_key == 'password')
-					$password = $_POST['dfm-password'];
-				
-				$newUserData = array(
-								'user_login' => $username,
-								'first_name' => $firstname,
-								'last_name' => $lastname,
-								'user_pass' => $password,
-								'user_email' => $email,
-								'user_url' => '',
-								'role' => 'administrator'
-							);			
-				$createUser = wp_insert_user( $newUserData );
-			endif;
+		//$this->validate_input( $value, $field->field_name, $field->field_type, $field->field_required );
 		
+		$removed_field_types = array( 'verification', 'secret', 'submit' );
+		
+		if(!in_array( $field->field_type , array( 'password','username','re-password','first-name','last-name','verification', 'secret', 'submit' ) )){
+		add_user_meta( $createUser, $field->field_key, esc_html( $value ), true );
+		}
 
 	endif;
-
-	// If the user accumulates more than 4 points, it might be spam
-	if ( $points > $settings_spam_points )
-		wp_die( __( 'Your responses look too much like spam and could not be sent at this time.', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
-$count++;	
+ $count++;	
 endforeach;
+
+
 
