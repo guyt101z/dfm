@@ -3,7 +3,7 @@
 Plugin Name: Dynamic Form Maker
 Description: Dynamic Form Maker has a easy interface. It has jQuery validation,entry tracking system and basic logical verification system.
 Author: Jakir Hossain
-Author URI: http://jakir.net
+Author URI: http://jakirhossain.com
 Version: 1.0
 */
 
@@ -90,7 +90,7 @@ class Dynamic_form_maker_Builder{
 		// Setup global database table names
 		$this->field_table_name 	= $wpdb->prefix . 'dynamic_form_maker_fields';
 		$this->form_table_name 		= $wpdb->prefix . 'dynamic_form_maker_forms';
-		$this->entries_table_name 	= $wpdb->prefix . 'dynamic_form_maker_entries';
+		$this->records_table_name 	= $wpdb->prefix . 'dynamic_form_maker_records';
 
 		// Add suffix to load dev files
 		$this->load_dev_files = ( defined( 'VFB_SCRIPT_DEBUG' ) && VFB_SCRIPT_DEBUG ) ? '' : '.min';
@@ -169,7 +169,7 @@ class Dynamic_form_maker_Builder{
 		$page_main = $this->_admin_pages[ 'dfm' ];
 
 		if ( !get_option( 'dfm_dashboard_widget_options' ) ) {
-			$widget_options['dfm_dashboard_recent_entries'] = array(
+			$widget_options['dfm_dashboard_recent_records'] = array(
 				'items' => 5,
 			);
 			update_option( 'dfm_dashboard_widget_options', $widget_options );
@@ -207,15 +207,15 @@ class Dynamic_form_maker_Builder{
 	 * @since 1.0
 	 */
 	public function includes(){
-		global $dfm_entries_list, $dfm_entries_detail;
+		global $dfm_records_list, $dfm_records_detail;
 
 		// Load the Form Form Records List class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-records-list.php' );
-		$dfm_entries_list = new DynamicFormMaker_Form_Entries_List();
+		$dfm_records_list = new DynamicFormMaker_Form_Records_List();
 
 		// Load the Form Form Records Details class
 		require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-records-detail.php' );
-		$dfm_entries_detail = new DynamicFormMaker_Form_Entries_Detail();
+		$dfm_records_detail = new DynamicFormMaker_Form_Records_Detail();
 		
 		
 		
@@ -282,7 +282,7 @@ class Dynamic_form_maker_Builder{
 		$time_format = get_option( 'time_format' );
 
 		$widgets = get_option( 'dfm_dashboard_widget_options' );
-		$total_items = isset( $widgets['dfm_dashboard_recent_entries'] ) && isset( $widgets['dfm_dashboard_recent_entries']['items'] ) ? absint( $widgets['dfm_dashboard_recent_entries']['items'] ) : 5;
+		$total_items = isset( $widgets['dfm_dashboard_recent_records'] ) && isset( $widgets['dfm_dashboard_recent_records']['items'] ) ? absint( $widgets['dfm_dashboard_recent_records']['items'] ) : 5;
 
 		$forms = $wpdb->get_var( "SELECT COUNT(*) FROM {$this->form_table_name}" );
 
@@ -297,7 +297,7 @@ class Dynamic_form_maker_Builder{
 			return;
 		endif;
 
-		$records = $wpdb->get_results( $wpdb->prepare( "SELECT forms.form_title, records.entries_id, records.form_id, records.sender_name, records.sender_email, records.date_submitted FROM $this->form_table_name AS forms INNER JOIN $this->entries_table_name AS records ON records.form_id = forms.form_id ORDER BY records.date_submitted DESC LIMIT %d", $total_items ) );
+		$records = $wpdb->get_results( $wpdb->prepare( "SELECT forms.form_title, records.records_id, records.form_id, records.sender_name, records.sender_email, records.date_submitted FROM $this->form_table_name AS forms INNER JOIN $this->records_table_name AS records ON records.form_id = forms.form_id ORDER BY records.date_submitted DESC LIMIT %d", $total_items ) );
 
 		if ( !$records ) :
 			echo sprintf( '<p>%1$s</p>', __( 'You currently do not have any records.', 'dynamic-form-maker' ) );
@@ -309,7 +309,7 @@ class Dynamic_form_maker_Builder{
 
 				$content .= sprintf(
 					'<li><a href="%1$s">%4$s</a> via <a href="%2$s">%5$s</a> <span class="rss-date">%6$s</span><cite>%3$s</cite></li>',
-					esc_url( add_query_arg( array( 'action' => 'view', 'entry' => absint( $entry->entries_id ) ), admin_url( 'admin.php?page=dfm-records' ) ) ),
+					esc_url( add_query_arg( array( 'action' => 'view', 'entry' => absint( $entry->records_id ) ), admin_url( 'admin.php?page=dfm-records' ) ) ),
 					esc_url( add_query_arg( 'form-filter', absint( $entry->form_id ), admin_url( 'admin.php?page=dfm-records' ) ) ),
 					esc_html( $entry->sender_name ),
 					esc_html( $entry->sender_email ),
@@ -333,16 +333,16 @@ class Dynamic_form_maker_Builder{
 		if ( !$widget_options = get_option( 'dfm_dashboard_widget_options' ) )
 			$widget_options = array();
 
-		if ( !isset( $widget_options['dfm_dashboard_recent_entries'] ) )
-			$widget_options['dfm_dashboard_recent_entries'] = array();
+		if ( !isset( $widget_options['dfm_dashboard_recent_records'] ) )
+			$widget_options['dfm_dashboard_recent_records'] = array();
 
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_POST['dfm-widget-recent-records'] ) ) {
 			$number = absint( $_POST['dfm-widget-recent-records']['items'] );
-			$widget_options['dfm_dashboard_recent_entries']['items'] = $number;
+			$widget_options['dfm_dashboard_recent_records']['items'] = $number;
 			update_option( 'dfm_dashboard_widget_options', $widget_options );
 		}
 
-		$number = isset( $widget_options['dfm_dashboard_recent_entries']['items'] ) ? (int) $widget_options['dfm_dashboard_recent_entries']['items'] : '';
+		$number = isset( $widget_options['dfm_dashboard_recent_records']['items'] ) ? (int) $widget_options['dfm_dashboard_recent_records']['items'] : '';
 
 		echo sprintf(
 			'<p>
@@ -450,15 +450,15 @@ class Dynamic_form_maker_Builder{
 		$screen = get_current_screen();
 
 		$page_main		= $this->_admin_pages[ 'dfm' ];
-		$page_entries 	= $this->_admin_pages[ 'dfm-records' ];
+		$page_records 	= $this->_admin_pages[ 'dfm-records' ];
 
 		switch( $screen->id ) {
-			case $page_entries :
+			case $page_records :
 
 				add_screen_option( 'per_page', array(
 					'label'		=> __( 'Form Records per page', 'dynamic-form-maker' ),
 					'default'	=> 20,
-					'option'	=> 'dfm_entries_per_page'
+					'option'	=> 'dfm_records_per_page'
 				) );
 
 				break;
@@ -489,7 +489,7 @@ class Dynamic_form_maker_Builder{
 	 */
 	public function save_screen_options( $status, $option, $value ){
 
-		if ( $option == 'dfm_entries_per_page' )
+		if ( $option == 'dfm_records_per_page' )
 			return $value;
 		elseif ( $option == 'dfm_forms_per_page' )
 			return $value;
@@ -617,7 +617,7 @@ class Dynamic_form_maker_Builder{
 
 		$field_table_name     = $wpdb->prefix . 'dynamic_form_maker_fields';
 		$form_table_name      = $wpdb->prefix . 'dynamic_form_maker_forms';
-		$entries_table_name   = $wpdb->prefix . 'dynamic_form_maker_entries';
+		$records_table_name   = $wpdb->prefix . 'dynamic_form_maker_records';
 
 		// Explicitly set the character set and collation when creating the tables
 		$charset = ( defined( 'DB_CHARSET' && '' !== DB_CHARSET ) ) ? DB_CHARSET : 'utf8';
@@ -669,8 +669,8 @@ class Dynamic_form_maker_Builder{
 				PRIMARY KEY  (form_id)
 			) DEFAULT CHARACTER SET $charset COLLATE $collate;";
 
-		$entries_sql = "CREATE TABLE $entries_table_name (
-				entries_id BIGINT(20) NOT NULL AUTO_INCREMENT,
+		$records_sql = "CREATE TABLE $records_table_name (
+				records_id BIGINT(20) NOT NULL AUTO_INCREMENT,
 				form_id BIGINT(20) NOT NULL,
 				data LONGTEXT NOT NULL,
 				subject TEXT,
@@ -680,13 +680,13 @@ class Dynamic_form_maker_Builder{
 				date_submitted DATETIME,
 				ip_address VARCHAR(25),
 				entry_approved VARCHAR(20) DEFAULT '1',
-				PRIMARY KEY  (entries_id)
+				PRIMARY KEY  (records_id)
 			) DEFAULT CHARACTER SET $charset COLLATE $collate;";
 
 		// Create or Update database tables
 		dbDelta( $field_sql );
 		dbDelta( $form_sql );
-		dbDelta( $entries_sql );
+		dbDelta( $records_sql );
 	}
 	
 	
@@ -1265,7 +1265,7 @@ class Dynamic_form_maker_Builder{
 		// Delete form and all fields
 		$wpdb->query( $wpdb->prepare( "DELETE FROM $this->form_table_name WHERE form_id = %d", $id ) );
 		$wpdb->query( $wpdb->prepare( "DELETE FROM $this->field_table_name WHERE form_id = %d", $id ) );
-		$wpdb->query( $wpdb->prepare( "DELETE FROM $this->entries_table_name WHERE form_id = %d", $id ) );
+		$wpdb->query( $wpdb->prepare( "DELETE FROM $this->records_table_name WHERE form_id = %d", $id ) );
 
 		// Redirect to keep the URL clean (use AJAX in the future?)
 		wp_redirect( add_query_arg( 'action', 'deleted', 'admin.php?page=dynamic-form-maker' ) );
@@ -1654,7 +1654,7 @@ class Dynamic_form_maker_Builder{
 			return;
 		endif;
 		echo '<form id="forms-filter" method="post" action="">';
-		$dfm_forms_list->from_views();
+		$dfm_forms_list->views();
 		$dfm_forms_list->prepare_items();
 
     	$dfm_forms_list->search_box( 'search', 'search_id' );
@@ -1731,7 +1731,7 @@ class Dynamic_form_maker_Builder{
 
 		add_submenu_page( 'dynamic-form-maker', __( 'Dynamic Form Maker', 'dynamic-form-maker' ), __( 'All Forms', 'dynamic-form-maker' ), 'manage_options', 'dynamic-form-maker', array( &$this, 'all_dynamic_form' ) );		
 		$current_pages[ 'dfm-add-new' ] = add_submenu_page( 'dynamic-form-maker', __( 'Add New', 'dynamic-form-maker' ), __( 'Add New', 'dynamic-form-maker' ), 'manage_options', 'dfm-add-new', array( &$this, 'admin_add_new' ) );		
-		$current_pages[ 'dfm-records' ] = add_submenu_page( 'dynamic-form-maker', __( 'Form Records', 'dynamic-form-maker' ), __( 'Form Records', 'dynamic-form-maker' ), 'manage_options', 'dfm-records', array( &$this, 'admin_entries' ) );
+		$current_pages[ 'dfm-records' ] = add_submenu_page( 'dynamic-form-maker', __( 'Form Records', 'dynamic-form-maker' ), __( 'Form Records', 'dynamic-form-maker' ), 'manage_options', 'dfm-records', array( &$this, 'admin_records' ) );
 		$current_pages[ 'dfm-export' ] = add_submenu_page( 'dynamic-form-maker', __( 'Export', 'dynamic-form-maker' ), __( 'Export', 'dynamic-form-maker' ), 'manage_options', 'dfm-export', array( &$this, 'form_export_for_admin' ) );
 		$current_pages[ 'dfm-settings' ] = add_submenu_page( 'dynamic-form-maker', __( 'Settings', 'dynamic-form-maker' ), __( 'Settings', 'dynamic-form-maker' ), 'manage_options', 'dfm-settings', array( &$this, 'admin_settings' ) );
 		
@@ -1786,8 +1786,8 @@ class Dynamic_form_maker_Builder{
 	 *
 	 * @since 1.0
 	 */
-	public function admin_entries() {
-		global $dfm_entries_list, $dfm_entries_detail;
+	public function admin_records() {
+		global $dfm_records_list, $dfm_records_detail;
 ?>
 	<div class="wrap">
 		<h2>
@@ -1800,15 +1800,15 @@ class Dynamic_form_maker_Builder{
 		</h2>
 <?php
 		if ( isset( $_REQUEST['action'] ) && in_array( $_REQUEST['action'], array( 'view', 'edit', 'update_entry' ) ) ) :
-			$dfm_entries_detail->entries_detail();
+			$dfm_records_detail->records_detail();
 		else :
-			$dfm_entries_list->from_views();
-			$dfm_entries_list->prepare_items();
+			$dfm_records_list->views();
+			$dfm_records_list->prepare_items();
 ?>
     	<form id="records-filter" method="post" action="">
 <?php
-        	$dfm_entries_list->search_box( 'search', 'search_id' );
-        	$dfm_entries_list->display();
+        	$dfm_records_list->search_box( 'search', 'search_id' );
+        	$dfm_records_list->display();
 ?>
         </form>
 	<?php endif; ?>
@@ -1823,12 +1823,12 @@ class Dynamic_form_maker_Builder{
 	 * @since 1.0
 	 */
 	public function form_export_for_admin() {
-		global $export_entries;
+		global $export_records;
 ?>
 	<div class="wrap">
 		<h2><?php _e( 'Export', 'dynamic-form-maker' ); ?></h2>
 <?php
-		//$export_entries->display_export();
+		//$export_records->display_export();
 		include_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/admin-export-form.php' );
 ?>
 	</div>
@@ -2381,8 +2381,8 @@ require( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-widget
 
 // Special case to load Export class so AJAX is registered
 require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'includes/class-export.php' );
-if ( !isset( $export_entries ) )
-	$export_entries = new DinamicFormMaker_Export();
+if ( !isset( $export_records ) )
+	$export_records = new DinamicFormMaker_Export();
 
 	/**
 	 * Manage username Exit Check

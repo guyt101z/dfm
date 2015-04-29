@@ -371,7 +371,7 @@ msgstr "Jobbra igazítva"
 #: includes/admin-form-creator.php:140
 #: includes/admin-new-form.php:23
 #@ visual-form-builder
-msgid "Your Name or Company"
+msgid "Your name"
 msgstr "A név vagy a vállalat"
 
 #: includes/admin-form-creator.php:148
@@ -388,7 +388,7 @@ msgstr "Nem szükséges szövegmezőket észlel"
 #: includes/admin-form-creator.php:289
 #: includes/admin-new-form.php:31
 #@ visual-form-builder
-msgid "Reply-To E-mail"
+msgid "Reply to email"
 msgstr "Reply To E-mail"
 
 #: includes/admin-form-creator.php:178
@@ -440,7 +440,7 @@ msgstr "Űrlap létrehozása"
 
 #: includes/admin-new-form.php:15
 #@ visual-form-builder
-msgid "Name the form"
+msgid "Form name"
 msgstr "Az űrlap neve"
 
 #: includes/admin-new-form.php:18

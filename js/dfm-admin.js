@@ -584,7 +584,7 @@ jQuery(document).ready(function($) {
 	// !Form Records fields
 	$( '#dfm-export-records-forms' ).change( function(){
 		var id = $( this ).val(),
-			count = dfm_entries_count( id );
+			count = dfm_records_count( id );
 
 		$( '#dfm-export-records-fields' ).html( 'Loading...' );
 
@@ -623,14 +623,14 @@ jQuery(document).ready(function($) {
 		});
 	});
 
-	function dfm_entries_count( id ) {
+	function dfm_records_count( id ) {
 		 var count = '';
 
 		 $.ajax( ajaxurl, {
 			 async: false,
 			 data:
 			 {
-				action: 'dynamic_form_maker_export_entries_count',
+				action: 'dynamic_form_maker_export_records_count',
 				id: id,
 				page: pagenow
 			 }

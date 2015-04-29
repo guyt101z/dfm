@@ -81,7 +81,7 @@ msgstr "Onderwerp van de email"
 #: includes/admin-form-creator.php:140
 #: includes/admin-new-form.php:23
 #@ visual-form-builder
-msgid "Your Name or Company"
+msgid "Your name"
 msgstr "Jouw naam of bedrijf"
 
 #: includes/admin-form-creator.php:148
@@ -93,7 +93,7 @@ msgstr "Naam van de gebruiker (optioneel)"
 #: includes/admin-form-creator.php:289
 #: includes/admin-new-form.php:31
 #@ visual-form-builder
-msgid "Reply-To E-mail"
+msgid "Reply to email"
 msgstr "Antwoord-Aan E-mail"
 
 #: includes/admin-form-creator.php:178
@@ -195,7 +195,7 @@ msgstr "Formulier aanmaken"
 
 #: includes/admin-new-form.php:15
 #@ visual-form-builder
-msgid "Name the form"
+msgid "Form name"
 msgstr "Geef het formulier een naam"
 
 #: includes/admin-new-form.php:18

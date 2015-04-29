@@ -12,13 +12,38 @@ function dfm_register_widgets() {
  * @since 2.7
  */
 class DynamicFormMaker_Widget extends WP_Widget {
+	
+	/**
+	 * field_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $field_table_name;
+
+	/**
+	 * form_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $form_table_name;
+
+	/**
+	 * records_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $records_table_name;
+	
 	public function __construct(){
 		global $wpdb;
 
 		/* Setup global database table names */
 		$this->field_table_name 	= $wpdb->prefix . 'dynamic_form_maker_fields';
 		$this->form_table_name 		= $wpdb->prefix . 'dynamic_form_maker_forms';
-		$this->entries_table_name 	= $wpdb->prefix . 'dynamic_form_maker_entries';
+		$this->records_table_name 	= $wpdb->prefix . 'dynamic_form_maker_records';
 
 		$args = array(
 			'classname' 	=> 'dfm_widget_class',

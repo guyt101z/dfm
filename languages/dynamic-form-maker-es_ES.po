@@ -549,7 +549,7 @@ msgstr "Derecha alineado"
 #: includes/admin-form-creator.php:142
 #: includes/admin-new-form.php:23
 #@ visual-form-builder
-msgid "Your Name or Company"
+msgid "Your name"
 msgstr "Su nombre o empresa"
 
 #: includes/admin-form-creator.php:150
@@ -566,7 +566,7 @@ msgstr "No hay campos de texto requerido detectados"
 #: includes/admin-form-creator.php:291
 #: includes/admin-new-form.php:31
 #@ visual-form-builder
-msgid "Reply-To E-mail"
+msgid "Reply to email"
 msgstr "Responder a correo electrónico"
 
 #: includes/admin-form-creator.php:180
@@ -613,7 +613,7 @@ msgstr "Crear un formulario"
 
 #: includes/admin-new-form.php:15
 #@ visual-form-builder
-msgid "Name the form"
+msgid "Form name"
 msgstr "Nombre de la forma"
 
 #: includes/admin-new-form.php:18

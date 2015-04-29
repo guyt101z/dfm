@@ -62,7 +62,7 @@ msgid "E-mail Subject"
 msgstr ""
 
 #: includes/admin-form-creator.php:140 includes/admin-new-form.php:23
-msgid "Your Name or Company"
+msgid "Your name"
 msgstr ""
 
 #: includes/admin-form-creator.php:148
@@ -75,7 +75,7 @@ msgstr ""
 
 #: includes/admin-form-creator.php:170 includes/admin-form-creator.php:289
 #: includes/admin-new-form.php:31
-msgid "Reply-To E-mail"
+msgid "Reply to email"
 msgstr ""
 
 #: includes/admin-form-creator.php:178
@@ -155,7 +155,7 @@ msgid "Create a form"
 msgstr ""
 
 #: includes/admin-new-form.php:15
-msgid "Name the form"
+msgid "Form name"
 msgstr ""
 
 #: includes/admin-new-form.php:18

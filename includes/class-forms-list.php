@@ -23,12 +23,12 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	public $form_table_name;
 
 	/**
-	 * entries_table_name
+	 * records_table_name
 	 *
 	 * @var mixed
 	 * @access public
 	 */
-	public $entries_table_name;
+	public $records_table_name;
 
 	/**
 	 * errors
@@ -44,7 +44,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 		// Setup global database table names
 		$this->field_table_name   = $wpdb->prefix . 'dynamic_form_maker_fields';
 		$this->form_table_name    = $wpdb->prefix . 'dynamic_form_maker_forms';
-		$this->entries_table_name = $wpdb->prefix . 'dynamic_form_maker_entries';
+		$this->records_table_name = $wpdb->prefix . 'dynamic_form_maker_records';
 
 		// Set parent defaults
 		parent::__construct( array(
@@ -93,7 +93,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 		return sprintf( '%1$s %2$s', $form_title, $this->row_actions( $actions ) );
 	}
 
-	function column_entries( $item ) {
+	function column_records( $item ) {
 		$this->comments_bubble( $item['form_id'], $item['records'] );
 	}
 
@@ -177,9 +177,9 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	 * @since 2.7.6
 	 * @returns array $status_links Status links with counts
 	 */
-	function get_from_views() {
+	function get_views() {
 		$status_links = array();
-		$num_forms = $this->get_forms_count();
+		$num_forms = $this->get_forms_count();		
 		$class = '';
 		$link = '?page=dynamic-form-maker';
 
@@ -187,7 +187,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 			'all'    => _n_noop( 'All <span class="count">(<span class="pending-count">%s</span>)</span>', 'All <span class="count">(<span class="pending-count">%s</span>)</span>' ),
 		);
 
-		$total_entries = (int) $num_forms->all;
+		$total_records = (int) $num_forms->all;
 		$entry_status = isset( $_REQUEST['form_status'] ) ? $_REQUEST['form_status'] : 'all';
 
 		foreach ( $stati as $status => $label ) {
@@ -213,21 +213,21 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	 * @since 2.1
 	 * @returns array $stats Counts of different entry types
 	 */
-	function get_entries_count() {
+	function get_records_count() {
 		global $wpdb;
 
-		$total_entries = array();
+		$total_records = array();
 
-		$records = $wpdb->get_results( "SELECT form_id, COUNT(form_id) as num_entries FROM $this->entries_table_name AS records WHERE records.entry_approved = 1 GROUP BY form_id", ARRAY_A );
+		$records = $wpdb->get_results( "SELECT form_id, COUNT(form_id) as num_records FROM $this->records_table_name AS records WHERE records.entry_approved = 1 GROUP BY form_id", ARRAY_A );
 
 		if ( $records ) {
 			foreach ( $records as $entry )
-				$total_entries[ $entry['form_id'] ] = absint( $entry['num_entries'] );
+				$total_records[ $entry['form_id'] ] = absint( $entry['num_records'] );
 
-			return $total_entries;
+			return $total_records;
 		}
 
-		return $total_entries;
+		return $total_records;
 	}
 
 	/**
@@ -236,21 +236,21 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	 * @since 2.1
 	 * @returns array $stats Counts of different entry types
 	 */
-	function get_entries_today_count() {
+	function get_records_today_count() {
 		global $wpdb;
 
-		$total_entries = array();
+		$total_records = array();
 
-		$records = $wpdb->get_results( "SELECT form_id, COUNT(form_id) as num_entries FROM $this->entries_table_name AS records WHERE records.entry_approved = 1 AND date_submitted >= curdate() GROUP BY form_id", ARRAY_A );
+		$records = $wpdb->get_results( "SELECT form_id, COUNT(form_id) as num_records FROM $this->records_table_name AS records WHERE records.entry_approved = 1 AND date_submitted >= curdate() GROUP BY form_id", ARRAY_A );
 
 		if ( $records ) {
 			foreach ( $records as $entry )
-				$total_entries[ $entry['form_id'] ] = absint( $entry['num_entries'] );
+				$total_records[ $entry['form_id'] ] = absint( $entry['num_records'] );
 
-			return $total_entries;
+			return $total_records;
 		}
 
-		return $total_entries;
+		return $total_records;
 	}
 
 	/**
@@ -284,7 +284,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 			'id' 			=> array( 'id', false ),
 			'form_id'		=> array( 'form_id', false ),
 			'form_title'	=> array( 'form_title', true ),
-			'records'		=> array( 'entries_count', false ),
+			'records'		=> array( 'records_count', false ),
 		);
 
 		return $sortable_columns;
@@ -336,7 +336,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 					$id = absint( $id );
 					$wpdb->query( $wpdb->prepare( "DELETE FROM $this->form_table_name WHERE form_id = %d", $id ) );
 					$wpdb->query( $wpdb->prepare( "DELETE FROM $this->field_table_name WHERE form_id = %d", $id ) );
-					$wpdb->query( $wpdb->prepare( "DELETE FROM $this->entries_table_name WHERE form_id = %d", $id ) );
+					$wpdb->query( $wpdb->prepare( "DELETE FROM $this->records_table_name WHERE form_id = %d", $id ) );
 				}
 			break;
 
@@ -432,8 +432,8 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 		$forms = $this->get_forms( $orderby, $order, $per_page, $offset, $search );
 
 		// Get records totals
-		$entries_total = $this->get_entries_count();
-		$entries_today = $this->get_entries_today_count();
+		$records_total = $this->get_records_count();
+		$records_today = $this->get_records_today_count();
 
 		$data = array();
 
@@ -441,21 +441,21 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 		foreach ( $forms as $form ) :
 
 			// Check if index exists first, not every form has records
-			$entries_total[ $form->form_id ] = isset( $entries_total[ $form->form_id ] ) ? $entries_total[ $form->form_id ] : 0;
+			$records_total[ $form->form_id ] = isset( $records_total[ $form->form_id ] ) ? $records_total[ $form->form_id ] : 0;
 
 			// Check if index exists first, not every form has records today
-			$entries_today[ $form->form_id ] = isset( $entries_today[ $form->form_id ] ) ? $entries_today[ $form->form_id ] : 0;
+			$records_today[ $form->form_id ] = isset( $records_today[ $form->form_id ] ) ? $records_today[ $form->form_id ] : 0;
 
-			$entries_counts = array(
-				'total' => $entries_total[ $form->form_id ],
-				'today' => $entries_today[ $form->form_id ],
+			$records_counts = array(
+				'total' => $records_total[ $form->form_id ],
+				'today' => $records_today[ $form->form_id ],
 			);
 
 			$data[] = array(
 				'id' 			=> $form->form_id,
 				'form_id'		=> $form->form_id,
 				'form_title' 	=> stripslashes( $form->form_title ),
-				'records'		=> $entries_counts,
+				'records'		=> $records_counts,
 			);
 		endforeach;
 

@@ -125,6 +125,38 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                             <br class="clear" />
                         </div> <!-- #general-settings -->
 
+						<?php
+							global $wpdb;
+							$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+							$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = ".$_REQUEST['form'] );
+							$form_type = $form_table[0]->form_type;
+							if($form_type === 'user_form'):
+						?>
+						
+						<!-- User Role section -->
+                        <a href="#user-roles" class="settings-links<?php echo ( $settings_accordion == 'user-roles' ) ? ' on' : ''; ?>"><?php _e( 'User Roles', 'dynamic-form-maker' ); ?><span class="dfm-large-arrow"></span></a>
+                        <div id="user-roles" class="form-details<?php echo ( $settings_accordion == 'user-roles' ) ? ' on' : ''; ?>">
+
+                            <p><em><?php _e( 'Select user role' , 'dynamic-form-maker'); ?></em></p>
+
+                            <!-- User Role -->
+                            <p class="description description-wide">
+                            <label for="form-user-role">
+                                <?php _e( 'User Role' , 'dynamic-form-maker'); ?>
+                                <span class="dfm-tooltip" title="<?php esc_attr_e( 'About User role', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'Select new user role to update.', 'dynamic-form-maker' ); ?>">(?)</span>
+            					<br />
+                                <select name="user_role" id="form-user-role" >
+								  <?php foreach (get_editable_roles() as $role_name => $role_info) {
+								if( $role_name!= 'administrator') { ;?> 
+								  <option value="<?php echo $role_name; ?>"><?php echo  $role_info['name']; ?></option>
+									<?php } } ?>
+								</select> 
+                            </label>
+                            </p>
+                            <br class="clear" />
+                        </div>
+						
+						<?php else : ?>
 
                         <!-- Email section -->
                         <a href="#email-details" class="settings-links<?php echo ( $settings_accordion == 'email-details' ) ? ' on' : ''; ?>"><?php _e( 'Email', 'dynamic-form-maker' ); ?><span class="dfm-large-arrow"></span></a>
@@ -146,8 +178,8 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                             <!-- Sender Name -->
                             <p class="description description-thin">
                             <label for="form-email-sender-name">
-                                <?php _e( 'Your Name or Company' , 'dynamic-form-maker'); ?>
-                                <span class="dfm-tooltip" title="<?php esc_attr_e( 'About Your Name or Company', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'This option sets the From display name of the email that is sent to the emails you have set in the E-mail(s) To field.', 'dynamic-form-maker' ); ?>">(?)</span>
+                                <?php _e( 'Your name' , 'dynamic-form-maker'); ?>
+                                <span class="dfm-tooltip" title="<?php esc_attr_e( 'About Your name', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'This option sets the From display name of the email that is sent to the emails you have set in the E-mail(s) To field.', 'dynamic-form-maker' ); ?>">(?)</span>
             					<br />
                                 <input type="text" value="<?php echo $form_email_from_name; ?>" class="widefat" id="form-email-sender-name" name="form_email_from_name"<?php echo ( $form_email_from_name_override != '' ) ? ' readonly="readonly"' : ''; ?> />
                             </label>
@@ -180,7 +212,7 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                             <!-- Sender E-mail -->
                             <p class="description description-thin">
                             <label for="form-email-sender">
-                                <?php _e( 'Reply-To E-mail' , 'dynamic-form-maker'); ?>
+                                <?php _e( 'Reply to email' , 'dynamic-form-maker'); ?>
                                 <span class="dfm-tooltip" title="<?php esc_attr_e( 'About Reply-To Email', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'Manually set the email address that users will reply to.', 'dynamic-form-maker' ); ?>">(?)</span>
             					<br />
                                 <input type="text" value="<?php echo $form_email_from; ?>" class="widefat" id="form-email-sender" name="form_email_from"<?php echo ( $form_email_from_override != '' ) ? ' readonly="readonly"' : ''; ?> />
@@ -244,7 +276,7 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                             ?>
                             <div class="clear"></div>
                         </div>
-
+					<?php endif; ?>
                         <!-- Confirmation section -->
                         <a href="#confirmation" class="settings-links<?php echo ( $settings_accordion == 'confirmation' ) ? ' on' : ''; ?>"><?php _e( 'Confirmation', 'dynamic-form-maker' ); ?><span class="dfm-large-arrow"></span></a>
                         <div id="confirmation-message" class="form-details<?php echo ( $settings_accordion == 'confirmation' ) ? ' on' : ''; ?>">
@@ -288,6 +320,14 @@ $page_main = $this->_admin_pages[ 'dfm' ];
 
                         </div>
 
+						<?php
+							global $wpdb;
+							$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+							$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = ".$_REQUEST['form'] );
+							$form_type = $form_table[0]->form_type;
+							if($form_type != 'user_form'):
+						?>
+						
                         <!-- Notification section -->
                         <a href="#notification" class="settings-links<?php echo ( $settings_accordion == 'notification' ) ? ' on' : ''; ?>"><?php _e( 'Notification', 'dynamic-form-maker' ); ?><span class="dfm-large-arrow"></span></a>
                         <div id="notification" class="form-details<?php echo ( $settings_accordion == 'notification' ) ? ' on' : ''; ?>">
@@ -309,7 +349,7 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                                 <br class="clear" />
                                 <p class="description description-wide">
                                 <label for="form-notification-email-from">
-                                    <?php _e( 'Reply-To E-mail' , 'dynamic-form-maker'); ?>
+                                    <?php _e( 'Reply to email' , 'dynamic-form-maker'); ?>
                                     <span class="dfm-tooltip" title="<?php esc_attr_e( 'About Reply-To Email', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'Manually set the email address that users will reply to.', 'dynamic-form-maker' ); ?>">(?)</span>
             						<br />
                                     <input type="text" value="<?php echo $form_notification_email_from; ?>" class="widefat" id="form-notification-email-from" name="form_notification_email_from" />
@@ -363,6 +403,7 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                             <br class="clear" />
                         </div>
                     </div>
+					<?php endif; ?>
                 </div>
             </div>
         </div>

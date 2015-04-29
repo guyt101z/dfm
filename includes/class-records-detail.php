@@ -4,24 +4,49 @@
  *
  * @since 1.4
  */
-class DynamicFormMaker_Form_Entries_Detail{
+class DynamicFormMaker_Form_Records_Detail{
+	
+	/**
+	 * field_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $field_table_name;
+
+	/**
+	 * form_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $form_table_name;
+
+	/**
+	 * records_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $records_table_name;
+	
 	public function __construct(){
 		global $wpdb;
 
 		// Setup global database table names
 		$this->field_table_name 	= $wpdb->prefix . 'dynamic_form_maker_fields';
 		$this->form_table_name 		= $wpdb->prefix . 'dynamic_form_maker_forms';
-		$this->entries_table_name 	= $wpdb->prefix . 'dynamic_form_maker_entries';
+		$this->records_table_name 	= $wpdb->prefix . 'dynamic_form_maker_records';
 
-		add_action( 'admin_init', array( &$this, 'entries_detail' ) );
+		add_action( 'admin_init', array( &$this, 'records_detail' ) );
 	}
 
-	public function entries_detail(){
+	public function records_detail(){
 		global $wpdb;
 
 		$entry_id = absint( $_REQUEST['entry'] );
 
-		$records = $wpdb->get_results( $wpdb->prepare( "SELECT forms.form_title, records.* FROM $this->form_table_name AS forms INNER JOIN $this->entries_table_name AS records ON records.form_id = forms.form_id WHERE records.entries_id  = %d", $entry_id ) );
+		$records = $wpdb->get_results( $wpdb->prepare( "SELECT forms.form_title, records.* FROM $this->form_table_name AS forms INNER JOIN $this->records_table_name AS records ON records.form_id = forms.form_id WHERE records.records_id  = %d", $entry_id ) );
 
 		echo '<p>' . sprintf( '<a href="?page=%s" class="view-entry">&laquo; Back to Form Records</a>', $_REQUEST['page'] ) . '</p>';
 
@@ -34,7 +59,7 @@ class DynamicFormMaker_Form_Entries_Detail{
 			$data = unserialize( $entry->data );
 ?>
 			<form id="entry-edit" method="post" action="">
-			<h3><span><?php echo stripslashes( $entry->form_title ); ?> : <?php echo __( 'Entry' , 'dynamic-form-maker'); ?> # <?php echo $entry->entries_id; ?></span></h3>
+			<h3><span><?php echo stripslashes( $entry->form_title ); ?> : <?php echo __( 'Entry' , 'dynamic-form-maker'); ?> # <?php echo $entry->records_id; ?></span></h3>
             <div id="dfm-poststuff" class="metabox-holder has-right-sidebar">
 				<div id="side-info-column" class="inner-sidebar">
 					<div id="side-sortables">
@@ -93,7 +118,7 @@ class DynamicFormMaker_Form_Entries_Detail{
 				if ( !is_array( $v ) ) :
 					if ( $count == 0 ) {
 						echo '<div class="postbox">
-							<h3><span>' . $entry->form_title . ' : ' . __( 'Entry' , 'dynamic-form-maker') .' #' . $entry->entries_id . '</span></h3>
+							<h3><span>' . $entry->form_title . ' : ' . __( 'Entry' , 'dynamic-form-maker') .' #' . $entry->records_id . '</span></h3>
 							<div class="inside">';
 					}
 

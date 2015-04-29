@@ -87,7 +87,7 @@ msgstr "Sujet du courriel"
 #: includes/admin-form-creator.php:140
 #: includes/admin-new-form.php:23
 #@ visual-form-builder
-msgid "Your Name or Company"
+msgid "Your name"
 msgstr "Votre nom ou société"
 
 #: includes/admin-form-creator.php:148
@@ -104,7 +104,7 @@ msgstr "Aucun champ de texte requis détecté"
 #: includes/admin-form-creator.php:289
 #: includes/admin-new-form.php:31
 #@ visual-form-builder
-msgid "Reply-To E-mail"
+msgid "Reply to email"
 msgstr "Répondre à E-mail"
 
 #: includes/admin-form-creator.php:178
@@ -206,7 +206,7 @@ msgstr "Créer un formulaire"
 
 #: includes/admin-new-form.php:15
 #@ visual-form-builder
-msgid "Name the form"
+msgid "Form name"
 msgstr "Nommez le formulaire"
 
 #: includes/admin-new-form.php:18

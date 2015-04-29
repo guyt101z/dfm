@@ -5,7 +5,7 @@
   </ul>
   <div id="tabs_export-1">
     <p>
-		<?php $export_entries->display_export(); ?>
+		<?php $export_records->display_export(); ?>
 	</p>
   </div>
   

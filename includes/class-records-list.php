@@ -2,9 +2,33 @@
 /**
  * Class that builds our Form Records table
  *
- * @since 1.2
+ * @since 1.0
  */
-class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
+class DynamicFormMaker_Form_Records_List extends WP_List_Table {
+	
+	/**
+	 * field_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $field_table_name;
+
+	/**
+	 * form_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $form_table_name;
+
+	/**
+	 * records_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $records_table_name;
 
 	function __construct(){
 		global $status, $page, $wpdb;
@@ -15,7 +39,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 		// Setup global database table names
 		$this->field_table_name   = $wpdb->prefix . 'dynamic_form_maker_fields';
 		$this->form_table_name    = $wpdb->prefix . 'dynamic_form_maker_forms';
-		$this->entries_table_name = $wpdb->prefix . 'dynamic_form_maker_entries';
+		$this->records_table_name = $wpdb->prefix . 'dynamic_form_maker_records';
 
 		// Set parent defaults
 		parent::__construct( array(
@@ -104,7 +128,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 	 * @since 1.2
 	 * @returns array() $cols SQL results
 	 */
-	function get_entries( $orderby = 'date', $order = 'ASC', $per_page, $offset = 0, $search = '' ){
+	function get_records( $orderby = 'date', $order = 'ASC', $per_page, $offset = 0, $search = '' ){
 		global $wpdb;
 
 		// Set OFFSET for pagination
@@ -127,7 +151,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 				break;
 
 			case 'entry_id' :
-				$order_col = 'entries_id';
+				$order_col = 'records_id';
 				break;
 		}
 
@@ -163,7 +187,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND records.entry_approved = %d', 1 );
 
 		$sql_order = sanitize_sql_orderby( "$order_col $order" );
-		$cols = $wpdb->get_results( "SELECT forms.form_title, records.entries_id, records.form_id, records.subject, records.sender_name, records.sender_email, records.emails_to, records.date_submitted, records.ip_address FROM $this->form_table_name AS forms INNER JOIN $this->entries_table_name AS records ON records.form_id = forms.form_id WHERE 1=1 $where $search ORDER BY $sql_order LIMIT $per_page $offset" );
+		$cols = $wpdb->get_results( "SELECT forms.form_title, records.records_id, records.form_id, records.subject, records.sender_name, records.sender_email, records.emails_to, records.date_submitted, records.ip_address FROM $this->form_table_name AS forms INNER JOIN $this->records_table_name AS records ON records.form_id = forms.form_id WHERE 1=1 $where $search ORDER BY $sql_order LIMIT $per_page $offset" );
 
 		return $cols;
 	}
@@ -187,9 +211,9 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 	 * @since 2.1
 	 * @returns array $status_links Status links with counts
 	 */
-	function get_from_views() {
+	function get_views() {
 		$status_links = array();
-		$num_entries = $this->get_entries_count();
+		$num_records = $this->get_records_count();
 		$class = '';
 		$link = '?page=dfm-records';
 
@@ -198,20 +222,20 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 			'trash'  => _n_noop( 'Trash <span class="count">(<span class="trash-count">%s</span>)</span>', 'Trash <span class="count">(<span class="trash-count">%s</span>)</span>' )
 		);
 
-		$total_entries = (int) $num_entries->all;
+		$total_records = (int) $num_records->all;
 		$entry_status = isset( $_REQUEST['entry_status'] ) ? $_REQUEST['entry_status'] : 'all';
 
 		foreach ( $stati as $status => $label ) {
 			$class = ( $status == $entry_status ) ? ' class="current"' : '';
 
-			if ( !isset( $num_entries->$status ) )
-				$num_entries->$status = 10;
+			if ( !isset( $num_records->$status ) )
+				$num_records->$status = 10;
 
 			$link = add_query_arg( 'entry_status', $status, $link );
 
 			$status_links[ $status ] = "<li class='$status'><a href='$link'$class>" . sprintf(
-				translate_nooped_plural( $label, $num_entries->$status ),
-				number_format_i18n( $num_entries->$status )
+				translate_nooped_plural( $label, $num_records->$status ),
+				number_format_i18n( $num_records->$status )
 			) . '</a>';
 		}
 
@@ -224,21 +248,22 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 	 * @since 2.1
 	 * @returns array $stats Counts of different entry types
 	 */
-	function get_entries_count() {
+	function get_records_count() {
 		global $wpdb;
 
 		$stats = array();
 
-		$records = $wpdb->get_results( "SELECT records.entry_approved, COUNT( * ) AS num_entries FROM $this->entries_table_name AS records WHERE 1=1 GROUP BY records.entry_approved", ARRAY_A );
+		$records = $wpdb->get_results( "SELECT records.entry_approved, COUNT( * ) AS num_records FROM $this->records_table_name AS records WHERE 1=1 GROUP BY records.entry_approved", ARRAY_A );		
+		
 
 		$total = 0;
 		$approved = array( '0' => 'moderated', '1' => 'approved', 'spam' => 'spam', 'trash' => 'trash', 'post-trashed' => 'post-trashed');
 		foreach ( (array) $records as $row ) {
 			// Don't count trashed toward totals
 			if ( 'trash' != $row['entry_approved'] )
-				$total += $row['num_entries'];
+				$total += $row['num_records'];
 			if ( isset( $approved[ $row['entry_approved' ] ] ) )
-				$stats[ $approved[ $row['entry_approved' ] ] ] = $row['num_entries'];
+				$stats[ $approved[ $row['entry_approved' ] ] ] = $row['num_records'];
 		}
 
 		$stats['all'] = $total;
@@ -311,21 +336,21 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 			case 'trash' :
 				foreach ( $entry_id as $id ) {
 					$id = absint( $id );
-					$wpdb->update( $this->entries_table_name, array( 'entry_approved' => 'trash' ), array( 'entries_id' => $id ) );
+					$wpdb->update( $this->records_table_name, array( 'entry_approved' => 'trash' ), array( 'records_id' => $id ) );
 				}
 			break;
 
 			case 'delete' :
 				foreach ( $entry_id as $id ) {
 					$id = absint( $id );
-					$wpdb->query( $wpdb->prepare( "DELETE FROM $this->entries_table_name WHERE entries_id = %d", $id ) );
+					$wpdb->query( $wpdb->prepare( "DELETE FROM $this->records_table_name WHERE records_id = %d", $id ) );
 				}
 			break;
 
 			case 'restore' :
 				foreach ( $entry_id as $id ) {
 					$id = absint( $id );
-					$wpdb->update( $this->entries_table_name, array( 'entry_approved' => 1 ), array( 'entries_id' => $id ) );
+					$wpdb->update( $this->records_table_name, array( 'entry_approved' => 1 ), array( 'records_id' => $id ) );
 				}
 			break;
 
@@ -336,7 +361,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 
 				foreach ( $entry_id as $id ) {
 					$id = absint( $id );
-					$wpdb->query( $wpdb->prepare( "DELETE FROM $this->entries_table_name WHERE entries_id = %d", $id ) );
+					$wpdb->query( $wpdb->prepare( "DELETE FROM $this->records_table_name WHERE records_id = %d", $id ) );
 				}
 			break;
 		endswitch;
@@ -383,7 +408,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 
 	    $months = $wpdb->get_results( "
 			SELECT DISTINCT YEAR( forms.date_submitted ) AS year, MONTH( forms.date_submitted ) AS month
-			FROM $this->entries_table_name AS forms
+			FROM $this->records_table_name AS forms
 			ORDER BY forms.date_submitted DESC
 		" );
 
@@ -501,7 +526,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 		$order = ( !empty( $_REQUEST['order'] ) ) ? $_REQUEST['order'] : 'desc';
 
 		// Get the sorted records
-		$records = $this->get_entries( $orderby, $order, $per_page, $offset, $search );
+		$records = $this->get_records( $orderby, $order, $per_page, $offset, $search );
 
 		$data = array();
 
@@ -509,8 +534,8 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 		foreach ( $records as $entry ) {
 			$data[] =
 				array(
-					'entry_id' 		=> $entry->entries_id,
-					'id' 			=> $entry->entries_id,
+					'entry_id' 		=> $entry->records_id,
+					'id' 			=> $entry->records_id,
 					'form' 			=> stripslashes( $entry->form_title ),
 					'subject' 		=> stripslashes( $entry->subject ),
 					'sender_name' 	=> stripslashes( $entry->sender_name ),
@@ -553,7 +578,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 			$where .= $wpdb->prepare( ' AND records.entry_approved = %d', 1 );
 
 		// How many records do we have?
-		$total_items = $wpdb->get_var( "SELECT COUNT(*) FROM $this->entries_table_name AS records WHERE 1=1 $where" );
+		$total_items = $wpdb->get_var( "SELECT COUNT(*) FROM $this->records_table_name AS records WHERE 1=1 $where" );
 
 		// Add sorted data to the items property
 		$this->items = $data;

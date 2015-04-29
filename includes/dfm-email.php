@@ -316,7 +316,7 @@ $entry = array(
 );
 
 // Insert this data into the records table
-$wpdb->insert( $this->entries_table_name, $entry );
+$wpdb->insert( $this->records_table_name, $entry );
 
 // Close out the content
 $footer .= '<tr>
