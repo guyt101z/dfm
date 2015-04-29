@@ -182,104 +182,104 @@ msgstr ""
 msgid "Create Form"
 msgstr ""
 
-#: includes/class-entries-detail.php:37 includes/class-entries-detail.php:91
+#: includes/class-records-detail.php:37 includes/class-records-detail.php:91
 msgid "Entry"
 msgstr ""
 
-#: includes/class-entries-detail.php:42
+#: includes/class-records-detail.php:42
 msgid "Details"
 msgstr ""
 
-#: includes/class-entries-detail.php:48
+#: includes/class-records-detail.php:48
 msgid "Form Title"
 msgstr ""
 
-#: includes/class-entries-detail.php:51 includes/class-entries-list.php:94
+#: includes/class-records-detail.php:51 includes/class-records-list.php:94
 #: includes/class-export.php:18
 msgid "Date Submitted"
 msgstr ""
 
-#: includes/class-entries-detail.php:54 includes/class-entries-list.php:93
+#: includes/class-records-detail.php:54 includes/class-records-list.php:93
 #: includes/class-export.php:19
 msgid "IP Address"
 msgstr ""
 
-#: includes/class-entries-detail.php:57 includes/class-entries-list.php:89
+#: includes/class-records-detail.php:57 includes/class-records-list.php:89
 msgid "Email Subject"
 msgstr ""
 
-#: includes/class-entries-detail.php:60 includes/class-entries-list.php:90
+#: includes/class-records-detail.php:60 includes/class-records-list.php:90
 #: includes/class-export.php:21
 msgid "Sender Name"
 msgstr ""
 
-#: includes/class-entries-detail.php:63 includes/class-entries-list.php:91
+#: includes/class-records-detail.php:63 includes/class-records-list.php:91
 #: includes/class-export.php:22
 msgid "Sender Email"
 msgstr ""
 
-#: includes/class-entries-detail.php:66 includes/class-entries-list.php:92
+#: includes/class-records-detail.php:66 includes/class-records-list.php:92
 #: includes/class-export.php:23
 msgid "Emailed To"
 msgstr ""
 
-#: includes/class-entries-list.php:88 includes/class-export.php:104
+#: includes/class-records-list.php:88 includes/class-export.php:104
 msgid "Form"
 msgstr ""
 
-#: includes/class-entries-list.php:176 dfm.php:1235
+#: includes/class-records-list.php:176 dfm.php:1235
 msgid "Delete"
 msgstr ""
 
-#: includes/class-entries-list.php:218
+#: includes/class-records-list.php:218
 msgid "View all forms"
 msgstr ""
 
-#: includes/class-entries-list.php:225
+#: includes/class-records-list.php:225
 msgid "Filter"
 msgstr ""
 
-#: includes/class-entries-list.php:252
+#: includes/class-records-list.php:252
 msgid "Show all dates"
 msgstr ""
 
-#: includes/class-entries-list.php:264 includes/class-export.php:527
+#: includes/class-records-list.php:264 includes/class-export.php:527
 msgid "%1$s %2$d"
 msgstr ""
 
-#: includes/class-entries-list.php:421
+#: includes/class-records-list.php:421
 msgid "1 item"
 msgid_plural "%s items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-entries-list.php:442
+#: includes/class-records-list.php:442
 msgid "Go to the first page"
 msgstr ""
 
-#: includes/class-entries-list.php:450
+#: includes/class-records-list.php:450
 msgid "Go to the previous page"
 msgstr ""
 
-#: includes/class-entries-list.php:459
+#: includes/class-records-list.php:459
 msgid "Current page"
 msgstr ""
 
-#: includes/class-entries-list.php:465
+#: includes/class-records-list.php:465
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: includes/class-entries-list.php:469
+#: includes/class-records-list.php:469
 msgid "Go to the next page"
 msgstr ""
 
-#: includes/class-entries-list.php:477
+#: includes/class-records-list.php:477
 msgid "Go to the last page"
 msgstr ""
 
 #: includes/class-export.php:17
-msgid "Form Entries ID"
+msgid "Form Records ID"
 msgstr ""
 
 #: includes/class-export.php:20
@@ -287,7 +287,7 @@ msgid "Subject"
 msgstr ""
 
 #: includes/class-export.php:65 includes/class-export.php:391
-msgid "No entries to pull field names from."
+msgid "No records to pull field names from."
 msgstr ""
 
 #: includes/class-export.php:81
@@ -307,7 +307,7 @@ msgid "All data"
 msgstr ""
 
 #: includes/class-export.php:86
-msgid "This will contain all of your forms, fields, entries, and email design settings."
+msgid "This will contain all of your forms, fields, records, and email design settings."
 msgstr ""
 
 #: includes/class-export.php:86 includes/class-export.php:89
@@ -324,11 +324,11 @@ msgstr ""
 
 #: includes/class-export.php:91 dfm.php:1721
 #: dfm.php:1745
-msgid "Form Entries"
+msgid "Form Records"
 msgstr ""
 
 #: includes/class-export.php:94
-msgid "This will export entries in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import entries on another site, please use the All data option above."
+msgid "This will export records in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import records on another site, please use the All data option above."
 msgstr ""
 
 #: includes/class-export.php:96
@@ -356,7 +356,7 @@ msgid "Page to Export"
 msgstr ""
 
 #: includes/class-export.php:137
-msgid "A large number of entries have been detected for this form. Only 1000 entries can be exported at a time."
+msgid "A large number of records have been detected for this form. Only 1000 records can be exported at a time."
 msgstr ""
 
 #: includes/class-export.php:144
@@ -436,7 +436,7 @@ msgid "Settings"
 msgstr ""
 
 #: dfm.php:217
-msgid "Recent Dynamic Form Maker Form Entries"
+msgid "Recent Dynamic Form Maker Form Records"
 msgstr ""
 
 #: dfm.php:240
@@ -448,11 +448,11 @@ msgid "Get started!"
 msgstr ""
 
 #: dfm.php:292
-msgid "Number of entries to show:"
+msgid "Number of records to show:"
 msgstr ""
 
 #: dfm.php:395
-msgid "Form Entries per page"
+msgid "Form Records per page"
 msgstr ""
 
 #: dfm.php:434
@@ -520,7 +520,7 @@ msgid "10+ new Form Fields"
 msgstr ""
 
 #: dfm.php:1266
-msgid "Complete Form Entries Management"
+msgid "Complete Form Records Management"
 msgstr ""
 
 #: dfm.php:1267
@@ -552,7 +552,7 @@ msgid "Scheduling"
 msgstr ""
 
 #: dfm.php:1274
-msgid "Limit Form Form Entries"
+msgid "Limit Form Form Records"
 msgstr ""
 
 #: dfm.php:1275

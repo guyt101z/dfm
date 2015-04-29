@@ -1,6 +1,6 @@
 <?php
 /**
- * Class that builds our Form Entries detail page
+ * Class that builds our Form Records detail page
  *
  * @since 1.4
  */
@@ -21,16 +21,16 @@ class DynamicFormMaker_Form_Entries_Detail{
 
 		$entry_id = absint( $_REQUEST['entry'] );
 
-		$entries = $wpdb->get_results( $wpdb->prepare( "SELECT forms.form_title, entries.* FROM $this->form_table_name AS forms INNER JOIN $this->entries_table_name AS entries ON entries.form_id = forms.form_id WHERE entries.entries_id  = %d", $entry_id ) );
+		$records = $wpdb->get_results( $wpdb->prepare( "SELECT forms.form_title, records.* FROM $this->form_table_name AS forms INNER JOIN $this->entries_table_name AS records ON records.form_id = forms.form_id WHERE records.entries_id  = %d", $entry_id ) );
 
-		echo '<p>' . sprintf( '<a href="?page=%s" class="view-entry">&laquo; Back to Form Entries</a>', $_REQUEST['page'] ) . '</p>';
+		echo '<p>' . sprintf( '<a href="?page=%s" class="view-entry">&laquo; Back to Form Records</a>', $_REQUEST['page'] ) . '</p>';
 
 		// Get the date/time format that is saved in the options table
 		$date_format = get_option('date_format');
 		$time_format = get_option('time_format');
 
-		// Loop trough the entries and setup the data to be displayed for each row
-		foreach ( $entries as $entry ) {
+		// Loop trough the records and setup the data to be displayed for each row
+		foreach ( $records as $entry ) {
 			$data = unserialize( $entry->data );
 ?>
 			<form id="entry-edit" method="post" action="">
@@ -84,7 +84,7 @@ class DynamicFormMaker_Form_Entries_Detail{
 					</div> <!-- #side-sortables -->
 				</div> <!-- #side-info-column -->
             <!--</div>  #poststuff -->
-			<div id="dfm-entries-body-content">
+			<div id="dfm-records-body-content">
         <?php
 			$count = 0;
 			$open_fieldset = $open_section = false;

@@ -16,7 +16,7 @@
 			<li><?php _e( 'Nested Drag and Drop' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Conditional Logic' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( '10+ new Form Fields' , 'dynamic-form-maker'); ?></li>
-			<li><?php _e( 'Complete Form Entries Management' , 'dynamic-form-maker'); ?></li>
+			<li><?php _e( 'Complete Form Records Management' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Import/Export' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Quality HTML Email Template' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Plain Text Email Option' , 'dynamic-form-maker'); ?></li>
@@ -24,7 +24,7 @@
 			<li><?php _e( 'Analytics' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Data &amp; Form Migration' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Scheduling' , 'dynamic-form-maker'); ?></li>
-			<li><?php _e( 'Limit Form Entries' , 'dynamic-form-maker'); ?></li>
+			<li><?php _e( 'Limit Form Records' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Simple PayPal Integration' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Form Paging' , 'dynamic-form-maker'); ?></li>
 			<li><?php _e( 'Live Preview' , 'dynamic-form-maker'); ?></li>

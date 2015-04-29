@@ -568,25 +568,25 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	// !Form Entries Select All
+	// !Form Records Select All
 	$( '#dfm-export-select-all' ).click( function( e ) {
 		e.preventDefault();
 
-		$( '#dfm-export-entries-fields input[type="checkbox"]' ).prop( 'checked', true );
+		$( '#dfm-export-records-fields input[type="checkbox"]' ).prop( 'checked', true );
 	});
 
 	$( '#dfm-export-unselect-all' ).click( function( e ) {
 		e.preventDefault();
 
-		$( '#dfm-export-entries-fields input[type="checkbox"]' ).prop( 'checked', false );
+		$( '#dfm-export-records-fields input[type="checkbox"]' ).prop( 'checked', false );
 	});
 
-	// !Form Entries fields
-	$( '#dfm-export-entries-forms' ).change( function(){
+	// !Form Records fields
+	$( '#dfm-export-records-forms' ).change( function(){
 		var id = $( this ).val(),
 			count = dfm_entries_count( id );
 
-		$( '#dfm-export-entries-fields' ).html( 'Loading...' );
+		$( '#dfm-export-records-fields' ).html( 'Loading...' );
 
 		$.get( ajaxurl,
 			{
@@ -596,18 +596,18 @@ jQuery(document).ready(function($) {
 				page: pagenow
 			}
 		).done( function( response ) {
-			$( '#dfm-export-entries-fields' ).html( response );
+			$( '#dfm-export-records-fields' ).html( response );
 		}).fail( function( response ) {
-			$( '#dfm-export-entries-fields' ).html( 'Error loading entry fields.' );
+			$( '#dfm-export-records-fields' ).html( 'Error loading entry fields.' );
 		});
 	});
 
-	$( '#dfm-export-entries-rows' ).change( function(){
-		var id = $( '#dfm-export-entries-forms' ).val();
+	$( '#dfm-export-records-rows' ).change( function(){
+		var id = $( '#dfm-export-records-forms' ).val();
 
 		var page = $( this ).val();
 
-		$( '#dfm-export-entries-fields' ).html( 'Loading...' );
+		$( '#dfm-export-records-fields' ).html( 'Loading...' );
 
 		$.get( ajaxurl,
 			{
@@ -617,9 +617,9 @@ jQuery(document).ready(function($) {
 				page: pagenow
 			}
 		).done( function( response ) {
-			$( '#dfm-export-entries-fields' ).html( response );
+			$( '#dfm-export-records-fields' ).html( response );
 		}).fail( function( response ) {
-			$( '#dfm-export-entries-fields' ).html( 'Error loading entry fields.' );
+			$( '#dfm-export-records-fields' ).html( 'Error loading entry fields.' );
 		});
 	});
 
@@ -637,18 +637,18 @@ jQuery(document).ready(function($) {
 		}).done( function( response ) {
 			if ( response > 1000 ) {
 
-				$( '#dfm-export-entries-rows' ).empty();
+				$( '#dfm-export-records-rows' ).empty();
 
 				var num_pages = Math.ceil( parseInt( response ) / 1000 );
 
 				for ( var i = 1; i <= num_pages; i++ ) {
-					$( '#dfm-export-entries-rows' ).append( $( '<option></option>' ).attr( 'value', i ).text( i ) );
+					$( '#dfm-export-records-rows' ).append( $( '<option></option>' ).attr( 'value', i ).text( i ) );
 				}
 
-				$( '#dfm-export-entries-pages' ).show();
+				$( '#dfm-export-records-pages' ).show();
 			}
 			else {
-				$( '#dfm-export-entries-pages' ).hide();
+				$( '#dfm-export-records-pages' ).hide();
 			}
 
 			count = response;

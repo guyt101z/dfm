@@ -473,8 +473,8 @@
 		background-color:#fbe3e4;
 		color:#8a1f11;
 	}
-			.dfm-meta-entries-total span,
-			.dfm-meta-entries-total-today span{
+			.dfm-meta-records-total span,
+			.dfm-meta-records-total-today span{
 				font-size: 11px;
 				font-weight: bold;
 				height: 1.4em;
@@ -488,20 +488,20 @@
 				text-align: center;
 			}
 
-			.dfm-meta-entries-total:hover span,
-			.dfm-meta-entries-total-today:hover span{
+			.dfm-meta-records-total:hover span,
+			.dfm-meta-records-total-today:hover span{
 				background-color: #d54e21;
 			}
-.fixed .column-entries,
+.fixed .column-records,
 .fixed .column-form_id {
 	width: 8em;
 }
 
-strong .dfm-meta-entries-total span {
+strong .dfm-meta-records-total span {
     background-color: #21759B;
 }
 
-.entries-count-wrapper {
+.records-count-wrapper {
 	font-family: sans-serif;
 	min-width: 22px;
 	padding-bottom: 1px;
@@ -841,16 +841,16 @@ strong .dfm-meta-entries-total span {
 		margin-left: 300px;
 	}
 
-#dfm-entries-body-content{
+#dfm-records-body-content{
 	float:left;
 	width:100%;
 }
 
-	.rtl #dfm-entries-body-content {
+	.rtl #dfm-records-body-content {
 		float: right;
 	}
 
-	.metabox-holder #dfm-entries-body-content h3{
+	.metabox-holder #dfm-records-body-content h3{
 		font-weight: bold;
 		font-family: sans-serif;
 	}
@@ -1487,7 +1487,7 @@ ul.dfm-fields-col-2{
 		float: right;
 	}
 
-#dfm-export-entries-fields {
+#dfm-export-records-fields {
 	height:275px;
 	width:300px;
 	overflow: auto;
@@ -1559,7 +1559,7 @@ ul.dfm-fields-col-2{
 		page-break-after: auto;
 	}
 
-	#dfm-entries-body-content {
+	#dfm-records-body-content {
 		width: 100%;
 		height: auto;
 		margin: 0 0 50px 0;

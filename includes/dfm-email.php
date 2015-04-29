@@ -303,7 +303,7 @@ foreach ( $fields as $field ) :
 		wp_die( __( 'Your responses look too much like spam and could not be sent at this time.', 'dynamic-form-maker' ), '', array( 'back_link' => true ) );
 endforeach;
 
-// Setup our entries data
+// Setup our records data
 $entry = array(
 	'form_id' 			=> $form_id,
 	'data' 				=> serialize( $data ),
@@ -315,7 +315,7 @@ $entry = array(
 	'ip_address' 		=> esc_html( $_SERVER['REMOTE_ADDR'] )
 );
 
-// Insert this data into the entries table
+// Insert this data into the records table
 $wpdb->insert( $this->entries_table_name, $entry );
 
 // Close out the content

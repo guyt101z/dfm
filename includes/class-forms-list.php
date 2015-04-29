@@ -1,12 +1,42 @@
 <?php
 /**
- * Class that builds our Form Entries table
+ * Class that builds our Form Records table
  *
- * @since 1.2
+ * @since 1.0
  */
 class DynamicFormMaker_Forms_List extends WP_List_Table {
+	
+	/**
+	 * field_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $field_table_name;
 
-	public $errors;
+	/**
+	 * form_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $form_table_name;
+
+	/**
+	 * entries_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $entries_table_name;
+
+	/**
+	 * errors
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $errors;	
 
 	function __construct(){
 		global $status, $page, $wpdb;
@@ -64,15 +94,15 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	}
 
 	function column_entries( $item ) {
-		$this->comments_bubble( $item['form_id'], $item['entries'] );
+		$this->comments_bubble( $item['form_id'], $item['records'] );
 	}
 
 	function comments_bubble( $form_id, $count ) {
 
 		echo sprintf(
-			'<div class="entries-count-wrapper"><a href="%1$s" title="%2$s" class="dfm-meta-entries-total"><span class="entries-count">%4$s</span></a> %3$s</div>',
-			esc_url( add_query_arg( array( 'form-filter' => $form_id ), admin_url( 'admin.php?page=dfm-entries' ) ) ),
-			esc_attr__( 'Form Entries Total', 'dynamic-form-maker-pro' ),
+			'<div class="records-count-wrapper"><a href="%1$s" title="%2$s" class="dfm-meta-records-total"><span class="records-count">%4$s</span></a> %3$s</div>',
+			esc_url( add_query_arg( array( 'form-filter' => $form_id ), admin_url( 'admin.php?page=dfm-records' ) ) ),
+			esc_attr__( 'Form Records Total', 'dynamic-form-maker-pro' ),
 			__( 'Total', 'dynamic-form-maker-pro' ),
 			number_format_i18n( $count['total'] )
 		);
@@ -81,9 +111,9 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 			echo '<strong>';
 
 		echo sprintf(
-			'<div class="entries-count-wrapper"><a href="%1$s" title="%2$s" class="dfm-meta-entries-total"><span class="entries-count">%4$s</span></a> %3$s</div>',
-			esc_url( add_query_arg( array( 'form-filter' => $form_id, 'today' => 1 ), admin_url( 'admin.php?page=dfm-entries' ) ) ),
-			esc_attr__( 'Form Entries Today', 'dynamic-form-maker-pro' ),
+			'<div class="records-count-wrapper"><a href="%1$s" title="%2$s" class="dfm-meta-records-total"><span class="records-count">%4$s</span></a> %3$s</div>',
+			esc_url( add_query_arg( array( 'form-filter' => $form_id, 'today' => 1 ), admin_url( 'admin.php?page=dfm-records' ) ) ),
+			esc_attr__( 'Form Records Today', 'dynamic-form-maker-pro' ),
 			__( 'Today', 'dynamic-form-maker-pro' ),
 			number_format_i18n( $count['today'] )
 		);
@@ -111,14 +141,14 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 			'cb' 			=> '<input type="checkbox" />', //Render a checkbox instead of text
 			'form_title' 	=> __( 'Form' , 'dynamic-form-maker'),
 			'form_id' 		=> __( 'Form ID' , 'dynamic-form-maker'),
-			'entries'		=> __( 'Form Entries', 'dynamic-form-maker' ),
+			'records'		=> __( 'Form Records', 'dynamic-form-maker' ),
 		);
 
 		return $columns;
 	}
 
 	/**
-	 * A custom function to get the entries and sort them
+	 * A custom function to get the records and sort them
 	 *
 	 * @since 1.2
 	 * @returns array() $cols SQL results
@@ -142,12 +172,12 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	}
 
 	/**
-	 * Build the different views for the entries screen
+	 * Build the different views for the records screen
 	 *
 	 * @since 2.7.6
 	 * @returns array $status_links Status links with counts
 	 */
-	function get_views() {
+	function get_from_views() {
 		$status_links = array();
 		$num_forms = $this->get_forms_count();
 		$class = '';
@@ -178,7 +208,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	}
 
 	/**
-	 * Get the number of entries for use with entry statuses
+	 * Get the number of records for use with entry statuses
 	 *
 	 * @since 2.1
 	 * @returns array $stats Counts of different entry types
@@ -188,10 +218,10 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 
 		$total_entries = array();
 
-		$entries = $wpdb->get_results( "SELECT form_id, COUNT(form_id) as num_entries FROM $this->entries_table_name AS entries WHERE entries.entry_approved = 1 GROUP BY form_id", ARRAY_A );
+		$records = $wpdb->get_results( "SELECT form_id, COUNT(form_id) as num_entries FROM $this->entries_table_name AS records WHERE records.entry_approved = 1 GROUP BY form_id", ARRAY_A );
 
-		if ( $entries ) {
-			foreach ( $entries as $entry )
+		if ( $records ) {
+			foreach ( $records as $entry )
 				$total_entries[ $entry['form_id'] ] = absint( $entry['num_entries'] );
 
 			return $total_entries;
@@ -201,7 +231,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	}
 
 	/**
-	 * Get the number of entries for use with entry statuses
+	 * Get the number of records for use with entry statuses
 	 *
 	 * @since 2.1
 	 * @returns array $stats Counts of different entry types
@@ -211,10 +241,10 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 
 		$total_entries = array();
 
-		$entries = $wpdb->get_results( "SELECT form_id, COUNT(form_id) as num_entries FROM $this->entries_table_name AS entries WHERE entries.entry_approved = 1 AND date_submitted >= curdate() GROUP BY form_id", ARRAY_A );
+		$records = $wpdb->get_results( "SELECT form_id, COUNT(form_id) as num_entries FROM $this->entries_table_name AS records WHERE records.entry_approved = 1 AND date_submitted >= curdate() GROUP BY form_id", ARRAY_A );
 
-		if ( $entries ) {
-			foreach ( $entries as $entry )
+		if ( $records ) {
+			foreach ( $records as $entry )
 				$total_entries[ $entry['form_id'] ] = absint( $entry['num_entries'] );
 
 			return $total_entries;
@@ -254,7 +284,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 			'id' 			=> array( 'id', false ),
 			'form_id'		=> array( 'form_id', false ),
 			'form_title'	=> array( 'form_title', true ),
-			'entries'		=> array( 'entries_count', false ),
+			'records'		=> array( 'entries_count', false ),
 		);
 
 		return $sortable_columns;
@@ -276,7 +306,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 	}
 
 	/**
-	 * Process ALL actions on the Form Entries screen, not only Bulk Actions
+	 * Process ALL actions on the Form Records screen, not only Bulk Actions
 	 *
 	 * @since 1.2
 	 */
@@ -380,7 +410,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 		// Build the column headers
 		$this->_column_headers = array($columns, $hidden, $sortable);
 
-		// Get entries search terms
+		// Get records search terms
 		$search_terms = ( !empty( $_REQUEST['s'] ) ) ? explode( ' ', $_REQUEST['s'] ) : array();
 
 		$searchand = $search = '';
@@ -394,26 +424,26 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 
 		$search = ( !empty($search) ) ? " AND ({$search}) " : '';
 
-		// Set our ORDER BY and ASC/DESC to sort the entries
+		// Set our ORDER BY and ASC/DESC to sort the records
 		$orderby  = ( !empty( $_REQUEST['orderby'] ) ) ? $_REQUEST['orderby'] : 'form_id';
 		$order    = ( !empty( $_REQUEST['order'] ) ) ? $_REQUEST['order'] : 'desc';
 
-		// Get the sorted entries
+		// Get the sorted records
 		$forms = $this->get_forms( $orderby, $order, $per_page, $offset, $search );
 
-		// Get entries totals
+		// Get records totals
 		$entries_total = $this->get_entries_count();
 		$entries_today = $this->get_entries_today_count();
 
 		$data = array();
 
-		// Loop trough the entries and setup the data to be displayed for each row
+		// Loop trough the records and setup the data to be displayed for each row
 		foreach ( $forms as $form ) :
 
-			// Check if index exists first, not every form has entries
+			// Check if index exists first, not every form has records
 			$entries_total[ $form->form_id ] = isset( $entries_total[ $form->form_id ] ) ? $entries_total[ $form->form_id ] : 0;
 
-			// Check if index exists first, not every form has entries today
+			// Check if index exists first, not every form has records today
 			$entries_today[ $form->form_id ] = isset( $entries_today[ $form->form_id ] ) ? $entries_today[ $form->form_id ] : 0;
 
 			$entries_counts = array(
@@ -425,7 +455,7 @@ class DynamicFormMaker_Forms_List extends WP_List_Table {
 				'id' 			=> $form->form_id,
 				'form_id'		=> $form->form_id,
 				'form_title' 	=> stripslashes( $form->form_title ),
-				'entries'		=> $entries_counts,
+				'records'		=> $entries_counts,
 			);
 		endforeach;
 

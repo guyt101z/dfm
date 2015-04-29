@@ -20,9 +20,9 @@ Build beautiful, fully functional contact forms in only a few minutes without wr
 * Add fields with one click
 * Drag-and-drop reordering
 * Simple, yet effective, logic-based anti-SPAM system
-* Automatically stores form entries in your WordPress database
-* Manage form entries in the WordPress dashboard
-* Export entries to a CSV file
+* Automatically stores form records in your WordPress database
+* Manage form records in the WordPress dashboard
+* Export records to a CSV file
 * Send form submissions to multiple emails
 * jQuery Form Validation
 * Customized Confirmation Messages
@@ -57,13 +57,13 @@ Build beautiful, fully functional contact forms in only a few minutes without wr
 * File Upload
 * Instructions (plain or HTML-formatted text)
 
-= Form Entries =
+= Form Records =
 
-* Manage submitted entries in WordPress dashboard
+* Manage submitted records in WordPress dashboard
 * Bulk Export to CSV
 * Bulk Delete
 * Advanced Filtering
-* Search across all entries
+* Search across all records
 * Collect submitted data as well as date submitted and IP Address
 
 = Customized Confirmation Messages =
@@ -213,5 +213,5 @@ function my_scripts_method() {
 
 1. Dynamic Form Maker page
 2. Configuring field item options
-3. Form Entries management screen
+3. Form Records management screen
 4. Rendered form on a page

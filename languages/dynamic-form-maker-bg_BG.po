@@ -15,85 +15,85 @@ msgstr ""
 "X-Poedit-Country: BULGARIA\n"
 "X-Poedit-SearchPath-0: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder\n"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:40
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:40
 msgid "Details"
 msgstr "Детайли"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:46
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:46
 msgid "Form Title"
 msgstr "Заглавие на формата"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:49
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:98
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:222
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:49
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:98
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:222
 msgid "Date Submitted"
 msgstr "Дата на получаване"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:52
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:97
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:226
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:52
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:97
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:226
 msgid "IP Address"
 msgstr "IP Адрес"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:55
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:93
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:230
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:55
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:93
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:230
 msgid "Email Subject"
 msgstr "Тема"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:58
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:94
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:234
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:58
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:94
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:234
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/visual-form-builder.php:817
 msgid "Sender Name"
 msgstr "Име на изпращача"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:61
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:95
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:238
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:61
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:95
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:238
 msgid "Sender Email"
 msgstr "Email На изпращача"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:64
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:96
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:242
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:64
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:96
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:242
 msgid "Emailed To"
 msgstr "Изпрати до"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-detail.php:84
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-detail.php:84
 msgid "Entry"
 msgstr "Запис"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:67
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:67
 msgid "Cancel"
 msgstr "Откажи"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:92
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:218
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:92
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:218
 msgid "Form"
 msgstr "Форма"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:168
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:168
 msgid "Delete"
 msgstr "Изтрий"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:169
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:169
 msgid "Export All"
 msgstr "Експортирай всички"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:170
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:170
 msgid "Export Selected"
 msgstr "Експортирай избраните"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:214
-msgid "Entries ID"
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:214
+msgid "Records ID"
 msgstr "ID на записа"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:369
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:369
 msgid "View all forms"
 msgstr "покажи всички форми"
 
-#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-entries-list.php:376
+#: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/class-records-list.php:376
 msgid "Filter"
 msgstr "филтър"
 
@@ -121,7 +121,7 @@ msgid "Forms"
 msgstr "Форми"
 
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/visual-form-builder.php:646
-msgid "Entries"
+msgid "Records"
 msgstr "Записи"
 
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/visual-form-builder.php:685

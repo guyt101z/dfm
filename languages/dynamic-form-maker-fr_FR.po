@@ -240,98 +240,98 @@ msgstr "En option (pour l'instant) - vous pouvez changer cela plus tard"
 msgid "Create Form"
 msgstr "Créer formulaire"
 
-#: includes/class-entries-detail.php:37
-#: includes/class-entries-detail.php:91
+#: includes/class-records-detail.php:37
+#: includes/class-records-detail.php:91
 #@ visual-form-builder
 msgid "Entry"
 msgstr "Entrée"
 
-#: includes/class-entries-detail.php:42
+#: includes/class-records-detail.php:42
 #@ visual-form-builder
 msgid "Details"
 msgstr "Détails"
 
-#: includes/class-entries-detail.php:48
+#: includes/class-records-detail.php:48
 #@ visual-form-builder
 msgid "Form Title"
 msgstr "Titre du formulaire"
 
-#: includes/class-entries-detail.php:51
-#: includes/class-entries-list.php:94
+#: includes/class-records-detail.php:51
+#: includes/class-records-list.php:94
 #: includes/class-export.php:18
 #@ visual-form-builder
 msgid "Date Submitted"
 msgstr "Date d'introduction"
 
-#: includes/class-entries-detail.php:54
-#: includes/class-entries-list.php:93
+#: includes/class-records-detail.php:54
+#: includes/class-records-list.php:93
 #: includes/class-export.php:19
 #@ visual-form-builder
 msgid "IP Address"
 msgstr "Adresse IP"
 
-#: includes/class-entries-detail.php:57
-#: includes/class-entries-list.php:89
+#: includes/class-records-detail.php:57
+#: includes/class-records-list.php:89
 #@ visual-form-builder
 msgid "Email Subject"
 msgstr "Sujet de l'e-mail"
 
-#: includes/class-entries-detail.php:60
-#: includes/class-entries-list.php:90
+#: includes/class-records-detail.php:60
+#: includes/class-records-list.php:90
 #: includes/class-export.php:21
 #@ visual-form-builder
 msgid "Sender Name"
 msgstr "Nom de l'expéditeur"
 
-#: includes/class-entries-detail.php:63
-#: includes/class-entries-list.php:91
+#: includes/class-records-detail.php:63
+#: includes/class-records-list.php:91
 #: includes/class-export.php:22
 #@ visual-form-builder
 msgid "Sender Email"
 msgstr "Email de l'expéditeur"
 
-#: includes/class-entries-detail.php:66
-#: includes/class-entries-list.php:92
+#: includes/class-records-detail.php:66
+#: includes/class-records-list.php:92
 #: includes/class-export.php:23
 #@ visual-form-builder
 msgid "Emailed To"
 msgstr "Envoyé par courriel à"
 
-#: includes/class-entries-list.php:88
+#: includes/class-records-list.php:88
 #: includes/class-export.php:104
 #@ visual-form-builder
 msgid "Form"
 msgstr "Formulaire"
 
-#: includes/class-entries-list.php:176
+#: includes/class-records-list.php:176
 #: visual-form-builder.php:1245
 #@ visual-form-builder
 msgid "Delete"
 msgstr "Supprimer"
 
-#: includes/class-entries-list.php:218
+#: includes/class-records-list.php:218
 #@ visual-form-builder
 msgid "View all forms"
 msgstr "Découvre toutes les formes"
 
-#: includes/class-entries-list.php:225
+#: includes/class-records-list.php:225
 #@ visual-form-builder
 msgid "Filter"
 msgstr "Filtre"
 
-#: includes/class-entries-list.php:252
+#: includes/class-records-list.php:252
 #@ default
 msgid "Show all dates"
 msgstr ""
 
-#: includes/class-entries-list.php:264
+#: includes/class-records-list.php:264
 #: includes/class-export.php:530
 #, php-format
 #@ default
 msgid "%1$s %2$d"
 msgstr ""
 
-#: includes/class-entries-list.php:421
+#: includes/class-records-list.php:421
 #, php-format
 #@ default
 msgid "1 item"
@@ -339,41 +339,41 @@ msgid_plural "%s items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-entries-list.php:442
+#: includes/class-records-list.php:442
 #@ default
 msgid "Go to the first page"
 msgstr ""
 
-#: includes/class-entries-list.php:450
+#: includes/class-records-list.php:450
 #@ default
 msgid "Go to the previous page"
 msgstr ""
 
-#: includes/class-entries-list.php:459
+#: includes/class-records-list.php:459
 #@ default
 msgid "Current page"
 msgstr ""
 
-#: includes/class-entries-list.php:465
+#: includes/class-records-list.php:465
 #, php-format
 #@ default
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: includes/class-entries-list.php:469
+#: includes/class-records-list.php:469
 #@ default
 msgid "Go to the next page"
 msgstr ""
 
-#: includes/class-entries-list.php:477
+#: includes/class-records-list.php:477
 #@ default
 msgid "Go to the last page"
 msgstr ""
 
 #: includes/class-export.php:17
 #@ visual-form-builder
-msgid "Entries ID"
+msgid "Records ID"
 msgstr "ID d'entrées"
 
 #: includes/class-export.php:20
@@ -384,7 +384,7 @@ msgstr "Objet"
 #: includes/class-export.php:65
 #: includes/class-export.php:391
 #@ visual-form-builder
-msgid "No entries to pull field names from."
+msgid "No records to pull field names from."
 msgstr "Aucune entrée à tirer sur les noms de domaine de."
 
 #: includes/class-export.php:81
@@ -409,7 +409,7 @@ msgstr "Toutes les données"
 
 #: includes/class-export.php:86
 #@ visual-form-builder
-msgid "This will contain all of your forms, fields, entries, and email design settings."
+msgid "This will contain all of your forms, fields, records, and email design settings."
 msgstr "Celui-ci contiendra tous vos formulaires, champs, entrées et paramètres de conception de messagerie."
 
 #: includes/class-export.php:86
@@ -432,12 +432,12 @@ msgstr "Ce tableau contiendra tous vos formulaires, les champs et les paramètre
 #: visual-form-builder.php:1731
 #: visual-form-builder.php:1755
 #@ visual-form-builder
-msgid "Entries"
+msgid "Records"
 msgstr "Entrées"
 
 #: includes/class-export.php:94
 #@ visual-form-builder
-msgid "This will export entries in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import entries on another site, please use the All data option above."
+msgid "This will export records in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import records on another site, please use the All data option above."
 msgstr "Ceci exportera entrées dans un .csv, .txt ou .xls et ne peut pas être utilisé avec l'importation.  Si vous avez besoin importer des entrées sur un autre site, veuillez utiliser l'option toutes les données ci-dessus."
 
 #: includes/class-export.php:96
@@ -472,7 +472,7 @@ msgstr "Page d'exportation"
 
 #: includes/class-export.php:137
 #@ visual-form-builder
-msgid "A large number of entries have been detected for this form. Only 1000 entries can be exported at a time."
+msgid "A large number of records have been detected for this form. Only 1000 records can be exported at a time."
 msgstr "Un grand nombre d'entrées ont été détecté pour ce formulaire. Seulement 1000 entrées peuvent être exportées à la fois."
 
 #: includes/class-export.php:144
@@ -574,7 +574,7 @@ msgstr "Paramètres"
 
 #: visual-form-builder.php:217
 #@ visual-form-builder
-msgid "Recent Visual Form Builder Entries"
+msgid "Recent Visual Form Builder Records"
 msgstr "Entrées récentes de générateur de forme visuelle"
 
 #: visual-form-builder.php:240
@@ -589,17 +589,17 @@ msgstr "Obtenir commencé !"
 
 #: visual-form-builder.php:251
 #@ visual-form-builder
-msgid "You currently do not have any entries."
+msgid "You currently do not have any records."
 msgstr "Actuellement, vous n'avez pas toutes les entrées."
 
 #: visual-form-builder.php:300
 #@ visual-form-builder
-msgid "Number of entries to show:"
+msgid "Number of records to show:"
 msgstr "Nombre d'entrées à afficher :"
 
 #: visual-form-builder.php:403
 #@ visual-form-builder
-msgid "Entries per page"
+msgid "Records per page"
 msgstr "Entrées par page"
 
 #: visual-form-builder.php:442
@@ -684,7 +684,7 @@ msgstr "10 + nouveaux champs de formulaire"
 
 #: visual-form-builder.php:1276
 #@ visual-form-builder
-msgid "Complete Entries Management"
+msgid "Complete Records Management"
 msgstr "Gestion des entrées complètes"
 
 #: visual-form-builder.php:1277
@@ -724,7 +724,7 @@ msgstr "Ordonnancement"
 
 #: visual-form-builder.php:1284
 #@ visual-form-builder
-msgid "Limit Form Entries"
+msgid "Limit Form Records"
 msgstr "Limite les entrées de formulaire"
 
 #: visual-form-builder.php:1285

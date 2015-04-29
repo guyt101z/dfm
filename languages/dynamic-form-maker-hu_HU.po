@@ -20,70 +20,70 @@ msgstr ""
 "X-Poedit-SearchPath-0: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder\n"
 "X-Textdomain-Support: yes"
 
-#: includes/class-entries-detail.php:42
+#: includes/class-records-detail.php:42
 #@ visual-form-builder
 msgid "Details"
 msgstr "Részletek"
 
-#: includes/class-entries-detail.php:48
+#: includes/class-records-detail.php:48
 #@ visual-form-builder
 msgid "Form Title"
 msgstr "Űrlap cím"
 
-#: includes/class-entries-detail.php:51
-#: includes/class-entries-list.php:94
+#: includes/class-records-detail.php:51
+#: includes/class-records-list.php:94
 #: includes/class-export.php:18
 #@ visual-form-builder
 msgid "Date Submitted"
 msgstr "Elkészítés dátuma"
 
-#: includes/class-entries-detail.php:54
-#: includes/class-entries-list.php:93
+#: includes/class-records-detail.php:54
+#: includes/class-records-list.php:93
 #: includes/class-export.php:19
 #@ visual-form-builder
 msgid "IP Address"
 msgstr "IP cím"
 
-#: includes/class-entries-detail.php:57
-#: includes/class-entries-list.php:89
+#: includes/class-records-detail.php:57
+#: includes/class-records-list.php:89
 #@ visual-form-builder
 msgid "Email Subject"
 msgstr "Email tárgy"
 
-#: includes/class-entries-detail.php:60
-#: includes/class-entries-list.php:90
+#: includes/class-records-detail.php:60
+#: includes/class-records-list.php:90
 #: includes/class-export.php:21
 #@ visual-form-builder
 msgid "Sender Name"
 msgstr "Küldő Név"
 
-#: includes/class-entries-detail.php:63
-#: includes/class-entries-list.php:91
+#: includes/class-records-detail.php:63
+#: includes/class-records-list.php:91
 #: includes/class-export.php:22
 #@ visual-form-builder
 msgid "Sender Email"
 msgstr "Küldő Email"
 
-#: includes/class-entries-detail.php:66
-#: includes/class-entries-list.php:92
+#: includes/class-records-detail.php:66
+#: includes/class-records-list.php:92
 #: includes/class-export.php:23
 #@ visual-form-builder
 msgid "Emailed To"
 msgstr "Címzett"
 
-#: includes/class-entries-detail.php:37
-#: includes/class-entries-detail.php:91
+#: includes/class-records-detail.php:37
+#: includes/class-records-detail.php:91
 #@ visual-form-builder
 msgid "Entry"
 msgstr "Bejegyzés"
 
-#: includes/class-entries-list.php:88
+#: includes/class-records-list.php:88
 #: includes/class-export.php:104
 #@ visual-form-builder
 msgid "Form"
 msgstr "Űrlap"
 
-#: includes/class-entries-list.php:176
+#: includes/class-records-list.php:176
 #: visual-form-builder.php:1235
 #@ visual-form-builder
 msgid "Delete"
@@ -91,15 +91,15 @@ msgstr "Törlés"
 
 #: includes/class-export.php:17
 #@ visual-form-builder
-msgid "Entries ID"
+msgid "Records ID"
 msgstr "Bejegyzés ID"
 
-#: includes/class-entries-list.php:218
+#: includes/class-records-list.php:218
 #@ visual-form-builder
 msgid "View all forms"
 msgstr "Minden űrlap"
 
-#: includes/class-entries-list.php:225
+#: includes/class-records-list.php:225
 #@ visual-form-builder
 msgid "Filter"
 msgstr "Szűrő"
@@ -125,7 +125,7 @@ msgstr "Űrlapok"
 #: visual-form-builder.php:1721
 #: visual-form-builder.php:1745
 #@ visual-form-builder
-msgid "Entries"
+msgid "Records"
 msgstr "Bejegyzések"
 
 #: visual-form-builder.php:434
@@ -469,53 +469,53 @@ msgstr "Tipp: a legjobb eredmény elérése érdekében használjon egy e-mailt,
 msgid "Optional (for now) - you can change this later"
 msgstr "Választható (egyelőre) - meg tudod változtatni ezt később"
 
-#: includes/class-entries-list.php:252
+#: includes/class-records-list.php:252
 #@ default
 msgid "Show all dates"
 msgstr ""
 
-#: includes/class-entries-list.php:264
+#: includes/class-records-list.php:264
 #: includes/class-export.php:527
 #, php-format
 #@ default
 msgid "%1$s %2$d"
 msgstr ""
 
-#: includes/class-entries-list.php:421
+#: includes/class-records-list.php:421
 #, php-format
 #@ default
 msgid "1 item"
 msgid_plural "%s items"
 msgstr[0] ""
 
-#: includes/class-entries-list.php:442
+#: includes/class-records-list.php:442
 #@ default
 msgid "Go to the first page"
 msgstr ""
 
-#: includes/class-entries-list.php:450
+#: includes/class-records-list.php:450
 #@ default
 msgid "Go to the previous page"
 msgstr ""
 
-#: includes/class-entries-list.php:459
+#: includes/class-records-list.php:459
 #@ default
 msgid "Current page"
 msgstr ""
 
-#: includes/class-entries-list.php:465
+#: includes/class-records-list.php:465
 #, php-format
 #@ default
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: includes/class-entries-list.php:469
+#: includes/class-records-list.php:469
 #@ default
 msgid "Go to the next page"
 msgstr ""
 
-#: includes/class-entries-list.php:477
+#: includes/class-records-list.php:477
 #@ default
 msgid "Go to the last page"
 msgstr ""
@@ -523,7 +523,7 @@ msgstr ""
 #: includes/class-export.php:65
 #: includes/class-export.php:391
 #@ visual-form-builder
-msgid "No entries to pull field names from."
+msgid "No records to pull field names from."
 msgstr "Húzza a mező nevét a tételek."
 
 #: includes/class-export.php:81
@@ -548,7 +548,7 @@ msgstr "Minden adat"
 
 #: includes/class-export.php:86
 #@ visual-form-builder
-msgid "This will contain all of your forms, fields, entries, and email design settings."
+msgid "This will contain all of your forms, fields, records, and email design settings."
 msgstr "Ez tartalmazza az összes a mezők, bejegyzések, és e-mail design beállításait."
 
 #: includes/class-export.php:86
@@ -564,7 +564,7 @@ msgstr "Ez tartalmazza az összes az űrlapokat, a mezők és a e-mail design be
 
 #: includes/class-export.php:94
 #@ visual-form-builder
-msgid "This will export entries in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import entries on another site, please use the All data option above."
+msgid "This will export records in either a .csv, .txt, or .xls and cannot be used with the Import.  If you need to import records on another site, please use the All data option above."
 msgstr "Ez egy .csv, .txt vagy .xls tételeket exportálja, és nem használható az importálás.  Ha szeretné importálni a bejegyzéseket, a másik oldalon, kérjük, használja az összes beállítást fenti."
 
 #: includes/class-export.php:96
@@ -599,7 +599,7 @@ msgstr "Oldal-hoz Export"
 
 #: includes/class-export.php:137
 #@ visual-form-builder
-msgid "A large number of entries have been detected for this form. Only 1000 entries can be exported at a time."
+msgid "A large number of records have been detected for this form. Only 1000 records can be exported at a time."
 msgstr "Nagyszámú bejegyzés az űrlap észlelt. Csak 1000 bejegyzések exportálhatók egy időben."
 
 #: includes/class-export.php:144
@@ -691,7 +691,7 @@ msgstr "Ez a rovat a spam védelem - <strong>kérlek, hagyd üresen</strong>"
 
 #: visual-form-builder.php:217
 #@ visual-form-builder
-msgid "Recent Visual Form Builder Entries"
+msgid "Recent Visual Form Builder Records"
 msgstr "A legújabb vizuális formában Builder bejegyzések"
 
 #: visual-form-builder.php:240
@@ -706,12 +706,12 @@ msgstr "A kezdéshez!"
 
 #: visual-form-builder.php:292
 #@ visual-form-builder
-msgid "Number of entries to show:"
+msgid "Number of records to show:"
 msgstr "Szám-ból címszavakat-hoz mutat:"
 
 #: visual-form-builder.php:395
 #@ visual-form-builder
-msgid "Entries per page"
+msgid "Records per page"
 msgstr "Bejegyzések oldalanként"
 
 #: visual-form-builder.php:435
@@ -781,7 +781,7 @@ msgstr "10 + új forma megfog"
 
 #: visual-form-builder.php:1266
 #@ visual-form-builder
-msgid "Complete Entries Management"
+msgid "Complete Records Management"
 msgstr "Teljes tételek kezelése"
 
 #: visual-form-builder.php:1267
@@ -821,7 +821,7 @@ msgstr "Ütemezés"
 
 #: visual-form-builder.php:1274
 #@ visual-form-builder
-msgid "Limit Form Entries"
+msgid "Limit Form Records"
 msgstr "Limit űrlapbejegyzéseket"
 
 #: visual-form-builder.php:1275

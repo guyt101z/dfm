@@ -1,6 +1,6 @@
 <?php
 /**
- * Class that builds our Form Entries table
+ * Class that builds our Form Records table
  *
  * @since 1.0
  */
@@ -14,7 +14,7 @@ class DinamicFormMaker_Export {
 
 		// Setup our default columns
 		$this->default_cols = array(
-			'entries_id' 		=> __( 'Form Entries ID' , 'dynamic-form-maker'),
+			'entries_id' 		=> __( 'Form Records ID' , 'dynamic-form-maker'),
 			'date_submitted' 	=> __( 'Date Submitted' , 'dynamic-form-maker'),
 			'ip_address' 		=> __( 'IP Address' , 'dynamic-form-maker'),
 			'subject' 			=> __( 'Subject' , 'dynamic-form-maker'),
@@ -31,7 +31,7 @@ class DinamicFormMaker_Export {
 		// AJAX for loading new entry checkboxes
 		add_action( 'wp_ajax_dynamic_form_maker_export_load_options', array( &$this, 'ajax_load_options' ) );
 
-		// AJAX for getting entries count
+		// AJAX for getting records count
 		add_action( 'wp_ajax_dynamic_form_maker_export_entries_count', array( &$this, 'ajax_entries_count' ) );
 
 		$this->process_export_action();
@@ -62,18 +62,18 @@ class DinamicFormMaker_Export {
 
 		$entries_count = $this->count_entries( $forms[0]->form_id );
 
-		// Return nothing if no entries found
+		// Return nothing if no records found
 		if ( !$entries_count ) :
-			$no_entries = __( 'No entries to pull field names from.', 'dynamic-form-maker' );
+			$no_entries = __( 'No records to pull field names from.', 'dynamic-form-maker' );
 		else :
 
 			$limit = $entries_count > 1000 ? 1000 : $entries_count;
 
-			// Safe to get entries now
-			$entries = $wpdb->get_results( $wpdb->prepare( "SELECT data FROM $this->entries_table_name WHERE form_id = %d AND entry_approved = 1 LIMIT %d", $forms[0]->form_id, $limit ), ARRAY_A );
+			// Safe to get records now
+			$records = $wpdb->get_results( $wpdb->prepare( "SELECT data FROM $this->entries_table_name WHERE form_id = %d AND entry_approved = 1 LIMIT %d", $forms[0]->form_id, $limit ), ARRAY_A );
 
 			// Get columns
-			$columns = $this->get_cols( $entries );
+			$columns = $this->get_cols( $records );
 
 			// Get JSON data
 			$data = json_decode( $columns, true );
@@ -82,7 +82,7 @@ class DinamicFormMaker_Export {
 		?>
         <form method="post" id="dfm-export">       	
 
-        	<ul id="entries-filters" class="dfm-export-filters">
+        	<ul id="records-filters" class="dfm-export-filters">
 				
 				<li>
 					<p><?php _e( 'Backup and save some or all of your Dynamic Form Maker data.', 'dynamic-form-maker' ); ?></p>
@@ -92,11 +92,11 @@ class DinamicFormMaker_Export {
         			<select name="dfm-content"> 
 						<!--<option value="all" disabled="disabled"><?php //_e( 'All data - Pro only', 'dynamic-form-maker' ); ?></option>
 						<option value="forms" disabled="disabled"><?php //_e( 'Forms - Pro only', 'dynamic-form-maker' ); ?></option>-->        				
-        				<option value="entries"  selected="selected"><?php _e( 'Form Entries', 'dynamic-form-maker' ); ?></option>												
+        				<option value="records"  selected="selected"><?php _e( 'Form Records', 'dynamic-form-maker' ); ?></option>												
         			</select>
         		</li>
 			
-        		<li><p class="description"><?php _e( 'This will export entries in either a .txt.', 'dynamic-form-maker' ); ?></p></li>
+        		<li><p class="description"><?php _e( 'This will export records in either a .txt.', 'dynamic-form-maker' ); ?></p></li>
         		<!-- Format -->
         		<li>
         			<label class="dfm-export-label" for="format"><?php _e( 'Format', 'dynamic-form-maker' ); ?>:</label>
@@ -109,7 +109,7 @@ class DinamicFormMaker_Export {
         		<!-- Forms -->
         		<li>
 		        	<label class="dfm-export-label" for="form_id"><?php _e( 'Form', 'dynamic-form-maker' ); ?>:</label>
-		            <select id="dfm-export-entries-forms" name="entries_form_id">
+		            <select id="dfm-export-records-forms" name="entries_form_id">
 <?php
 						foreach ( $forms as $form ) :
 							echo sprintf(
@@ -136,16 +136,16 @@ class DinamicFormMaker_Export {
         		</li>
         		<!-- Pages to Export -->
 				<?php $num_pages = ceil( $entries_count / 1000 ); ?>
-				<li id="dfm-export-entries-pages" style="display:<?php echo ( $entries_count > 1000 ) ? 'list-item' : 'none'; ?>">
+				<li id="dfm-export-records-pages" style="display:<?php echo ( $entries_count > 1000 ) ? 'list-item' : 'none'; ?>">
 					<label class="dfm-export-label"><?php _e( 'Page to Export', 'dynamic-form-maker' ); ?>:</label>
-					<select id="dfm-export-entries-rows" name="entries_page">
+					<select id="dfm-export-records-rows" name="entries_page">
 <?php
 					for ( $i = 1; $i <= $num_pages; $i++ ) {
 						echo sprintf( '<option value="%1$d">%1$s</option>', $i );
 					}
 ?>
 					</select>
-					<p class="description"><?php _e( 'A large number of entries have been detected for this form. Only 1000 entries can be exported at a time.', 'dynamic-form-maker' ); ?></p>
+					<p class="description"><?php _e( 'A large number of records have been detected for this form. Only 1000 records can be exported at a time.', 'dynamic-form-maker' ); ?></p>
 				</li>
 				<!-- Fields -->
         		<li>
@@ -156,7 +156,7 @@ class DinamicFormMaker_Export {
         				<a id="dfm-export-unselect-all" href="#"><?php _e( 'Unselect All', 'dynamic-form-maker' ); ?></a>
         			</p>
 
-        			<div id="dfm-export-entries-fields">
+        			<div id="dfm-export-records-fields">
 	        		<?php
 						if ( isset( $no_entries ) )
 							echo $no_entries;
@@ -174,7 +174,7 @@ class DinamicFormMaker_Export {
 
 
 	/**
-	 * Build the entries export array
+	 * Build the records export array
 	 *
 	 * @since 1.0
 	 *
@@ -187,7 +187,7 @@ class DinamicFormMaker_Export {
 		$initial_fields = implode( ',', $this->default_cols );
 
 		$defaults = array(
-			'content' 		=> 'entries',
+			'content' 		=> 'records',
 			'format' 		=> 'txt',
 			'form_id' 		=> 0,
 			'start_date' 	=> false,
@@ -202,7 +202,7 @@ class DinamicFormMaker_Export {
 
 		$limit = '0,1000';
 
-		if ( 'entries' == $args['content'] ) {
+		if ( 'records' == $args['content'] ) {
 			if ( 0 !== $args['form_id'] )
 				$where .= $wpdb->prepare( " AND form_id = %d", $args['form_id'] );
 
@@ -218,7 +218,7 @@ class DinamicFormMaker_Export {
 
 		$form_id = ( 0 !== $args['form_id'] ) ? $args['form_id'] : null;
 
-		$entries = $wpdb->get_results( "SELECT * FROM $this->entries_table_name WHERE entry_approved = 1 $where ORDER BY entries_id ASC LIMIT $limit" );
+		$records = $wpdb->get_results( "SELECT * FROM $this->entries_table_name WHERE entry_approved = 1 $where ORDER BY entries_id ASC LIMIT $limit" );
 		$form_key = $wpdb->get_var( $wpdb->prepare( "SELECT form_key, form_title FROM $this->form_table_name WHERE form_id = %d", $args['form_id'] ) );
 		$form_title = $wpdb->get_var( null, 1 );
 
@@ -236,7 +236,7 @@ class DinamicFormMaker_Export {
 		header( 'Pragma: public' );
 
 		// Get columns
-		$columns = $this->get_cols( $entries );
+		$columns = $this->get_cols( $records );
 
 		// Get JSON data
 		$data = json_decode( $columns, true );
@@ -252,20 +252,20 @@ class DinamicFormMaker_Export {
 	}
 
 	/**
-	 * Build the entries as JSON
+	 * Build the records as JSON
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $entries The resulting database query for entries
+	 * @param array $records The resulting database query for records
 	 */
-	public function get_cols( $entries ) {
+	public function get_cols( $records ) {
 
 		// Initialize row index at 0
 		$row = 0;
 		$output = array();
 
-		// Loop through all entries
-		foreach ( $entries as $entry ) :
+		// Loop through all records
+		foreach ( $records as $entry ) :
 
 			foreach ( $entry as $key => $value ) :
 
@@ -334,7 +334,7 @@ class DinamicFormMaker_Export {
 				} //end $key switch
 			endforeach; // end $entry loop
 			$row++;
-		endforeach; //end $entries loop
+		endforeach; //end $records loop
 
 		return json_encode( $output );
 	}
@@ -437,11 +437,11 @@ class DinamicFormMaker_Export {
 	}
 
 	/**
-	 * Return the entries data formatted for txt
+	 * Return the records data formatted for txt
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $data The multidimensional array of entries data
+	 * @param array $data The multidimensional array of records data
 	 * @param array $fields The selected fields to export
 	 */
 	public function csv( $data, $fields ) {
@@ -486,7 +486,7 @@ class DinamicFormMaker_Export {
 	 *
 	 * @since 1.0
 	 *
-	 * @return string Either no entries or the entry headers
+	 * @return string Either no records or the entry headers
 	 */
 	public function ajax_load_options() {
 		global $wpdb, $export_entries;
@@ -499,12 +499,12 @@ class DinamicFormMaker_Export {
 
 		$form_id = absint( $_REQUEST['id'] );
 
-		// Safe to get entries now
+		// Safe to get records now
 		$entry_ids = $this->get_entry_IDs( $form_id );
 
-		// Return nothing if no entries found
+		// Return nothing if no records found
 		if ( !$entry_ids ) {
-			echo __( 'No entries to pull field names from.', 'dynamic-form-maker-pro' );
+			echo __( 'No records to pull field names from.', 'dynamic-form-maker-pro' );
 			wp_die();
 		}
 
@@ -524,10 +524,10 @@ class DinamicFormMaker_Export {
 			$offset = $offset >= 1 ? "OFFSET $offset_num" : '';
 		}
 
-		$entries = $wpdb->get_results( "SELECT data FROM {$this->entries_table_name} WHERE form_id = $form_id AND entry_approved = 1 LIMIT $limit $offset", ARRAY_A );
+		$records = $wpdb->get_results( "SELECT data FROM {$this->entries_table_name} WHERE form_id = $form_id AND entry_approved = 1 LIMIT $limit $offset", ARRAY_A );
 
 		// Get columns
-		$columns = $export_entries->get_cols( $entries );
+		$columns = $export_entries->get_cols( $records );
 
 		// Get JSON data
 		$data = json_decode( $columns, true );
@@ -572,7 +572,7 @@ class DinamicFormMaker_Export {
 			// Strip unique ID for a clean list
 			$search = preg_replace( '/{{(\d+)}}/', '', $v );
 
-			$output .= sprintf( '<label for="dfm-display-entries-val-%1$d"><input name="entries_columns[]" class="dfm-display-entries-vals" id="dfm-display-entries-val-%1$d" type="checkbox" value="%4$s" %3$s> %2$s</label><br>', $k, $search, $selected, esc_attr( $v ) );
+			$output .= sprintf( '<label for="dfm-display-records-val-%1$d"><input name="entries_columns[]" class="dfm-display-records-vals" id="dfm-display-records-val-%1$d" type="checkbox" value="%4$s" %3$s> %2$s</label><br>', $k, $search, $selected, esc_attr( $v ) );
 		endforeach;
 
 		return $output;
@@ -602,8 +602,8 @@ class DinamicFormMaker_Export {
 
 		$args = array();
 
-		if ( !isset( $_REQUEST['dfm-content'] ) || 'entries' == $_REQUEST['dfm-content'] ) {
-			$args['content'] = 'entries';
+		if ( !isset( $_REQUEST['dfm-content'] ) || 'records' == $_REQUEST['dfm-content'] ) {
+			$args['content'] = 'records';
 
 			$args['format'] = @$_REQUEST['format'];
 
@@ -623,7 +623,7 @@ class DinamicFormMaker_Export {
 		}
 
 		switch( $this->export_action() ) {
-			case 'entries' :
+			case 'records' :
 				$this->export_entries( $args );
 				die(1);
 			break;

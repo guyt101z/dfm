@@ -1,6 +1,6 @@
 <?php
 /**
- * Class that builds our Form Entries table
+ * Class that builds our Form Records table
  *
  * @since 1.2
  */
@@ -20,7 +20,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 		// Set parent defaults
 		parent::__construct( array(
 			'singular'  => 'entry',
-			'plural'    => 'entries',
+			'plural'    => 'records',
 			'ajax'      => false
 		) );
 
@@ -99,7 +99,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 	}
 
 	/**
-	 * A custom function to get the entries and sort them
+	 * A custom function to get the records and sort them
 	 *
 	 * @since 1.2
 	 * @returns array() $cols SQL results
@@ -153,17 +153,17 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 
 		// Parse month/year and build the clause
 		if ( $today > 0 )
-			$where .= " AND entries.date_submitted >= curdate()";
+			$where .= " AND records.date_submitted >= curdate()";
 
-		// Form Entries type filter
-		$where .= ( $this->get_entry_status() && 'all' !== $this->get_entry_status() ) ? $wpdb->prepare( ' AND entries.entry_approved = %s', $this->get_entry_status() ) : '';
+		// Form Records type filter
+		$where .= ( $this->get_entry_status() && 'all' !== $this->get_entry_status() ) ? $wpdb->prepare( ' AND records.entry_approved = %s', $this->get_entry_status() ) : '';
 
-		// Always display approved entries, unless an Form Entries Type filter is set
+		// Always display approved records, unless an Form Records Type filter is set
 		if ( !$this->get_entry_status() || 'all' == $this->get_entry_status() )
-			$where .= $wpdb->prepare( ' AND entries.entry_approved = %d', 1 );
+			$where .= $wpdb->prepare( ' AND records.entry_approved = %d', 1 );
 
 		$sql_order = sanitize_sql_orderby( "$order_col $order" );
-		$cols = $wpdb->get_results( "SELECT forms.form_title, entries.entries_id, entries.form_id, entries.subject, entries.sender_name, entries.sender_email, entries.emails_to, entries.date_submitted, entries.ip_address FROM $this->form_table_name AS forms INNER JOIN $this->entries_table_name AS entries ON entries.form_id = forms.form_id WHERE 1=1 $where $search ORDER BY $sql_order LIMIT $per_page $offset" );
+		$cols = $wpdb->get_results( "SELECT forms.form_title, records.entries_id, records.form_id, records.subject, records.sender_name, records.sender_email, records.emails_to, records.date_submitted, records.ip_address FROM $this->form_table_name AS forms INNER JOIN $this->entries_table_name AS records ON records.form_id = forms.form_id WHERE 1=1 $where $search ORDER BY $sql_order LIMIT $per_page $offset" );
 
 		return $cols;
 	}
@@ -182,16 +182,16 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 	}
 
 	/**
-	 * Build the different views for the entries screen
+	 * Build the different views for the records screen
 	 *
 	 * @since 2.1
 	 * @returns array $status_links Status links with counts
 	 */
-	function get_views() {
+	function get_from_views() {
 		$status_links = array();
 		$num_entries = $this->get_entries_count();
 		$class = '';
-		$link = '?page=dfm-entries';
+		$link = '?page=dfm-records';
 
 		$stati = array(
 			'all'    => _n_noop( 'All <span class="count">(<span class="pending-count">%s</span>)</span>', 'All <span class="count">(<span class="pending-count">%s</span>)</span>' ),
@@ -219,7 +219,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 	}
 
 	/**
-	 * Get the number of entries for use with entry statuses
+	 * Get the number of records for use with entry statuses
 	 *
 	 * @since 2.1
 	 * @returns array $stats Counts of different entry types
@@ -229,11 +229,11 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 
 		$stats = array();
 
-		$entries = $wpdb->get_results( "SELECT entries.entry_approved, COUNT( * ) AS num_entries FROM $this->entries_table_name AS entries WHERE 1=1 GROUP BY entries.entry_approved", ARRAY_A );
+		$records = $wpdb->get_results( "SELECT records.entry_approved, COUNT( * ) AS num_entries FROM $this->entries_table_name AS records WHERE 1=1 GROUP BY records.entry_approved", ARRAY_A );
 
 		$total = 0;
 		$approved = array( '0' => 'moderated', '1' => 'approved', 'spam' => 'spam', 'trash' => 'trash', 'post-trashed' => 'post-trashed');
-		foreach ( (array) $entries as $row ) {
+		foreach ( (array) $records as $row ) {
 			// Don't count trashed toward totals
 			if ( 'trash' != $row['entry_approved'] )
 				$total += $row['num_entries'];
@@ -482,7 +482,7 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 		// Build the column headers
 		$this->_column_headers = array($columns, $hidden, $sortable);
 
-		// Get entries search terms
+		// Get records search terms
 		$search_terms = ( !empty( $_REQUEST['s'] ) ) ? explode( ' ', $_REQUEST['s'] ) : array();
 
 		$searchand = $search = '';
@@ -490,23 +490,23 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 		foreach( $search_terms as $term ) {
 			$term = esc_sql( like_escape( $term ) );
 
-			$search .= "{$searchand}((entries.subject LIKE '%{$term}%') OR (entries.sender_name LIKE '%{$term}%') OR (entries.sender_email LIKE '%{$term}%') OR (entries.emails_to LIKE '%{$term}%') OR (entries.data LIKE '%{$term}%'))";
+			$search .= "{$searchand}((records.subject LIKE '%{$term}%') OR (records.sender_name LIKE '%{$term}%') OR (records.sender_email LIKE '%{$term}%') OR (records.emails_to LIKE '%{$term}%') OR (records.data LIKE '%{$term}%'))";
 			$searchand = ' AND ';
 		}
 
 		$search = ( !empty($search) ) ? " AND ({$search}) " : '';
 
-		// Set our ORDER BY and ASC/DESC to sort the entries
+		// Set our ORDER BY and ASC/DESC to sort the records
 		$orderby = ( !empty( $_REQUEST['orderby'] ) ) ? $_REQUEST['orderby'] : 'date';
 		$order = ( !empty( $_REQUEST['order'] ) ) ? $_REQUEST['order'] : 'desc';
 
-		// Get the sorted entries
-		$entries = $this->get_entries( $orderby, $order, $per_page, $offset, $search );
+		// Get the sorted records
+		$records = $this->get_entries( $orderby, $order, $per_page, $offset, $search );
 
 		$data = array();
 
-		// Loop trough the entries and setup the data to be displayed for each row
-		foreach ( $entries as $entry ) {
+		// Loop trough the records and setup the data to be displayed for each row
+		foreach ( $records as $entry ) {
 			$data[] =
 				array(
 					'entry_id' 		=> $entry->entries_id,
@@ -543,17 +543,17 @@ class DynamicFormMaker_Form_Entries_List extends WP_List_Table {
 
 		// Parse month/year and build the clause
 		if ( $today > 0 )
-			$where .= " AND entries.date_submitted >= curdate()";
+			$where .= " AND records.date_submitted >= curdate()";
 
 		// Entry type filter
-		$where .= ( $this->get_entry_status() && 'all' !== $this->get_entry_status() ) ? $wpdb->prepare( ' AND entries.entry_approved = %s', $this->get_entry_status() ) : '';
+		$where .= ( $this->get_entry_status() && 'all' !== $this->get_entry_status() ) ? $wpdb->prepare( ' AND records.entry_approved = %s', $this->get_entry_status() ) : '';
 
-		// Always display approved entries, unless an Form Entries Type filter is set
+		// Always display approved records, unless an Form Records Type filter is set
 		if ( !$this->get_entry_status() || 'all' == $this->get_entry_status() )
-			$where .= $wpdb->prepare( ' AND entries.entry_approved = %d', 1 );
+			$where .= $wpdb->prepare( ' AND records.entry_approved = %d', 1 );
 
-		// How many entries do we have?
-		$total_items = $wpdb->get_var( "SELECT COUNT(*) FROM $this->entries_table_name AS entries WHERE 1=1 $where" );
+		// How many records do we have?
+		$total_items = $wpdb->get_var( "SELECT COUNT(*) FROM $this->entries_table_name AS records WHERE 1=1 $where" );
 
 		// Add sorted data to the items property
 		$this->items = $data;
