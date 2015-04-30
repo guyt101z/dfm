@@ -207,7 +207,7 @@ msgstr "(допълнителните Имейли, раздели със зап
 
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/visual-form-builder.php:852
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/visual-form-builder.php:888
-msgid "After someone submits a form, you can control what is displayed. By default, it's a message but you can send them to another WordPress Page or a custom URL."
+msgid "Successful message / Thank you page / Thank you custom url."
 msgstr "След като някой попълни формата, ти избираш какво да се паказва"
 
 #: /Applications/MAMP/htdocs/wp3/wp-content/plugins/visual-form-builder/visual-form-builder.php:855

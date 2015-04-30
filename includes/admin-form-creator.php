@@ -129,8 +129,9 @@ $page_main = $this->_admin_pages[ 'dfm' ];
 							global $wpdb;
 							$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
 							$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = ".$_REQUEST['form'] );
-							$form_type = $form_table[0]->form_type;
+							$form_type = $form_table[0]->form_type; 
 							if($form_type === 'user_form'):
+							$form_user_role = $form_table[0]->form_user_role;
 						?>
 						
 						<!-- User Role section -->
@@ -145,10 +146,12 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                                 <?php _e( 'User Role' , 'dynamic-form-maker'); ?>
                                 <span class="dfm-tooltip" title="<?php esc_attr_e( 'About User role', 'dynamic-form-maker' ); ?>" rel="<?php esc_attr_e( 'Select new user role to update.', 'dynamic-form-maker' ); ?>">(?)</span>
             					<br />
-                                <select name="user_role" id="form-user-role" >
+                                <select name="update_user_role" id="form-user-role" >
 								  <?php foreach (get_editable_roles() as $role_name => $role_info) {
-								if( $role_name!= 'administrator') { ;?> 
-								  <option value="<?php echo $role_name; ?>"><?php echo  $role_info['name']; ?></option>
+								if( $role_name!= 'administrator') { 
+								$userSelected = ( $role_name == $form_user_role ? 'selected="selected"' : null );
+								?> 
+								  <option value="<?php echo $role_name; ?>" <?php echo $userSelected;?> ><?php echo  $role_info['name']; ?></option>
 									<?php } } ?>
 								</select> 
                             </label>
@@ -280,7 +283,7 @@ $page_main = $this->_admin_pages[ 'dfm' ];
                         <!-- Confirmation section -->
                         <a href="#confirmation" class="settings-links<?php echo ( $settings_accordion == 'confirmation' ) ? ' on' : ''; ?>"><?php _e( 'Confirmation', 'dynamic-form-maker' ); ?><span class="dfm-large-arrow"></span></a>
                         <div id="confirmation-message" class="form-details<?php echo ( $settings_accordion == 'confirmation' ) ? ' on' : ''; ?>">
-                            <p><em><?php _e( "After someone submits a form, you can control what is displayed. By default, it's a message but you can send them to another WordPress Page or a custom URL." , 'dynamic-form-maker'); ?></em></p>
+                            <p><em><?php _e( "Successful message / Thank you page / Thank you custom url." , 'dynamic-form-maker'); ?></em></p>
                             <label for="form-success-type-text" class="menu-name-label open-label">
                                 <input type="radio" value="text" id="form-success-type-text" class="form-success-type" name="form_success_type" <?php checked( $form_success_type, 'text' ); ?> />
                                 <span><?php _e( 'Text' , 'dynamic-form-maker'); ?></span>

@@ -91,7 +91,7 @@ msgid "E-mail(s) To"
 msgstr ""
 
 #: includes/admin-form-creator.php:228
-msgid "After someone submits a form, you can control what is displayed. By default, it's a message but you can send them to another WordPress Page or a custom URL."
+msgid "Successful message / Thank you page / Thank you custom url."
 msgstr ""
 
 #: includes/admin-form-creator.php:231

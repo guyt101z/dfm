@@ -1119,6 +1119,12 @@ class Dynamic_form_maker_Builder{
 			return;
 
 		check_admin_referer( 'dfm_update_form' );
+		
+		
+		$form_table_name = $wpdb->prefix . "dynamic_form_maker_forms";				
+		$form_table = $wpdb->get_results( "SELECT * FROM $form_table_name WHERE form_id = ".$_REQUEST['form'] );
+		$form_type = $form_table[0]->form_type;
+		if($form_type === 'email_form'):
 
 		$form_id 						= absint( $_REQUEST['form_id'] );
 		$form_key 						= sanitize_title( $_REQUEST['form_title'], $form_id );
@@ -1138,7 +1144,31 @@ class Dynamic_form_maker_Builder{
 		$form_notification_message 		= isset( $_REQUEST['form_notification_message'] ) ? wp_richedit_pre( $_REQUEST['form_notification_message'] ) : '';
 		$form_notification_entry 		= isset( $_REQUEST['form_notification_entry'] ) ? $_REQUEST['form_notification_entry'] : '';
 		$form_label_alignment 			= $_REQUEST['form_label_alignment'];
-
+		$update_user_role 			= $_REQUEST['update_user_role'];
+		endif;
+		
+		
+		if($form_type === 'user_form'):
+		$form_id 						= absint( $_REQUEST['form_id'] );
+		$form_key 						= sanitize_title( $_REQUEST['form_title'], $form_id );
+		$form_title 					= $_REQUEST['form_title'];
+		$form_subject 					= $_REQUEST['form_email_subject'];		
+		$form_from 						= sanitize_email( $_REQUEST['form_email_from'] );
+		$form_from_name 				= $_REQUEST['form_email_from_name'];
+		$form_from_override 			= isset( $_REQUEST['form_email_from_override'] ) ? $_REQUEST['form_email_from_override'] : '';
+		$form_from_name_override 		= isset( $_REQUEST['form_email_from_name_override'] ) ? $_REQUEST['form_email_from_name_override'] : '';
+		$form_success_type 				= $_REQUEST['form_success_type'];
+		$form_notification_setting 		= isset( $_REQUEST['form_notification_setting'] ) ? $_REQUEST['form_notification_setting'] : '';
+		$form_notification_email_name 	= isset( $_REQUEST['form_notification_email_name'] ) ? $_REQUEST['form_notification_email_name'] : '';
+		$form_notification_email_from 	= isset( $_REQUEST['form_notification_email_from'] ) ? sanitize_email( $_REQUEST['form_notification_email_from'] ) : '';
+		$form_notification_email 		= isset( $_REQUEST['form_notification_email'] ) ? $_REQUEST['form_notification_email'] : '';
+		$form_notification_subject 		= isset( $_REQUEST['form_notification_subject'] ) ? $_REQUEST['form_notification_subject'] : '';
+		$form_notification_message 		= isset( $_REQUEST['form_notification_message'] ) ? wp_richedit_pre( $_REQUEST['form_notification_message'] ) : '';
+		$form_notification_entry 		= isset( $_REQUEST['form_notification_entry'] ) ? $_REQUEST['form_notification_entry'] : '';
+		$form_label_alignment 			= $_REQUEST['form_label_alignment'];
+		$update_user_role 			= $_REQUEST['update_user_role'];
+		endif;
+		
 		// Add confirmation based on which type was selected
 		switch ( $form_success_type ) {
 			case 'text' :
@@ -1170,7 +1200,8 @@ class Dynamic_form_maker_Builder{
 			'form_notification_subject' 	=> $form_notification_subject,
 			'form_notification_message' 	=> $form_notification_message,
 			'form_notification_entry' 		=> $form_notification_entry,
-			'form_label_alignment' 			=> $form_label_alignment
+			'form_label_alignment' 			=> $form_label_alignment,
+			'form_user_role'				=> $update_user_role
 		);
 
 		$where = array( 'form_id' => $form_id );
@@ -1322,7 +1353,8 @@ class Dynamic_form_maker_Builder{
 				'form_notification_subject' 	=> $form->form_notification_subject,
 				'form_notification_message' 	=> $form->form_notification_message,
 				'form_notification_entry' 		=> $form->form_notification_entry,
-				'form_label_alignment' 			=> $form->form_label_alignment
+				'form_label_alignment' 			=> $form->form_label_alignment,
+				'form_user_role'				=> $update_user_role
 			);
 
 			$wpdb->insert( $this->form_table_name, $data );

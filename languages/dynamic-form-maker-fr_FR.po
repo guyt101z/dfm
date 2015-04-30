@@ -125,7 +125,7 @@ msgstr "E-mail(s) à"
 
 #: includes/admin-form-creator.php:228
 #@ visual-form-builder
-msgid "After someone submits a form, you can control what is displayed. By default, it's a message but you can send them to another WordPress Page or a custom URL."
+msgid "Successful message / Thank you page / Thank you custom url."
 msgstr "Après que quelqu'un envoie un formulaire, vous pouvez contrôler ce qui est affiché. Par défaut, il s'agit d'un message, mais vous pouvez les envoyer à une autre Page de WordPress ou une URL personnalisée."
 
 #: includes/admin-form-creator.php:231

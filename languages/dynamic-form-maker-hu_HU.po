@@ -167,7 +167,7 @@ msgstr "E-mail(ek) címzettje"
 
 #: includes/admin-form-creator.php:228
 #@ visual-form-builder
-msgid "After someone submits a form, you can control what is displayed. By default, it's a message but you can send them to another WordPress Page or a custom URL."
+msgid "Successful message / Thank you page / Thank you custom url."
 msgstr "Az űrlap elküldése után megjelenő rész. Alapból egy üzenet, de akár egy WordPress oldalra, vagy URL-re is küldheted."
 
 #: includes/admin-form-creator.php:231
